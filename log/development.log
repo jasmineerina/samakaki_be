@@ -3036,3 +3036,100 @@ Processing by BiodataUsersController#show as */*
 Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 4.8ms | Allocations: 11065)
 
 
+Started POST "/login" for ::1 at 2022-10-07 13:51:24 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 229ms (Views: 0.2ms | ActiveRecord: 2.8ms | Allocations: 7343)
+
+
+Started PUT "/biodata_users/:id" for ::1 at 2022-10-07 13:52:55 +0700
+Processing by BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public", "id"=>":id", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.1ms | Allocations: 3463)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.find_by email: current_user.email
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:18:in `update'
+Started PUT "/biodata_users/:id" for ::1 at 2022-10-07 13:53:31 +0700
+Processing by BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public", "id"=>":id", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 3.8ms | Allocations: 6777)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.find_by(user_id: @user.id)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:18:in `update'
+Started PUT "/biodata_users/:id" for ::1 at 2022-10-07 13:54:23 +0700
+Processing by BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public", "id"=>":id", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 3.1ms | Allocations: 6783)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.find_by(user_id: @user.id)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:18:in `update'
+Started PUT "/biodata_users/:id" for ::1 at 2022-10-07 13:54:39 +0700
+Processing by BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public", "id"=>":id", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
+  [1m[36mBiodataUser Update (0.5ms)[0m  [1m[33mUPDATE "biodata_users" SET "address" = $1, "updated_at" = $2 WHERE "biodata_users"."id" = $3[0m  [["address", "gubug qatros"], ["updated_at", "2022-10-07 06:54:39.303113"], ["id", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 6.1ms | Allocations: 18267)
+
+
+  
+NameError (undefined local variable or method `flash' for #<BiodataUsersController:0x00000000019c58>
+
+            flash[:notices] = ["Your biodata was succesfully updated"]
+            ^^^^^):
+  
+app/controllers/biodata_users_controller.rb:20:in `update'
+Started PUT "/biodata_users/:id" for ::1 at 2022-10-07 13:56:06 +0700
+Processing by BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public", "id"=>":id", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:18:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
+  [1m[36mBiodataUser Update (0.2ms)[0m  [1m[33mUPDATE "biodata_users" SET "address" = $1, "updated_at" = $2 WHERE "biodata_users"."id" = $3[0m  [["address", "gubug qatros"], ["updated_at", "2022-10-07 06:56:06.298141"], ["id", 2]]
+  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
+Completed 200 OK in 24ms (Views: 0.6ms | ActiveRecord: 6.1ms | Allocations: 11714)
+
+

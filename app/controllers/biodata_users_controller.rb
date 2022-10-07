@@ -15,12 +15,10 @@ class BiodataUsersController < ApplicationController
     end
 
     def update
-        @biodata = Biodata.find_by email: current_user.email
+        @biodata = BiodataUser.find_by(user_id: @user.id)
         if @biodata.update(biodata_params)
-            flash[:notices] = ["Your biodata was succesfully updated"]
-            render json: @biodata.new_attribute
+            render json: {data: {biodata: @biodata}, message: "Your biodata was succesfully updated"}
         else
-            flash[:notices] = ["Your biodata could not be updated"]
             render json: @biodata.errors
         end
     end
