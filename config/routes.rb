@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :users
   post "login", to: "users#login"
   post "regis", to: "users#create"
+
+  resources :biodata_users
+  
 end

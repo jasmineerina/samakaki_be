@@ -1973,3 +1973,812 @@ Processing by UsersController#show as */*
 Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2022)
 
 
+Started POST "/regis" for ::1 at 2022-10-07 11:00:51 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"admin", "email"=>"admin@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"admin", "email"=>"admin@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "admin"], ["email", "admin@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-07 04:00:51.864907"], ["updated_at", "2022-10-07 04:00:51.864907"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 233ms (Views: 0.3ms | ActiveRecord: 5.6ms | Allocations: 10741)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:00:55 +0700
+  
+SyntaxError (/home/jasmine/Documents/SamaKaki/samakaki-backend/app/models/biodata_user.rb:7: syntax error, unexpected local variable or method, expecting '}'
+      address: self.address
+      ^~~~~~~
+/home/jasmine/Documents/SamaKaki/samakaki-backend/app/models/biodata_user.rb:8: syntax error, unexpected ':', expecting `end'
+      marriage_status: self.marriage_status
+                     ^
+/home/jasmine/Documents/SamaKaki/samakaki-backend/app/models/biodata_user.rb:9: syntax error, unexpected ':', expecting `end'
+      status: self.status
+            ^
+/home/jasmine/Documents/SamaKaki/samakaki-backend/app/models/biodata_user.rb:10: syntax error, unexpected '}', expecting `end'
+    }
+    ^
+):
+  
+app/models/biodata_user.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:9: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected '}', expecting `end'
+app/models/biodata_user.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:9: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected '}', expecting `end'
+app/models/biodata_user.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:9: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected '}', expecting `end'
+Started GET "/biodata_users" for 127.0.0.1 at 2022-10-07 11:01:14 +0700
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for BiodataUsersController):
+  
+actionpack (7.0.4) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/cookies.rb:696:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:02:05 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/jasmine/Documents/SamaKaki/samakaki-backend/app/models/biodata_user.rb:7: syntax error, unexpected local variable or method, expecting '}'
+      address: self.address
+      ^~~~~~~
+/home/jasmine/Documents/SamaKaki/samakaki-backend/app/models/biodata_user.rb:8: syntax error, unexpected ':', expecting `end'
+      marriage_status: self.marriage_status
+                     ^
+/home/jasmine/Documents/SamaKaki/samakaki-backend/app/models/biodata_user.rb:9: syntax error, unexpected ':', expecting `end'
+      status: self.status
+            ^
+/home/jasmine/Documents/SamaKaki/samakaki-backend/app/models/biodata_user.rb:10: syntax error, unexpected '}', expecting `end'
+    }
+    ^
+):
+  
+app/models/biodata_user.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:9: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected '}', expecting `end'
+app/models/biodata_user.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:9: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected '}', expecting `end'
+app/models/biodata_user.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:8: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:9: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected '}', expecting `end'
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:02:27 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 360)
+
+
+Started POST "/login" for ::1 at 2022-10-07 11:02:34 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"dhimas1@gmail.com", "password_digest"=>"[FILTERED]"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 13ms (Views: 0.4ms | ActiveRecord: 1.6ms | Allocations: 4569)
+
+
+Started POST "/regis" for ::1 at 2022-10-07 11:02:46 +0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"admin", "email"=>"admin@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"admin", "email"=>"admin@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 400 Bad Request in 232ms (Views: 4.0ms | ActiveRecord: 2.3ms | Allocations: 10388)
+
+
+Started POST "/login" for ::1 at 2022-10-07 11:03:14 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"admin@gmail.com", "password_digest"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 228ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 675)
+
+
+Started POST "/regis" for ::1 at 2022-10-07 11:04:28 +0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "test"], ["email", "test@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-07 04:04:28.992066"], ["updated_at", "2022-10-07 04:04:28.992066"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 215ms (Views: 0.1ms | ActiveRecord: 1.8ms | Allocations: 3951)
+
+
+Started POST "/login" for ::1 at 2022-10-07 11:05:13 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 212ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 761)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:05:25 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 103)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:09:40 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 3140)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Profile
+
+        @profile = Profile.new(profile_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:12:49 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 4.7ms | Allocations: 11381)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Profile
+
+        @profile = Profile.new(profile_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:14:18 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 3.2ms | Allocations: 6548)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Profile
+
+        @profile = Profile.new(profile_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/login" for ::1 at 2022-10-07 11:17:27 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 241ms (Views: 0.2ms | ActiveRecord: 5.1ms | Allocations: 7340)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:17:36 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.0ms | Allocations: 3366)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(profile_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:18:15 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 2.3ms | Allocations: 6632)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:24:44 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 2.8ms | Allocations: 6398)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:28:12 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 5.2ms | Allocations: 6626)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:36:11 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 4.1ms | Allocations: 6392)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/login" for ::1 at 2022-10-07 11:46:55 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 219ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 7340)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:47:01 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.1ms | Allocations: 3365)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 11:47:58 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 2.7ms | Allocations: 6632)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:25:48 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 3.2ms | Allocations: 6041)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:26:31 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 4.3ms | Allocations: 11472)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/login" for ::1 at 2022-10-07 12:27:09 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 233ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1354)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:27:32 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 553)
+
+
+Started POST "/login" for ::1 at 2022-10-07 12:27:40 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 219ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 772)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:27:51 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.2ms | Allocations: 3052)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:28:49 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 3027)
+
+
+  
+NameError (uninitialized constant BiodataUsersController::Biodata
+
+        @biodata = Biodata.new(biodata_params)
+                   ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:30:22 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 11ms (ActiveRecord: 3.4ms | Allocations: 4716)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: biodata
+Did you mean?  biodata_user):
+  
+app/controllers/biodata_users_controller.rb:29:in `biodata_params'
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:31:20 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 35ms (Views: 2.2ms | ActiveRecord: 4.4ms | Allocations: 12462)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:33:34 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 3ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1971)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddReferencesIntoBiodata (20221007053957)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD "user_id" bigint[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddReferencesIntoBiodata (20221007053957)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD "user_id" bigint[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdIntoBiodataUser (20221006050151)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.6ms)[0m  [1m[35mALTER TABLE "posts" DROP COLUMN "user_id"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "biodata_users" DROP COLUMN "user_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20221006050151"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddReferencesIntoBiodata (20221007053957)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD "user_id" bigint[0m
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE INDEX "index_biodata_users_on_user_id" ON "biodata_users" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221007053957"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/login" for ::1 at 2022-10-07 12:46:54 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 221ms (Views: 0.2ms | ActiveRecord: 3.2ms | Allocations: 7340)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:47:02 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 16ms (Views: 3.0ms | ActiveRecord: 1.9ms | Allocations: 7859)
+
+
+Started POST "/login" for ::1 at 2022-10-07 12:48:49 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 230ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 7340)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:49:12 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 28ms (Views: 2.6ms | ActiveRecord: 5.5ms | Allocations: 7803)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 12:49:39 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "status"=>"public"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 55963ms (Views: 0.7ms | ActiveRecord: 3.7ms | Allocations: 38575)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBiodataUsers (20221006042746)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "biodata_users"[0m
+  [1m[36mActiveRecord::SchemaMigration Delete All (0.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20221006042746"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBiodataUsers (20221006042746)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "biodata_users" ("id" bigserial primary key, "dob" timestamp(6), "address" character varying, "marriage_status" character varying, "status" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042746"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/login" for ::1 at 2022-10-07 13:01:02 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 223ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 7340)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 13:01:19 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.2ms | Allocations: 1369)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 0..1)):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 13:02:00 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 5247ms (Views: 2.9ms | ActiveRecord: 4.5ms | Allocations: 23602)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 13:02:21 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 46657ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 12629)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 13:03:13 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 3.5ms | Allocations: 4609)
+
+
+  
+ArgumentError (wrong number of arguments (given 2, expected 0..1)):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 13:04:27 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 4.4ms | Allocations: 6713)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'user_id' for BiodataUser.
+
+          raise UnknownAttributeError.new(self, k.to_s)
+          ^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddReferencesIntoBiodata (20221007053957)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "biodata_users" DROP COLUMN "user_id"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (5016.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (15.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_development"[0m
+  [1m[35m (16.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_test"[0m
+  [1m[35m (277.9ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_development" ENCODING = 'unicode'[0m
+  [1m[35m (90.5ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_test" ENCODING = 'unicode'[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221006042408)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "phone" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042408"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBiodataUsers (20221006042746)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "biodata_users" ("id" bigserial primary key, "dob" timestamp(6), "address" character varying, "marriage_status" character varying, "status" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042746"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20221006043047)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" character varying, "link" character varying, "descriptions" character varying, "status" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006043047"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddIndexToUserAndBiodataAndPost (20221006050521)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_biodata_users_on_user_id" ON "biodata_users" ("user_id")[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddIndexToUserAndBiodataAndPost (20221006050521)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "index_biodata_users_on_user_id" ON "biodata_users" ("user_id")[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdIntoBiodataUser (20221006050151)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD "user_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "posts" ADD "user_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006050151"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddIndexToUserAndBiodataAndPost (20221006050521)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE INDEX "index_biodata_users_on_user_id" ON "biodata_users" ("user_id")[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006050521"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReferencesIntoBiodata (20221007053957)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD "user_id" bigint[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-07 06:12:44.322038"], ["updated_at", "2022-10-07 06:12:44.322038"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddReferencesIntoBiodata (20221007053957)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD "user_id" bigint[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/login" for ::1 at 2022-10-07 13:13:32 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 3ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 2608)
+
+
+Started POST "/regis" for ::1 at 2022-10-07 13:13:39 +0700
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "test"], ["email", "test@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-07 06:13:40.057195"], ["updated_at", "2022-10-07 06:13:40.057195"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 221ms (Views: 0.1ms | ActiveRecord: 2.2ms | Allocations: 9159)
+
+
+Started POST "/login" for ::1 at 2022-10-07 13:13:45 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 212ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 836)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-07 13:13:58 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mBiodataUser Create (1.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2001-05-15 00:00:00"], ["address", "kaliurang km. 12,5"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-07 06:14:07.397228"], ["updated_at", "2022-10-07 06:14:07.397228"], ["user_id", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+Completed 500 Internal Server Error in 8938ms (ActiveRecord: 4.6ms | Allocations: 26233)
+
+
+  
+NameError (undefined local variable or method `token' for #<BiodataUsersController:0x0000000000bd10>
+
+            render json: {data:{biodata: @biodata.new_attribute, token: token}}
+                                                                        ^^^^^):
+  
+app/controllers/biodata_users_controller.rb:7:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-07 13:15:07 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mBiodataUser Create (0.6ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2001-05-15 00:00:00"], ["address", "kaliurang km. 12,5"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-07 06:15:10.932932"], ["updated_at", "2022-10-07 06:15:10.932932"], ["user_id", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+Completed 200 OK in 3549ms (Views: 0.2ms | ActiveRecord: 7.1ms | Allocations: 19609)
+
+

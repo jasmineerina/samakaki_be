@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_06_050521) do
   create_table "biodata_users", force: :cascade do |t|
     t.datetime "dob"
     t.string "address"
-    t.string "mariage_status"
+    t.string "marriage_status"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
