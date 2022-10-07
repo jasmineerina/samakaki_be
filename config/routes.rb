@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   post 'password/forgot', to: 'passwords#forgot'
   post 'password/reset', to: 'passwords#reset'
 
+  resources :biodata_users
+
+
 end
