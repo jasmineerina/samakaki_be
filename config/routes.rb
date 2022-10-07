@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :users
   post "login", to: "users#login"
   post "regis", to: "users#create"
+
+  post 'password/forgot', to: 'passwords#forgot'
+  post 'password/reset', to: 'passwords#reset'
+
 end
