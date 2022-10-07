@@ -26,7 +26,7 @@ class PasswordsController < ApplicationController
     user = User.find_by(reset_password_token: token)
 
     if user.present? && user.password_token_valid?
-      if user.reset_password!(params[:password_digest])
+      if user.reset_password!(params[:password])
         render json: {status: "ok"}, status: :ok
       else
         render json: {error: user.errors.full_messages}, status: :unprocessable_entity
