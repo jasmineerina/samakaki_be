@@ -1708,3 +1708,268 @@ Processing by UserController#update as */*
 Completed 200 OK in 688ms (Views: 0.4ms | ActiveRecord: 679.0ms | Allocations: 3511)
 
 
+Started GET "/users" for ::1 at 2022-10-07 09:23:58 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (28.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/user" for ::1 at 2022-10-07 09:24:41 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UserController#index as */*
+  [1m[36mUser Load (76.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:5:in `index'
+Completed 200 OK in 189ms (Views: 16.6ms | ActiveRecord: 141.1ms | Allocations: 9462)
+
+
+Started GET "/user" for ::1 at 2022-10-07 09:24:54 +0700
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 122ms (ActiveRecord: 0.0ms | Allocations: 8720)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  
+NoMethodError (undefined method `new_attribute' for #<ActiveRecord::Relation [#<User id: 1, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:46:04.160067000 +0000", updated_at: "2022-10-06 07:46:04.160067000 +0000">, #<User id: 2, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:34.776018000 +0000", updated_at: "2022-10-06 07:47:34.776018000 +0000">, #<User id: 3, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:49.791650000 +0000", updated_at: "2022-10-06 07:47:49.791650000 +0000">, #<User id: 4, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:49:30.332440000 +0000", updated_at: "2022-10-06 07:49:30.332440000 +0000">, #<User id: 5, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:10.759148000 +0000", updated_at: "2022-10-06 07:56:10.759148000 +0000">, #<User id: 6, name: "admin21", email: "admin12@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:28.747611000 +0000", updated_at: "2022-10-06 11:48:07.263471000 +0000">, #<User id: 7, name: "admin2111", email: "admin@mail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:57:15.815593000 +0000", updated_at: "2022-10-06 11:49:21.299102000 +0000">]>
+Did you mean?  bind_attribute):
+  
+app/controllers/user_controller.rb:5:in `index'
+Started GET "/user" for ::1 at 2022-10-07 09:25:25 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+...n: {data:{@users.new_attribute}}
+...                              ^
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/user" for ::1 at 2022-10-07 09:25:44 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+...er json: {@users.new_attribute}
+...                              ^
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/user" for ::1 at 2022-10-07 09:25:54 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+    render json: {@users}
+                        ^
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/user" for ::1 at 2022-10-07 09:26:10 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+    render json: {@users}
+                        ^
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/user" for ::1 at 2022-10-07 09:26:24 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+    render json: {@users}
+                        ^
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:52: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/user" for ::1 at 2022-10-07 09:26:43 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+    render json: {@users}
+                        ^
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/user_controller.rb:53: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:53: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:53: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/user_controller.rb:5: syntax error, unexpected '}', expecting =>
+app/controllers/user_controller.rb:53: syntax error, unexpected end-of-input, expecting `end'
+Started GET "/user" for ::1 at 2022-10-07 09:27:00 +0700
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:5:in `index'
+Completed 200 OK in 9ms (Views: 4.1ms | ActiveRecord: 2.4ms | Allocations: 5267)
+
+
+Started GET "/user" for ::1 at 2022-10-07 09:27:06 +0700
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 8111)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  
+NoMethodError (undefined method `new_attribute' for #<ActiveRecord::Relation [#<User id: 1, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:46:04.160067000 +0000", updated_at: "2022-10-06 07:46:04.160067000 +0000">, #<User id: 2, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:34.776018000 +0000", updated_at: "2022-10-06 07:47:34.776018000 +0000">, #<User id: 3, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:49.791650000 +0000", updated_at: "2022-10-06 07:47:49.791650000 +0000">, #<User id: 4, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:49:30.332440000 +0000", updated_at: "2022-10-06 07:49:30.332440000 +0000">, #<User id: 5, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:10.759148000 +0000", updated_at: "2022-10-06 07:56:10.759148000 +0000">, #<User id: 6, name: "admin21", email: "admin12@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:28.747611000 +0000", updated_at: "2022-10-06 11:48:07.263471000 +0000">, #<User id: 7, name: "admin2111", email: "admin@mail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:57:15.815593000 +0000", updated_at: "2022-10-06 11:49:21.299102000 +0000">]>
+Did you mean?  bind_attribute):
+  
+app/controllers/user_controller.rb:5:in `index'
+Started GET "/user" for ::1 at 2022-10-07 09:27:28 +0700
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:5:in `index'
+Completed 200 OK in 10ms (Views: 4.5ms | ActiveRecord: 2.8ms | Allocations: 5260)
+
+
+Started GET "/user" for ::1 at 2022-10-07 09:28:42 +0700
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/user" for ::1 at 2022-10-07 09:31:27 +0700
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 8073)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  
+NoMethodError (undefined method `new_attributes' for #<ActiveRecord::Relation [#<User id: 1, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:46:04.160067000 +0000", updated_at: "2022-10-06 07:46:04.160067000 +0000">, #<User id: 2, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:34.776018000 +0000", updated_at: "2022-10-06 07:47:34.776018000 +0000">, #<User id: 3, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:49.791650000 +0000", updated_at: "2022-10-06 07:47:49.791650000 +0000">, #<User id: 4, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:49:30.332440000 +0000", updated_at: "2022-10-06 07:49:30.332440000 +0000">, #<User id: 5, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:10.759148000 +0000", updated_at: "2022-10-06 07:56:10.759148000 +0000">, #<User id: 6, name: "admin21", email: "admin12@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:28.747611000 +0000", updated_at: "2022-10-06 11:48:07.263471000 +0000">, #<User id: 7, name: "admin2111", email: "admin@mail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:57:15.815593000 +0000", updated_at: "2022-10-06 11:49:21.299102000 +0000">]>
+Did you mean?  bind_attribute):
+  
+app/controllers/user_controller.rb:5:in `index'
+Started GET "/user" for ::1 at 2022-10-07 09:31:42 +0700
+Processing by UserController#index as */*
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1921)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 2)):
+  
+app/controllers/user_controller.rb:5:in `index'
+Started GET "/user" for ::1 at 2022-10-07 09:31:52 +0700
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms | Allocations: 8181)
+
+
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  
+NoMethodError (undefined method `new_attribute' for #<ActiveRecord::Relation [#<User id: 1, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:46:04.160067000 +0000", updated_at: "2022-10-06 07:46:04.160067000 +0000">, #<User id: 2, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:34.776018000 +0000", updated_at: "2022-10-06 07:47:34.776018000 +0000">, #<User id: 3, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:49.791650000 +0000", updated_at: "2022-10-06 07:47:49.791650000 +0000">, #<User id: 4, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:49:30.332440000 +0000", updated_at: "2022-10-06 07:49:30.332440000 +0000">, #<User id: 5, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:10.759148000 +0000", updated_at: "2022-10-06 07:56:10.759148000 +0000">, #<User id: 6, name: "admin21", email: "admin12@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:28.747611000 +0000", updated_at: "2022-10-06 11:48:07.263471000 +0000">, #<User id: 7, name: "admin2111", email: "admin@mail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:57:15.815593000 +0000", updated_at: "2022-10-06 11:49:21.299102000 +0000">]>
+Did you mean?  bind_attribute):
+  
+app/controllers/user_controller.rb:5:in `index'
+Started GET "/user" for ::1 at 2022-10-07 09:32:09 +0700
+Processing by UserController#index as */*
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 0.0ms | Allocations: 5292)
+
+
+  
+NoMethodError (undefined method `new_attribute' for User:Class
+Did you mean?  attribute):
+  
+app/controllers/user_controller.rb:4:in `index'
+Started GET "/user" for ::1 at 2022-10-07 09:33:59 +0700
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.0ms | Allocations: 8114)
+
+
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  
+NoMethodError (undefined method `attributes' for #<ActiveRecord::Relation [#<User id: 1, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:46:04.160067000 +0000", updated_at: "2022-10-06 07:46:04.160067000 +0000">, #<User id: 2, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:34.776018000 +0000", updated_at: "2022-10-06 07:47:34.776018000 +0000">, #<User id: 3, name: "dhimas1", email: "dhimas1@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:47:49.791650000 +0000", updated_at: "2022-10-06 07:47:49.791650000 +0000">, #<User id: 4, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:49:30.332440000 +0000", updated_at: "2022-10-06 07:49:30.332440000 +0000">, #<User id: 5, name: "admin", email: "admin@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:10.759148000 +0000", updated_at: "2022-10-06 07:56:10.759148000 +0000">, #<User id: 6, name: "admin21", email: "admin12@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:56:28.747611000 +0000", updated_at: "2022-10-06 11:48:07.263471000 +0000">, #<User id: 7, name: "admin2111", email: "admin@mail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-06 07:57:15.815593000 +0000", updated_at: "2022-10-06 11:49:21.299102000 +0000">]>):
+  
+app/controllers/user_controller.rb:4:in `index'
+Started GET "/user" for ::1 at 2022-10-07 09:37:22 +0700
+Processing by UserController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users"."id", "users"."name", "users"."email", "users"."phone" FROM "users"[0m
+  ↳ app/controllers/user_controller.rb:5:in `index'
+Completed 200 OK in 8ms (Views: 4.1ms | ActiveRecord: 2.0ms | Allocations: 4877)
+
+
+Started GET "/users" for ::1 at 2022-10-07 10:08:54 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users"."id", "users"."name", "users"."email", "users"."phone" FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5:in `index'
+Completed 200 OK in 15ms (Views: 7.8ms | ActiveRecord: 3.7ms | Allocations: 8983)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:09:08 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"admin2@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"admin2@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 2323)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:09:28 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"admin2@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"admin2@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 595)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:09:39 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"admin@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"admin@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 192ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 647)
+
+
+Started POST "/login" for ::1 at 2022-10-07 10:09:49 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"admin@mail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"admin@mail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 193ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1066)
+
+
+Started PUT "/users/:id" for ::1 at 2022-10-07 10:10:21 +0700
+Processing by UsersController#update as */*
+  Parameters: {"name"=>"admin2111", "password"=>"[FILTERED]", "email"=>"admin@mail.com", "id"=>":id", "user"=>{"name"=>"admin2111", "email"=>"admin@mail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:39:in `update'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "admin@mail.com"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:39:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:39:in `update'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.9ms | Allocations: 3681)
+
+
+Started GET "/user/:id" for ::1 at 2022-10-07 10:10:29 +0700
+  
+ActionController::RoutingError (No route matches [GET] "/user/:id"):
+  
+Started GET "/users/:id" for ::1 at 2022-10-07 10:10:38 +0700
+Processing by UsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@mail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:30:in `show'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2022)
+
+

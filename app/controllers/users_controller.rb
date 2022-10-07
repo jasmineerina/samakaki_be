@@ -1,7 +1,7 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   before_action :authorize, only: [:show, :update, :destroy]
   def index
-    @users = User.all
+    @users = User.all.select('id', 'name','email','phone')
     render json: @users
   end
 
