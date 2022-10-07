@@ -2,7 +2,6 @@ class BiodataUsersController < ApplicationController
     before_action :authorize, only: [:create, :show, :update]
     def create
         @biodata = BiodataUser.new(biodata_params.merge(user_id: @user.id))
-        binding.pry
         if @biodata.save
             render json: {data:{biodata: @biodata.new_attribute}}
         else
@@ -11,7 +10,8 @@ class BiodataUsersController < ApplicationController
     end
 
     def show
-        @biodata = Biodata.find_by(email: params[:email])
+        @biodata = BiodataUser.find_by(user_id: @user.id)
+        render json: {data:{biodata: @biodata}}
     end
 
     def update
