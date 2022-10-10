@@ -43,6 +43,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find_by_id(@user.id).destroy
+    render json: {data: {user: @user.new_attribute}, message: "Your account deleted succesfully"}
+  end
 
   private
 
