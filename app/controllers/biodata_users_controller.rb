@@ -3,7 +3,7 @@ class BiodataUsersController < ApplicationController
     def create
         @biodata = BiodataUser.new(biodata_params.merge(user_id: @user.id))
         if @biodata.save
-            render json: {data:{biodata: @biodata.new_attribute},inlcude:[:avatar]}
+            render json: {data:{biodata: @biodata.new_attribute}}
         else
             render json: {"message": @biodata.errors}, status: :bad_request
         end
@@ -11,7 +11,7 @@ class BiodataUsersController < ApplicationController
 
     def show
         @biodata = BiodataUser.find_by(user_id: @user.id)
-        render json: {data:{biodata: @biodata.new_attribute},avatar: @biodata.avatar.url}
+        render json: {data:{biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}}
     end
 
     def update

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.password = params[:password]
-    token = encode_token({user_id: @user.id})
+    token = encode_token({user_id: @user.id, email: @user.email})
     if @user.save
       render json: {data:{user: @user.new_attribute, token: token}}
     else
