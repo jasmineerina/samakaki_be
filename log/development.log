@@ -25406,3 +25406,692 @@ Processing by BiodataUsersController#update as */*
 Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 5.8ms | Allocations: 11384)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAvatarToBiodataUser (20221010032751)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD "avatar" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221010032751"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/regis" for ::1 at 2022-10-10 10:30:19 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"dhimas", "email"=>"dhimas@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"dhimas", "email"=>"dhimas@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "dhimas"], ["email", "dhimas@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-10 03:30:19.787527"], ["updated_at", "2022-10-10 03:30:19.787527"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Completed 200 OK in 212ms (Views: 0.3ms | ActiveRecord: 8.4ms | Allocations: 12040)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 10:32:10 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007effce4b5fa8 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-55691-pk1u2l.jpg>, @original_filename="Cat-Wallpaper.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"Cat-Wallpaper.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1480)
+
+
+Started POST "/login" for ::1 at 2022-10-10 10:32:23 +0700
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"dhimas@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"dhimas@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 197ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1037)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 10:32:34 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007effccab0590 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-55691-xumxri.jpg>, @original_filename="Cat-Wallpaper.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"Cat-Wallpaper.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 19ms (ActiveRecord: 0.2ms | Allocations: 5437)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: biodata_user):
+  
+app/controllers/biodata_users_controller.rb:29:in `biodata_params'
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-10 10:33:11 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007effc6b2b020 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-55691-5hnycn.jpg>, @original_filename="Cat-Wallpaper.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"Cat-Wallpaper.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mBiodataUser Create (1.2ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 03:33:19.163666"], ["updated_at", "2022-10-10 03:33:19.163666"], ["user_id", 41], ["avatar", "l116iz010hg0k5qmxzxy.jpg"]]
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+Completed 200 OK in 7452ms (Views: 0.4ms | ActiveRecord: 7.8ms | Allocations: 36476)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 10:37:49 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007effcc013830 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-55691-s9rj72.jpg>, @original_filename="Cat-Wallpaper.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"Cat-Wallpaper.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 03:37:49.737486"], ["updated_at", "2022-10-10 03:37:49.737486"], ["user_id", 41], ["avatar", "shp45eljhbzpaskzhbxr.jpg"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update All (2.0ms)[0m  [1m[33mUPDATE "biodata_users" SET "avatar" = $1 WHERE "biodata_users"."id" = $2[0m  [["avatar", "image/upload/v1665373072/shp45eljhbzpaskzhbxr.jpg"], ["id", 3]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+Completed 200 OK in 3292ms (Views: 0.3ms | ActiveRecord: 8.5ms | Allocations: 160776)
+
+
+  [1m[36mBiodataUser Delete All (2.1ms)[0m  [1m[31mDELETE FROM "biodata_users"[0m
+Started POST "/biodata_users" for ::1 at 2022-10-10 10:39:00 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f8a258aa488 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-58115-ntsrh9.jpg>, @original_filename="Cat-Wallpaper.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"Cat-Wallpaper.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 03:39:00.483818"], ["updated_at", "2022-10-10 03:39:00.483818"], ["user_id", 41], ["avatar", "f0lx5bckxpxkzvdssac4.jpg"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update All (1.5ms)[0m  [1m[33mUPDATE "biodata_users" SET "avatar" = $1 WHERE "biodata_users"."id" = $2[0m  [["avatar", "image/upload/v1665373142/f0lx5bckxpxkzvdssac4.jpg"], ["id", 4]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+Completed 200 OK in 2983ms (Views: 0.4ms | ActiveRecord: 8.3ms | Allocations: 171760)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 10:39:58 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f8a257c6300 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-58115-9dstz1.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 03:39:58.613291"], ["updated_at", "2022-10-10 03:39:58.613291"], ["user_id", 41], ["avatar", "btulmmobp5etycz3ilfm.jpg"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update All (2.4ms)[0m  [1m[33mUPDATE "biodata_users" SET "avatar" = $1 WHERE "biodata_users"."id" = $2[0m  [["avatar", "image/upload/v1665373209/btulmmobp5etycz3ilfm.jpg"], ["id", 5]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+Completed 200 OK in 11643ms (Views: 1.0ms | ActiveRecord: 4.9ms | Allocations: 12717)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 10:53:48 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 2 pending migrations:
+
+20221010032113_create_active_storage_tables.active_storage.rb
+20221010032708_add_avatar_to_user.rb
+
+
+):
+  
+activerecord (7.0.4) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.4) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.4) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.4) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.4) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.4) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20221010032113)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221010032113"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAvatarToUser (20221010032708)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/biodata_users" for ::1 at 2022-10-10 10:54:55 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f79990d8490 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-62835-xbrezm.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.4ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 03:54:55.497103"], ["updated_at", "2022-10-10 03:54:55.497103"], ["user_id", 41], ["avatar", "occn4o7c5moaunjl2cg8.jpg"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update All (2.4ms)[0m  [1m[33mUPDATE "biodata_users" SET "avatar" = $1 WHERE "biodata_users"."id" = $2[0m  [["avatar", "image/upload/v1665374114/occn4o7c5moaunjl2cg8.jpg"], ["id", 6]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+Completed 200 OK in 21129ms (Views: 1.9ms | ActiveRecord: 9.3ms | Allocations: 176556)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:03:56 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fe05bd3ae30 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-65477-d27fwj.jpg>, @original_filename="0l8pcbaab7n51.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"0l8pcbaab7n51.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:03:56.758424"], ["updated_at", "2022-10-10 04:03:56.758424"], ["user_id", 41], ["avatar", "hanyyixxkqhru8nyny4d.jpg"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+Completed 200 OK in 48ms (Views: 0.2ms | ActiveRecord: 8.3ms | Allocations: 28561)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:08:14 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 3.4ms | Allocations: 13157)
+
+
+  
+NameError (uninitialized constant BiodataUser::AvatarUploader
+
+  mount_uploader :avatar, AvatarUploader
+                          ^^^^^^^^^^^^^^):
+  
+app/models/biodata_user.rb:3:in `<class:BiodataUser>'
+app/models/biodata_user.rb:1:in `<main>'
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:08:28 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 12ms (ActiveRecord: 2.4ms | Allocations: 6220)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: biodata_user):
+  
+app/controllers/biodata_users_controller.rb:29:in `biodata_params'
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:08:36 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mBiodataUser Create (0.5ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-05-15 00:00:00"], ["address", "kaliurang km. 12,5"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:08:46.411691"], ["updated_at", "2022-10-10 04:08:46.411691"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:6:in `create'
+Completed 200 OK in 9463ms (Views: 0.3ms | ActiveRecord: 6.3ms | Allocations: 32200)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateActiveStorageTables (20221010040923)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:13:51 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f27b458f650 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-69214-g3asr0.jpg>, @original_filename="0l8pcbaab7n51.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"0l8pcbaab7n51.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 22ms (ActiveRecord: 3.2ms | Allocations: 13187)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: biodata_user):
+  
+app/controllers/biodata_users_controller.rb:28:in `biodata_params'
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:14:09 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f27b44692a8 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-69214-83fda.jpg>, @original_filename="0l8pcbaab7n51.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"0l8pcbaab7n51.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.4ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:14:09.765455"], ["updated_at", "2022-10-10 04:14:09.765455"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "5yjkhw1uxtlqrroo0egaa65qepx1"], ["filename", "0l8pcbaab7n51.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 850164], ["checksum", "ChDMPc53po7uaUVwulm92w=="], ["created_at", "2022-10-10 04:14:09.797114"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 9], ["blob_id", 1], ["created_at", "2022-10-10 04:14:09.799896"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-10 04:14:09.801734"], ["id", 9]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+[36m  Cloudinary Storage (7000.4ms) [0m[32mUploaded file to key: 5yjkhw1uxtlqrroo0egaa65qepx1 (checksum: ChDMPc53po7uaUVwulm92w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: d11c5772-b4cc-4e5f-ab33-926d725ac74d) to Async(default) with arguments: #<GlobalID:0x00007f27b4652268 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/1>>
+Completed 200 OK in 7184ms (Views: 0.4ms | ActiveRecord: 12.7ms | Allocations: 204409)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d11c5772-b4cc-4e5f-ab33-926d725ac74d]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d11c5772-b4cc-4e5f-ab33-926d725ac74d] Performing ActiveStorage::AnalyzeJob (Job ID: d11c5772-b4cc-4e5f-ab33-926d725ac74d) from Async(default) enqueued at 2022-10-10T04:14:16Z with arguments: #<GlobalID:0x00007f27b43f1960 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/1>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d11c5772-b4cc-4e5f-ab33-926d725ac74d] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d11c5772-b4cc-4e5f-ab33-926d725ac74d]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d11c5772-b4cc-4e5f-ab33-926d725ac74d]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d11c5772-b4cc-4e5f-ab33-926d725ac74d]   [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d11c5772-b4cc-4e5f-ab33-926d725ac74d] Performed ActiveStorage::AnalyzeJob (Job ID: d11c5772-b4cc-4e5f-ab33-926d725ac74d) from Async(default) in 28.67ms
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:16:31 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f27b6cfa500 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-69214-e3fxca.jpg>, @original_filename="Cat-Wallpaper.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"Cat-Wallpaper.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:16:31.488973"], ["updated_at", "2022-10-10 04:16:31.488973"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "58ss7a2kf5afyf1wsxu0axngmfxb"], ["filename", "Cat-Wallpaper.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 148725], ["checksum", "j693zB2MLaMOQEPWJ0CY2w=="], ["created_at", "2022-10-10 04:16:31.502093"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 10], ["blob_id", 2], ["created_at", "2022-10-10 04:16:31.505364"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-10 04:16:31.507623"], ["id", 10]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+[36m  Cloudinary Storage (3848.9ms) [0m[32mUploaded file to key: 58ss7a2kf5afyf1wsxu0axngmfxb (checksum: j693zB2MLaMOQEPWJ0CY2w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 8b6fcb92-c8f8-4020-b512-ca0807307f9d) to Async(default) with arguments: #<GlobalID:0x00007f27b405e6e0 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/2>>
+Completed 200 OK in 3916ms (Views: 0.6ms | ActiveRecord: 12.1ms | Allocations: 35229)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b6fcb92-c8f8-4020-b512-ca0807307f9d]   [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b6fcb92-c8f8-4020-b512-ca0807307f9d] Performing ActiveStorage::AnalyzeJob (Job ID: 8b6fcb92-c8f8-4020-b512-ca0807307f9d) from Async(default) enqueued at 2022-10-10T04:16:35Z with arguments: #<GlobalID:0x00007f27b4047558 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/2>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b6fcb92-c8f8-4020-b512-ca0807307f9d] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b6fcb92-c8f8-4020-b512-ca0807307f9d]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b6fcb92-c8f8-4020-b512-ca0807307f9d]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b6fcb92-c8f8-4020-b512-ca0807307f9d]   [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [8b6fcb92-c8f8-4020-b512-ca0807307f9d] Performed ActiveStorage::AnalyzeJob (Job ID: 8b6fcb92-c8f8-4020-b512-ca0807307f9d) from Async(default) in 25.9ms
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mBiodataUser Load (1.0ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" ORDER BY "biodata_users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  [1m[36mBiodataUser Delete All (1.4ms)[0m  [1m[31mDELETE FROM "biodata_users"[0m
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:21:59 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f26a8b729a8 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-72857-fyg4r8.jpg>, @original_filename="Cat-Wallpaper.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"Cat-Wallpaper.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.5ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:21:59.928328"], ["updated_at", "2022-10-10 04:21:59.928328"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "9f06ur79bnobhe5gfyxsy93g333b"], ["filename", "Cat-Wallpaper.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 148725], ["checksum", "j693zB2MLaMOQEPWJ0CY2w=="], ["created_at", "2022-10-10 04:21:59.952637"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 11], ["blob_id", 3], ["created_at", "2022-10-10 04:21:59.954516"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-10 04:21:59.956208"], ["id", 11]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+[36m  Cloudinary Storage (3269.0ms) [0m[32mUploaded file to key: 9f06ur79bnobhe5gfyxsy93g333b (checksum: j693zB2MLaMOQEPWJ0CY2w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: b0219f50-5d97-4908-b141-20e4a634728a) to Async(default) with arguments: #<GlobalID:0x00007f26a8ac1220 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/3>>
+Completed 200 OK in 3362ms (Views: 0.6ms | ActiveRecord: 13.8ms | Allocations: 198588)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b0219f50-5d97-4908-b141-20e4a634728a]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b0219f50-5d97-4908-b141-20e4a634728a] Performing ActiveStorage::AnalyzeJob (Job ID: b0219f50-5d97-4908-b141-20e4a634728a) from Async(default) enqueued at 2022-10-10T04:22:03Z with arguments: #<GlobalID:0x00007f26a8ab66e0 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/3>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b0219f50-5d97-4908-b141-20e4a634728a] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b0219f50-5d97-4908-b141-20e4a634728a]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b0219f50-5d97-4908-b141-20e4a634728a]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b0219f50-5d97-4908-b141-20e4a634728a]   [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b0219f50-5d97-4908-b141-20e4a634728a] Performed ActiveStorage::AnalyzeJob (Job ID: b0219f50-5d97-4908-b141-20e4a634728a) from Async(default) in 21.54ms
+  [1m[36mBiodataUser Load (0.7ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" ORDER BY "biodata_users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Cloudinary Storage (1.7ms) [0m[34mGenerated URL for file at key: 9f06ur79bnobhe5gfyxsy93g333b (http://res.cloudinary.com/dzpzhe5xs/image/upload/9f06ur79bnobhe5gfyxsy93g333b.jpg)[0m
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:24:40 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2a87540 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-skj79c.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 4.0ms | Allocations: 11760)
+
+
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/biodata_user.rb:10: syntax error, unexpected local variable or method, expecting '}'
+      avatar: self.avatar
+      ^~~~~~
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/biodata_user.rb:11: syntax error, unexpected '}', expecting `end'
+    }
+    ^
+):
+  
+app/models/biodata_user.rb:10: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:11: syntax error, unexpected '}', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:11: syntax error, unexpected '}', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:11: syntax error, unexpected '}', expecting `end'
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:25:56 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb70080bf88 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-a7vf4i.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 3.2ms | Allocations: 5750)
+
+
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/biodata_user.rb:6: syntax error, unexpected ':', expecting `end'
+      dob: self.dob,
+         ^
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/biodata_user.rb:7: syntax error, unexpected label, expecting '='
+      address: self.address,
+      ^~~~~~~~
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/biodata_user.rb:8: syntax error, unexpected label, expecting '='
+      marriage_status: self.marriage_status,
+      ^~~~~~~~~~~~~~~~
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/biodata_user.rb:9: syntax error, unexpected label, expecting '='
+      status: self.status
+      ^~~~~~~
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/biodata_user.rb:10: syntax error, unexpected ':', expecting `end'
+      avatar: self.avatar
+            ^
+):
+  
+app/models/biodata_user.rb:6: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:7: syntax error, unexpected label, expecting '='
+app/models/biodata_user.rb:8: syntax error, unexpected label, expecting '='
+app/models/biodata_user.rb:9: syntax error, unexpected label, expecting '='
+app/models/biodata_user.rb:10: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:6: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:7: syntax error, unexpected label, expecting '='
+app/models/biodata_user.rb:8: syntax error, unexpected label, expecting '='
+app/models/biodata_user.rb:9: syntax error, unexpected label, expecting '='
+app/models/biodata_user.rb:10: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:6: syntax error, unexpected ':', expecting `end'
+app/models/biodata_user.rb:7: syntax error, unexpected label, expecting '='
+app/models/biodata_user.rb:8: syntax error, unexpected label, expecting '='
+app/models/biodata_user.rb:9: syntax error, unexpected label, expecting '='
+app/models/biodata_user.rb:10: syntax error, unexpected ':', expecting `end'
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:26:14 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2a676a0 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-ok4thx.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.4ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:26:15.022448"], ["updated_at", "2022-10-10 04:26:15.022448"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 12], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "u035vezxp4twczyawmjhwo586abb"], ["filename", "city-futuristic-ny.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 3655910], ["checksum", "tYiC62anPMbzKRrJc6ZycQ=="], ["created_at", "2022-10-10 04:26:15.043428"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 12], ["blob_id", 4], ["created_at", "2022-10-10 04:26:15.045641"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-10 04:26:15.047568"], ["id", 12]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+[36m  Cloudinary Storage (14748.5ms) [0m[32mUploaded file to key: u035vezxp4twczyawmjhwo586abb (checksum: tYiC62anPMbzKRrJc6ZycQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd) to Async(default) with arguments: #<GlobalID:0x00007fb70158d080 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/4>>
+Completed 200 OK in 14876ms (Views: 0.6ms | ActiveRecord: 14.0ms | Allocations: 204110)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd] Performing ActiveStorage::AnalyzeJob (Job ID: db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd) from Async(default) enqueued at 2022-10-10T04:26:29Z with arguments: #<GlobalID:0x00007fb7000feb00 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/4>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 4]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd] Performed ActiveStorage::AnalyzeJob (Job ID: db30b8d8-6918-4bf5-9ed2-cdbb62fb38bd) from Async(default) in 28.45ms
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:28:20 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2d75428 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-t4m6gw.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :avatar. Context: { controller: BiodataUsersController, action: create, request: #<ActionDispatch::Request:0x00007fb6f2dde360>, params: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2d75428 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-t4m6gw.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">, "controller"=>"biodata_users", "action"=>"create"} }[0m
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 3.4ms | Allocations: 7774)
+
+
+  
+NoMethodError (undefined method `avatar' for nil:NilClass
+
+        @biodata = BiodataUser.new(biodata_params.merge(user_id: @user.id,avatar: @biodata.avatar.url))
+                                                                                          ^^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:4:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:29:06 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2d51ac8 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-9pgrih.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :avatar. Context: { controller: BiodataUsersController, action: create, request: #<ActionDispatch::Request:0x00007fb700005870>, params: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2d51ac8 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-9pgrih.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">, "controller"=>"biodata_users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:29:06.212884"], ["updated_at", "2022-10-10 04:29:06.212884"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+Completed 200 OK in 35ms (Views: 0.2ms | ActiveRecord: 8.3ms | Allocations: 13949)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:34:36 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/biodata_users_controller.rb:31: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/biodata_users_controller.rb:31: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/biodata_users_controller.rb:31: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/biodata_users_controller.rb:31: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:34:56 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2dd3870 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-6hcjsb.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :avatar. Context: { controller: BiodataUsersController, action: create, request: #<ActionDispatch::Request:0x00007fb70000fcd0>, params: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2dd3870 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-6hcjsb.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">, "controller"=>"biodata_users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:34:56.282085"], ["updated_at", "2022-10-10 04:34:56.282085"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 7.7ms | Allocations: 15693)
+
+
+  
+NameError (undefined local variable or method `avatar' for #<BiodataUsersController:0x00000000040218>
+
+            render json: {data:{biodata: @biodata.new_attribute},inlcude:avatar}
+                                                                         ^^^^^^):
+  
+app/controllers/biodata_users_controller.rb:6:in `create'
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:35:20 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2d6ed80 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-r302bd.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :avatar. Context: { controller: BiodataUsersController, action: create, request: #<ActionDispatch::Request:0x00007fb700014a50>, params: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2d6ed80 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-r302bd.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">, "controller"=>"biodata_users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.2ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:35:20.303071"], ["updated_at", "2022-10-10 04:35:20.303071"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+Completed 200 OK in 30ms (Views: 0.4ms | ActiveRecord: 6.6ms | Allocations: 13130)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:37:13 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2ab0170 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-rxc5uz.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :avatar. Context: { controller: BiodataUsersController, action: create, request: #<ActionDispatch::Request:0x00007fb6f2b85578>, params: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb6f2ab0170 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-rxc5uz.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">, "controller"=>"biodata_users", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.4ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:37:13.292312"], ["updated_at", "2022-10-10 04:37:13.292312"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+Completed 200 OK in 34ms (Views: 0.3ms | ActiveRecord: 7.8ms | Allocations: 13942)
+
+
+Started POST "/biodata_users" for ::1 at 2022-10-10 11:37:41 +0700
+Processing by BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-11-12", "address"=>"banjar", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb70159d6d8 @tempfile=#<Tempfile:/tmp/RackMultipart20221010-74285-vszwkp.jpg>, @original_filename="city-futuristic-ny.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"city-futuristic-ny.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id", "avatar") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["dob", "2001-11-12 00:00:00"], ["address", "banjar"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-10 04:37:41.959430"], ["updated_at", "2022-10-10 04:37:41.959430"], ["user_id", 41], ["avatar", nil]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 17], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 17], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "1845fdq14ab2mjy8q6n1365dh7wx"], ["filename", "city-futuristic-ny.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 3655910], ["checksum", "tYiC62anPMbzKRrJc6ZycQ=="], ["created_at", "2022-10-10 04:37:41.972924"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 17], ["blob_id", 5], ["created_at", "2022-10-10 04:37:41.974797"]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-10 04:37:41.976497"], ["id", 17]]
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
+[36m  Cloudinary Storage (12272.7ms) [0m[32mUploaded file to key: 1845fdq14ab2mjy8q6n1365dh7wx (checksum: tYiC62anPMbzKRrJc6ZycQ==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 9790e3b9-40be-4a79-aaf4-b5d1f686c24b) to Async(default) with arguments: #<GlobalID:0x00007fb6f2d09bd8 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/5>>
+Completed 200 OK in 12340ms (Views: 0.2ms | ActiveRecord: 11.2ms | Allocations: 46764)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9790e3b9-40be-4a79-aaf4-b5d1f686c24b]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9790e3b9-40be-4a79-aaf4-b5d1f686c24b] Performing ActiveStorage::AnalyzeJob (Job ID: 9790e3b9-40be-4a79-aaf4-b5d1f686c24b) from Async(default) enqueued at 2022-10-10T04:37:54Z with arguments: #<GlobalID:0x00007fb6f2b756f0 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/5>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9790e3b9-40be-4a79-aaf4-b5d1f686c24b] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9790e3b9-40be-4a79-aaf4-b5d1f686c24b]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9790e3b9-40be-4a79-aaf4-b5d1f686c24b]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 5]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9790e3b9-40be-4a79-aaf4-b5d1f686c24b]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [9790e3b9-40be-4a79-aaf4-b5d1f686c24b] Performed ActiveStorage::AnalyzeJob (Job ID: 9790e3b9-40be-4a79-aaf4-b5d1f686c24b) from Async(default) in 55.78ms
+  [1m[36mBiodataUser Load (0.4ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" ORDER BY "biodata_users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (1.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[36m  Cloudinary Storage (2.6ms) [0m[34mGenerated URL for file at key: 9f06ur79bnobhe5gfyxsy93g333b (http://res.cloudinary.com/dzpzhe5xs/image/upload/9f06ur79bnobhe5gfyxsy93g333b.jpg)[0m
+Started GET "/biodata_users/:id" for ::1 at 2022-10-10 11:44:53 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mBiodataUser Load (0.5ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:13:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
+[36m  Cloudinary Storage (2.1ms) [0m[34mGenerated URL for file at key: 9f06ur79bnobhe5gfyxsy93g333b (http://res.cloudinary.com/dzpzhe5xs/image/upload/9f06ur79bnobhe5gfyxsy93g333b.jpg)[0m
+Completed 200 OK in 67ms (Views: 0.3ms | ActiveRecord: 12.4ms | Allocations: 43644)
+
+

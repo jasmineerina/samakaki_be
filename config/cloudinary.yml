@@ -1,0 +1,18 @@
+development:
+  cloud_name: dzpzhe5xs
+  api_key: "824762265846988"
+  api_secret: "x0-Kpe2kLdFraXWwQb7vESf_Sq8"
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dzpzhe5xs
+  api_key: "824762265846988"
+  api_secret: "x0-Kpe2kLdFraXWwQb7vESf_Sq8"
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dzpzhe5xs
+  api_key: "824762265846988"
+  api_secret: "x0-Kpe2kLdFraXWwQb7vESf_Sq8"
+  enhance_image_tag: true
+  static_file_support: false

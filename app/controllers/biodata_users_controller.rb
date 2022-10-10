@@ -2,9 +2,8 @@ class BiodataUsersController < ApplicationController
     before_action :authorize, only: [:create, :show, :update]
     def create
         @biodata = BiodataUser.new(biodata_params.merge(user_id: @user.id))
-        binding.pry
         if @biodata.save
-            render json: {data:{biodata: @biodata.new_attribute}}
+            render json: {data:{biodata: @biodata.new_attribute},inlcude:[:avatar]}
         else
             render json: {"message": @biodata.errors}, status: :bad_request
         end
@@ -12,7 +11,7 @@ class BiodataUsersController < ApplicationController
 
     def show
         @biodata = BiodataUser.find_by(user_id: @user.id)
-        render json: {data:{biodata: @biodata.new_attribute}}
+        render json: {data:{biodata: @biodata.new_attribute},avatar: @biodata.avatar.url}
     end
 
     def update
@@ -26,6 +25,6 @@ class BiodataUsersController < ApplicationController
 
     private
     def biodata_params
-        params.require(:biodata_user).permit(:email, :dob, :address, :marriage_status, :status)
+        params.permit(:email, :dob, :address, :marriage_status, :status, :avatar)
     end
 end
