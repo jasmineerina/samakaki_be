@@ -26440,3 +26440,19 @@ Processing by BiodataUsersController#show as */*
 Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.9ms | Allocations: 4256)
 
 
+Started GET "/biodata_users/:id" for ::1 at 2022-10-10 12:12:55 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:13:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 20], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
+[36m  Cloudinary Storage (2.4ms) [0m[34mGenerated URL for file at key: 9v3ap2f7tfdy82cru08q7wofzfmb (http://res.cloudinary.com/dzpzhe5xs/image/upload/9v3ap2f7tfdy82cru08q7wofzfmb.jpg)[0m
+Completed 200 OK in 78ms (Views: 0.5ms | ActiveRecord: 14.2ms | Allocations: 43152)
+
+
