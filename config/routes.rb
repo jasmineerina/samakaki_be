@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   post 'password/reset', to: 'passwords#reset'
 
   resources :biodata_users
-
+  resources :posts
 
 end
