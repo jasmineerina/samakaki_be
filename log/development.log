@@ -27036,3 +27036,106 @@ Processing by PostsController#create as */*
 Completed 200 OK in 28ms (Views: 1.0ms | ActiveRecord: 7.0ms | Allocations: 12891)
 
 
+Started POST "/login" for ::1 at 2022-10-11 10:58:18 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"admin2@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"admin2@gmail.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 236ms (Views: 0.2ms | ActiveRecord: 4.3ms | Allocations: 8157)
+
+
+Started GET "/posts/:id" for ::1 at 2022-10-11 10:58:31 +0700
+Processing by PostsController#show as */*
+  Parameters: {"id"=>":id"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2180)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass
+
+        @post = Post.find_by(user_id: @user.id)
+                                           ^^^):
+  
+app/controllers/posts_controller.rb:13:in `show'
+Started GET "/posts/:id" for ::1 at 2022-10-11 10:59:36 +0700
+Processing by PostsController#show as */*
+  Parameters: {"id"=>":id"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2093)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass
+
+        @post = Post.find_by(post_id: @post.id)
+                                           ^^^):
+  
+app/controllers/posts_controller.rb:13:in `show'
+Started GET "/posts/:id" for ::1 at 2022-10-11 11:00:22 +0700
+Processing by PostsController#show as */*
+  Parameters: {"id"=>":id"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2316)
+
+
+  
+NoMethodError (undefined method `id' for #<ActionController::Parameters {"controller"=>"posts", "action"=>"show", "id"=>":id"} permitted: false>
+
+        @post = Post.find_by(params.id)
+                                   ^^^):
+  
+app/controllers/posts_controller.rb:13:in `show'
+Started GET "/posts/1" for ::1 at 2022-10-11 11:00:46 +0700
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1417)
+
+
+  
+NoMethodError (undefined method `id' for #<ActionController::Parameters {"controller"=>"posts", "action"=>"show", "id"=>"1"} permitted: false>
+
+        @post = Post.find_by(params.id)
+                                   ^^^):
+  
+app/controllers/posts_controller.rb:13:in `show'
+Started GET "/posts/1" for ::1 at 2022-10-11 11:01:12 +0700
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 3.1ms | Allocations: 8627)
+
+
+  
+NameError (undefined local variable or method `id' for #<PostsController:0x0000000001ca20>
+
+        @post = Post.find_by(params[id])
+                                    ^^):
+  
+app/controllers/posts_controller.rb:13:in `show'
+Started GET "/posts/1" for ::1 at 2022-10-11 11:02:18 +0700
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE (1) LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 4.0ms | Allocations: 7524)
+
+
+  
+ActiveRecord::StatementInvalid (PG::DatatypeMismatch: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: SELECT "posts".* FROM "posts" WHERE (1) LIMIT $1
+                                             ^
+):
+  
+app/controllers/posts_controller.rb:13:in `show'
+Started GET "/posts/1" for ::1 at 2022-10-11 11:03:07 +0700
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+Completed 200 OK in 24ms (Views: 0.7ms | ActiveRecord: 5.3ms | Allocations: 11519)
+
+
