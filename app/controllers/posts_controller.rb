@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
-    before_action :authorize, only: [:create, :show]
+    before_action :authorize, only: [:create, :show, :find]
+    def index
+        @posts = Post.all
+        render json:{data:{post: @posts}}
+    end
+
     def create
         @post = Post.new(post_params.merge(user_id: @user.id))
         if @post.save
@@ -9,10 +14,17 @@ class PostsController < ApplicationController
         end
     end
 
+    def find
+        @posts = @user.posts
+        render json: {data: {post: @posts}}
+    end
+
     def show
         @post = Post.find(params[:id])
         render json: {data: {post: @post}}
     end
+
+
 
     private
     def post_params
