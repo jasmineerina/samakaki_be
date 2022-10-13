@@ -55,7 +55,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_11_055706) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
-    t.string "link"
     t.string "descriptions"
     t.string "status"
     t.datetime "created_at", null: false

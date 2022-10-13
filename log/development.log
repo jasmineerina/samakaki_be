@@ -26839,12 +26839,12 @@ Processing by BiodataUsersController#create as */*
 Completed 500 Internal Server Error in 30ms (ActiveRecord: 2.2ms | Allocations: 17230)
 
 
-  
+
 ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "active_storage_blobs" does not exist
 LINE 9:  WHERE a.attrelid = '"active_storage_blobs"'::regclass
                             ^
 ):
-  
+
 app/controllers/biodata_users_controller.rb:4:in `create'
   [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
@@ -26942,7 +26942,7 @@ Completed 200 OK in 220ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 815
 
 
 Started GET "/post/new" for ::1 at 2022-10-11 10:28:09 +0700
-  
+
 ActionController::RoutingError (uninitialized constant PostController
 
       Object.const_get(camel_cased_word)
@@ -26951,11 +26951,11 @@ Did you mean?  PostsController
 
             raise MissingController.new(error.message, error.name)
             ^^^^^):
-  
+
 Started GET "/post/new" for ::1 at 2022-10-11 10:29:20 +0700
-  
+
 ActionController::RoutingError (No route matches [GET] "/post/new"):
-  
+
 Started POST "/posts" for ::1 at 2022-10-11 10:30:09 +0700
   [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by PostsController#create as */*
@@ -26965,12 +26965,12 @@ Processing by PostsController#create as */*
 Completed 500 Internal Server Error in 28ms (ActiveRecord: 4.9ms | Allocations: 22469)
 
 
-  
+
 NameError (Rails couldn't find a valid model for UserId association. Please provide the :class_name option on the association declaration. If :class_name is already provided, make sure it's an ActiveRecord::Base subclass.
 
           raise NameError, msg
           ^^^^^):
-  
+
 app/controllers/posts_controller.rb:4:in `create'
 Started POST "/posts" for ::1 at 2022-10-11 10:31:01 +0700
 Processing by PostsController#create as */*
@@ -26980,12 +26980,12 @@ Processing by PostsController#create as */*
 Completed 500 Internal Server Error in 20ms (ActiveRecord: 4.9ms | Allocations: 8721)
 
 
-  
+
 ActiveModel::UnknownAttributeError (unknown attribute 'user_id' for Post.
 
           raise UnknownAttributeError.new(self, k.to_s)
           ^^^^^):
-  
+
 app/controllers/posts_controller.rb:4:in `create'
   [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
@@ -27015,10 +27015,10 @@ Processing by PostsController#create as */*
 Completed 500 Internal Server Error in 51ms (ActiveRecord: 8.6ms | Allocations: 27669)
 
 
-  
+
 NoMethodError (undefined method `new_attribute' for #<Post id: 1, title: "ini title baru", link: "-", descriptions: "isi nya contoh untuk database", status: "private", created_at: "2022-10-11 03:33:50.189277000 +0000", updated_at: "2022-10-11 03:33:50.189277000 +0000", user_id: 2>
 Did you mean?  read_attribute):
-  
+
 app/controllers/posts_controller.rb:6:in `create'
 Started POST "/posts" for ::1 at 2022-10-11 10:34:09 +0700
 Processing by PostsController#create as */*
@@ -27051,12 +27051,12 @@ Processing by PostsController#show as */*
 Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2180)
 
 
-  
+
 NoMethodError (undefined method `id' for nil:NilClass
 
         @post = Post.find_by(user_id: @user.id)
                                            ^^^):
-  
+
 app/controllers/posts_controller.rb:13:in `show'
 Started GET "/posts/:id" for ::1 at 2022-10-11 10:59:36 +0700
 Processing by PostsController#show as */*
@@ -27064,12 +27064,12 @@ Processing by PostsController#show as */*
 Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 2093)
 
 
-  
+
 NoMethodError (undefined method `id' for nil:NilClass
 
         @post = Post.find_by(post_id: @post.id)
                                            ^^^):
-  
+
 app/controllers/posts_controller.rb:13:in `show'
 Started GET "/posts/:id" for ::1 at 2022-10-11 11:00:22 +0700
 Processing by PostsController#show as */*
@@ -27077,12 +27077,12 @@ Processing by PostsController#show as */*
 Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 2316)
 
 
-  
+
 NoMethodError (undefined method `id' for #<ActionController::Parameters {"controller"=>"posts", "action"=>"show", "id"=>":id"} permitted: false>
 
         @post = Post.find_by(params.id)
                                    ^^^):
-  
+
 app/controllers/posts_controller.rb:13:in `show'
 Started GET "/posts/1" for ::1 at 2022-10-11 11:00:46 +0700
 Processing by PostsController#show as */*
@@ -27090,12 +27090,12 @@ Processing by PostsController#show as */*
 Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1417)
 
 
-  
+
 NoMethodError (undefined method `id' for #<ActionController::Parameters {"controller"=>"posts", "action"=>"show", "id"=>"1"} permitted: false>
 
         @post = Post.find_by(params.id)
                                    ^^^):
-  
+
 app/controllers/posts_controller.rb:13:in `show'
 Started GET "/posts/1" for ::1 at 2022-10-11 11:01:12 +0700
 Processing by PostsController#show as */*
@@ -27105,12 +27105,12 @@ Processing by PostsController#show as */*
 Completed 500 Internal Server Error in 17ms (ActiveRecord: 3.1ms | Allocations: 8627)
 
 
-  
+
 NameError (undefined local variable or method `id' for #<PostsController:0x0000000001ca20>
 
         @post = Post.find_by(params[id])
                                     ^^):
-  
+
 app/controllers/posts_controller.rb:13:in `show'
 Started GET "/posts/1" for ::1 at 2022-10-11 11:02:18 +0700
 Processing by PostsController#show as */*
@@ -27122,12 +27122,12 @@ Processing by PostsController#show as */*
 Completed 500 Internal Server Error in 15ms (ActiveRecord: 4.0ms | Allocations: 7524)
 
 
-  
+
 ActiveRecord::StatementInvalid (PG::DatatypeMismatch: ERROR:  argument of WHERE must be type boolean, not type integer
 LINE 1: SELECT "posts".* FROM "posts" WHERE (1) LIMIT $1
                                              ^
 ):
-  
+
 app/controllers/posts_controller.rb:13:in `show'
 Started GET "/posts/1" for ::1 at 2022-10-11 11:03:07 +0700
 Processing by PostsController#show as */*
@@ -27137,869 +27137,5 @@ Processing by PostsController#show as */*
   [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
   ↳ app/controllers/posts_controller.rb:13:in `show'
 Completed 200 OK in 24ms (Views: 0.7ms | ActiveRecord: 5.3ms | Allocations: 11519)
-
-
-Started GET "/posts" for ::1 at 2022-10-11 12:53:20 +0700
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  
-ActiveRecord::PendingMigrationError (
-
-Migrations are pending. To resolve this issue, run:
-
-        bin/rails db:migrate RAILS_ENV=development
-
-You have 1 pending migration:
-
-20221011033209_add_user_into_post.rb
-
-
-):
-  
-activerecord (7.0.4) lib/active_record/migration.rb:627:in `check_pending!'
-activerecord (7.0.4) lib/active_record/migration.rb:592:in `block (2 levels) in call'
-activesupport (7.0.4) lib/active_support/file_update_checker.rb:83:in `execute'
-activerecord (7.0.4) lib/active_record/migration.rb:597:in `block in call'
-activerecord (7.0.4) lib/active_record/migration.rb:589:in `synchronize'
-activerecord (7.0.4) lib/active_record/migration.rb:589:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
-actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
-web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
-web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
-railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
-railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
-activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
-activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
-activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
-railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
-rack (2.2.4) lib/rack/method_override.rb:24:in `call'
-rack (2.2.4) lib/rack/runtime.rb:22:in `call'
-activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
-actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
-actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
-rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
-actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
-railties (7.0.4) lib/rails/engine.rb:530:in `call'
-puma (5.6.5) lib/puma/configuration.rb:252:in `call'
-puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
-puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
-puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
-puma (5.6.5) lib/puma/server.rb:443:in `process_client'
-puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to AddUserIntoPost (20221011033209)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (1.8ms)[0m  [1m[35mALTER TABLE "posts" ADD "user_id" integer[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to AddUserIntoPost (20221011033209)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "posts" ADD "user_id" integer[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (5010.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_development"[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (44.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_development"[0m
-  [1m[35m (24.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_test"[0m
-  [1m[35m (218.2ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_development" ENCODING = 'unicode'[0m
-  [1m[35m (82.9ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_test" ENCODING = 'unicode'[0m
-  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
-  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateUsers (20221006042408)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "phone" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042408"]]
-  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreateBiodataUsers (20221006042746)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "biodata_users" ("id" bigserial primary key, "dob" timestamp(6), "address" character varying, "marriage_status" character varying, "status" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042746"]]
-  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreatePosts (20221006043047)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" character varying, "link" character varying, "descriptions" character varying, "status" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006043047"]]
-  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
-Migrating to AddPasswordResetColumnsToUser (20221007033547)
-  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
-  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221007033547"]]
-  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
-Migrating to AddUserIdIntoBiodata (20221007110312)
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD "user_id" integer[0m
-  [1m[35m (2.7ms)[0m  [1m[35mCREATE INDEX "index_biodata_users_on_user_id" ON "biodata_users" ("user_id")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221007110312"]]
-  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
-Migrating to AddUserIntoPost (20221011033209)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "posts" ADD "user_id" integer[0m
-  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221011033209"]]
-  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-11 05:56:12.643166"], ["updated_at", "2022-10-11 05:56:12.643166"]]
-  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateActiveStorageTables (20221011055706)
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "service_name" character varying NOT NULL, "byte_size" bigint NOT NULL, "checksum" character varying, "created_at" timestamp(6) NOT NULL)[0m
-  [1m[35m (2.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
-  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
-FOREIGN KEY ("blob_id")
-  REFERENCES "active_storage_blobs" ("id")
-)[0m
-  [1m[35m (2.5ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
-  [1m[35m (2.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
-  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" bigserial primary key, "blob_id" bigint NOT NULL, "variation_digest" character varying NOT NULL, CONSTRAINT "fk_rails_993965df05"
-FOREIGN KEY ("blob_id")
-  REFERENCES "active_storage_blobs" ("id")
-)[0m
-  [1m[35m (2.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221011055706"]]
-  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Started POST "/regis" for ::1 at 2022-10-11 12:57:51 +0700
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by UsersController#create as */*
-  Parameters: {"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231"}}
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/users_controller.rb:12:in `create'
-  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:12:in `create'
-  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "test@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-11 05:57:51.404545"], ["updated_at", "2022-10-11 05:57:51.404545"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
-  ↳ app/controllers/users_controller.rb:12:in `create'
-  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/users_controller.rb:12:in `create'
-Completed 200 OK in 209ms (Views: 0.3ms | ActiveRecord: 5.6ms | Allocations: 12048)
-
-
-Started POST "/biodata_users" for ::1 at 2022-10-11 12:58:05 +0700
-Processing by BiodataUsersController#create as */*
-  Parameters: {"dob"=>"2000-10-10", "address"=>"maguwoharjo", "marriage_status"=>"single", "status"=>"public"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mBiodataUser Create (0.6ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2000-10-10 00:00:00"], ["address", "maguwoharjo"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-11 05:58:05.895360"], ["updated_at", "2022-10-11 05:58:05.895360"], ["user_id", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-Completed 200 OK in 26ms (Views: 0.3ms | ActiveRecord: 5.1ms | Allocations: 13333)
-
-
-Started GET "/biodata_users/:id" for ::1 at 2022-10-11 12:58:19 +0700
-Processing by BiodataUsersController#show as */*
-  Parameters: {"id"=>":id"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:13:in `show'
-  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
-Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 6271)
-
-
-Started POST "/biodata_users" for ::1 at 2022-10-11 12:58:36 +0700
-Processing by BiodataUsersController#create as */*
-  Parameters: {"dob"=>"2000-10-10", "address"=>"maguwoharjo", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb8f9412e40 @tempfile=#<Tempfile:/tmp/RackMultipart20221011-33505-9ldddg.jpeg>, @original_filename="download.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"download.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2000-10-10 00:00:00"], ["address", "maguwoharjo"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-11 05:58:36.207929"], ["updated_at", "2022-10-11 05:58:36.207929"], ["user_id", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "nvg4v7h2zb18sswln17qy7b0bkum"], ["filename", "download.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 6289], ["checksum", "tuCXPzmrKmmhq2GtLmwjWw=="], ["created_at", "2022-10-11 05:58:36.225972"]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 2], ["blob_id", 1], ["created_at", "2022-10-11 05:58:36.229233"]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mBiodataUser Update (0.2ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-11 05:58:36.231533"], ["id", 2]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-[36m  Cloudinary Storage (9607.6ms) [0m[32mUploaded file to key: nvg4v7h2zb18sswln17qy7b0bkum (checksum: tuCXPzmrKmmhq2GtLmwjWw==)[0m
-[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc) to Async(default) with arguments: #<GlobalID:0x00007fb8fcf2edd0 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/1>>
-Completed 200 OK in 9710ms (Views: 0.3ms | ActiveRecord: 8.4ms | Allocations: 174514)
-
-
-[ActiveJob] [ActiveStorage::AnalyzeJob] [8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-[ActiveJob] [ActiveStorage::AnalyzeJob] [8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc] Performing ActiveStorage::AnalyzeJob (Job ID: 8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc) from Async(default) enqueued at 2022-10-11T05:58:45Z with arguments: #<GlobalID:0x00007fb8fbfb9508 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/1>>
-[ActiveJob] [ActiveStorage::AnalyzeJob] [8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc] Skipping image analysis because the ruby-vips gem isn't installed
-[ActiveJob] [ActiveStorage::AnalyzeJob] [8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-[ActiveJob] [ActiveStorage::AnalyzeJob] [8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc]   [1m[36mActiveStorage::Blob Update (0.5ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 1]]
-[ActiveJob] [ActiveStorage::AnalyzeJob] [8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc]   [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
-[ActiveJob] [ActiveStorage::AnalyzeJob] [8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc] Performed ActiveStorage::AnalyzeJob (Job ID: 8a4dc1b8-8f37-4bf7-b529-b2bb6ca9b0bc) from Async(default) in 20.48ms
-Started GET "/biodata_users/:id" for ::1 at 2022-10-11 12:58:51 +0700
-Processing by BiodataUsersController#show as */*
-  Parameters: {"id"=>":id"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:13:in `show'
-  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
-Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 2509)
-
-
-Started GET "/biodata_users/:id" for ::1 at 2022-10-11 12:58:57 +0700
-Processing by BiodataUsersController#show as */*
-  Parameters: {"id"=>":id"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mBiodataUser Load (0.3ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:13:in `show'
-  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
-Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2388)
-
-
-Started POST "/regis" for ::1 at 2022-10-11 12:59:14 +0700
-Processing by UsersController#create as */*
-  Parameters: {"name"=>"test", "email"=>"test1@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test1@gmail.com", "phone"=>"08981231"}}
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/users_controller.rb:12:in `create'
-  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:12:in `create'
-  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "test1@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-11 05:59:15.193573"], ["updated_at", "2022-10-11 05:59:15.193573"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
-  ↳ app/controllers/users_controller.rb:12:in `create'
-  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/users_controller.rb:12:in `create'
-Completed 200 OK in 200ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 3118)
-
-
-Started POST "/biodata_users" for ::1 at 2022-10-11 12:59:28 +0700
-Processing by BiodataUsersController#create as */*
-  Parameters: {"dob"=>"2000-10-10", "address"=>"maguwoharjo", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb8f9704108 @tempfile=#<Tempfile:/tmp/RackMultipart20221011-33505-gbdvkx.jpeg>, @original_filename="download.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"download.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2000-10-10 00:00:00"], ["address", "maguwoharjo"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-11 05:59:28.417030"], ["updated_at", "2022-10-11 05:59:28.417030"], ["user_id", 2]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "68htgorjd4qdvtlcpk9nxglt7wee"], ["filename", "download.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 6289], ["checksum", "tuCXPzmrKmmhq2GtLmwjWw=="], ["created_at", "2022-10-11 05:59:28.426423"]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 3], ["blob_id", 2], ["created_at", "2022-10-11 05:59:28.428843"]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-11 05:59:28.431409"], ["id", 3]]
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/biodata_users_controller.rb:5:in `create'
-[36m  Cloudinary Storage (3128.1ms) [0m[32mUploaded file to key: 68htgorjd4qdvtlcpk9nxglt7wee (checksum: tuCXPzmrKmmhq2GtLmwjWw==)[0m
-[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 16680d5a-62a4-4394-9155-5bd5cb4359f1) to Async(default) with arguments: #<GlobalID:0x00007fb8f9609550 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/2>>
-Completed 200 OK in 3157ms (Views: 0.2ms | ActiveRecord: 4.4ms | Allocations: 12485)
-
-
-[ActiveJob] [ActiveStorage::AnalyzeJob] [16680d5a-62a4-4394-9155-5bd5cb4359f1]   [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-[ActiveJob] [ActiveStorage::AnalyzeJob] [16680d5a-62a4-4394-9155-5bd5cb4359f1] Performing ActiveStorage::AnalyzeJob (Job ID: 16680d5a-62a4-4394-9155-5bd5cb4359f1) from Async(default) enqueued at 2022-10-11T05:59:31Z with arguments: #<GlobalID:0x00007fb8f95ce7e8 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/2>>
-[ActiveJob] [ActiveStorage::AnalyzeJob] [16680d5a-62a4-4394-9155-5bd5cb4359f1] Skipping image analysis because the ruby-vips gem isn't installed
-[ActiveJob] [ActiveStorage::AnalyzeJob] [16680d5a-62a4-4394-9155-5bd5cb4359f1]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-[ActiveJob] [ActiveStorage::AnalyzeJob] [16680d5a-62a4-4394-9155-5bd5cb4359f1]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 2]]
-[ActiveJob] [ActiveStorage::AnalyzeJob] [16680d5a-62a4-4394-9155-5bd5cb4359f1]   [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
-[ActiveJob] [ActiveStorage::AnalyzeJob] [16680d5a-62a4-4394-9155-5bd5cb4359f1] Performed ActiveStorage::AnalyzeJob (Job ID: 16680d5a-62a4-4394-9155-5bd5cb4359f1) from Async(default) in 33.27ms
-Started GET "/biodata_users/:id" for ::1 at 2022-10-11 12:59:41 +0700
-Processing by BiodataUsersController#show as */*
-  Parameters: {"id"=>":id"}
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:13:in `show'
-  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
-  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
-[36m  Cloudinary Storage (0.2ms) [0m[34mGenerated URL for file at key: 68htgorjd4qdvtlcpk9nxglt7wee (http://res.cloudinary.com/dzpzhe5xs/image/upload/68htgorjd4qdvtlcpk9nxglt7wee.jpeg)[0m
-Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 3726)
-
-
-Started GET "/posts" for ::1 at 2022-10-11 12:59:57 +0700
-Processing by PostsController#index as */*
-  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
-  ↳ app/controllers/posts_controller.rb:5:in `index'
-Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.6ms | Allocations: 1843)
-
-
-Started POST "/posts" for ::1 at 2022-10-11 13:00:10 +0700
-Processing by PostsController#create as */*
-  Parameters: {"title"=>"ini title baru", "link"=>"-", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("title", "link", "descriptions", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "ini title baru"], ["link", "-"], ["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["created_at", "2022-10-11 06:00:10.429689"], ["updated_at", "2022-10-11 06:00:10.429689"], ["user_id", 2]]
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-Completed 200 OK in 22ms (Views: 0.5ms | ActiveRecord: 4.8ms | Allocations: 8867)
-
-
-Started GET "/users/:id" for ::1 at 2022-10-11 13:00:34 +0700
-Processing by UsersController#show as */*
-  Parameters: {"id"=>":id"}
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:30:in `show'
-Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1809)
-
-
-Started PUT "/users/:id" for ::1 at 2022-10-11 13:00:49 +0700
-Processing by UsersController#update as */*
-  Parameters: {"name"=>"admin2111", "password"=>"[FILTERED]", "email"=>"dhim@mail.com", "id"=>":id", "user"=>{"name"=>"admin2111", "email"=>"dhim@mail.com"}}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/users_controller.rb:39:in `update'
-  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "dhim@mail.com"], ["id", 2], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:39:in `update'
-  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "email" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["name", "admin2111"], ["email", "dhim@mail.com"], ["updated_at", "2022-10-11 06:00:49.284867"], ["id", 2]]
-  ↳ app/controllers/users_controller.rb:39:in `update'
-  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/users_controller.rb:39:in `update'
-Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 3671)
-
-
-Started GET "/users" for ::1 at 2022-10-11 13:00:57 +0700
-Processing by UsersController#index as */*
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users"."id", "users"."name", "users"."email", "users"."phone" FROM "users"[0m
-  ↳ app/controllers/users_controller.rb:5:in `index'
-Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 866)
-
-
-Started POST "/password/forgot" for ::1 at 2022-10-11 13:01:09 +0700
-Processing by PasswordsController#forgot as */*
-  Parameters: {"email"=>"test1@gmail.com", "password"=>{"email"=>"test1@gmail.com"}}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/passwords_controller.rb:7:in `forgot'
-Completed 404 Not Found in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 761)
-
-
-Started POST "/password/forgot" for ::1 at 2022-10-11 13:01:26 +0700
-Processing by PasswordsController#forgot as */*
-  Parameters: {"email"=>"test@gmail.com", "password"=>{"email"=>"test@gmail.com"}}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/passwords_controller.rb:7:in `forgot'
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/models/user.rb:28:in `generate_password_token!'
-  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test@gmail.com"], ["id", 1], ["LIMIT", 1]]
-  ↳ app/models/user.rb:28:in `generate_password_token!'
-  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-11 06:01:26.725294"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 1]]
-  ↳ app/models/user.rb:28:in `generate_password_token!'
-  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/models/user.rb:28:in `generate_password_token!'
-  Rendering layout layouts/mailer.html.erb
-  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
-  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 1.3ms | Allocations: 384)
-  Rendered layout layouts/mailer.html.erb (Duration: 2.5ms | Allocations: 635)
-UserMailer#welcome_email: processed outbound mail in 10.7ms
-Delivered mail 634506b6b9b97_82e13994-526@dhimas-pc.mail (4.4ms)
-Date: Tue, 11 Oct 2022 13:01:26 +0700
-From: from@example.com
-To: test@gmail.com
-Message-ID: <634506b6b9b97_82e13994-526@dhimas-pc.mail>
-Subject: Welcome to My Awesome Site
-Mime-Version: 1.0
-Content-Type: text/html;
- charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
-
-  <body>
-    <h1>TOKEN RESET  test</h1>
-  <p>
-    You have successfully get token,
-    your token is: 7c2d25db396701390516.<br>
-  </p>
-<p>Thanks for joining and have a great day!</p>
-
-
-  </body>
-</html>
-
-Completed 200 OK in 43ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 19882)
-
-
-Started POST "/password/reset" for ::1 at 2022-10-11 13:01:52 +0700
-Processing by PasswordsController#reset as */*
-  Parameters: {"email"=>"test@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
-  ↳ app/controllers/passwords_controller.rb:26:in `reset'
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/models/user.rb:38:in `reset_password!'
-  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test@gmail.com"], ["id", 1], ["LIMIT", 1]]
-  ↳ app/models/user.rb:38:in `reset_password!'
-  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2, "reset_password_token" = $3 WHERE "users"."id" = $4[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2022-10-11 06:01:52.885617"], ["reset_password_token", "[FILTERED]"], ["id", 1]]
-  ↳ app/models/user.rb:38:in `reset_password!'
-  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/models/user.rb:38:in `reset_password!'
-Completed 200 OK in 198ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 3663)
-
-
-Started POST "/login" for ::1 at 2022-10-11 13:02:12 +0700
-Processing by UsersController#login as */*
-  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:20:in `login'
-Completed 200 OK in 192ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 792)
-
-
-Started POST "/login" for ::1 at 2022-10-11 13:02:22 +0700
-Processing by UsersController#login as */*
-  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:20:in `login'
-Completed 422 Unprocessable Entity in 191ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 609)
-
-
-Started PUT "/biodata_users/:id" for ::1 at 2022-10-11 13:03:27 +0700
-Processing by BiodataUsersController#update as */*
-  Parameters: {"dob"=>"2000-12-12", "address"=>"sleman", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb8f8f68a70 @tempfile=#<Tempfile:/tmp/RackMultipart20221011-33505-miozak.jpg>, @original_filename="Cat-Wallpaper.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"Cat-Wallpaper.jpg\"\r\nContent-Type: image/jpeg\r\n">, "id"=>":id"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:18:in `update'
-[31mUnpermitted parameter: :id. Context: { controller: BiodataUsersController, action: update, request: #<ActionDispatch::Request:0x00007fb8f8f6e4c0>, params: {"dob"=>"2000-12-12", "address"=>"sleman", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fb8f8f68a70 @tempfile=#<Tempfile:/tmp/RackMultipart20221011-33505-miozak.jpg>, @original_filename="Cat-Wallpaper.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"Cat-Wallpaper.jpg\"\r\nContent-Type: image/jpeg\r\n">, "controller"=>"biodata_users", "action"=>"update", "id"=>":id"} }[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
-  [1m[36mBiodataUser Update (0.2ms)[0m  [1m[33mUPDATE "biodata_users" SET "dob" = $1, "address" = $2, "updated_at" = $3 WHERE "biodata_users"."id" = $4[0m  [["dob", "2000-12-12 00:00:00"], ["address", "sleman"], ["updated_at", "2022-10-11 06:03:27.205317"], ["id", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
-  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
-  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
-  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "3rgbjpkx5cu5saxpr117x01vj5vc"], ["filename", "Cat-Wallpaper.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 148725], ["checksum", "j693zB2MLaMOQEPWJ0CY2w=="], ["created_at", "2022-10-11 06:03:27.209880"]]
-  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
-  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 1], ["blob_id", 3], ["created_at", "2022-10-11 06:03:27.212007"]]
-  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
-  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-11 06:03:27.213469"], ["id", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
-  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/biodata_users_controller.rb:19:in `update'
-[36m  Cloudinary Storage (3117.1ms) [0m[32mUploaded file to key: 3rgbjpkx5cu5saxpr117x01vj5vc (checksum: j693zB2MLaMOQEPWJ0CY2w==)[0m
-[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: e808ccf1-cc53-4c6f-8ac1-7f027521f66a) to Async(default) with arguments: #<GlobalID:0x00007fb8f8ee43b0 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/3>>
-Completed 200 OK in 3144ms (Views: 0.6ms | ActiveRecord: 3.8ms | Allocations: 13540)
-
-
-[ActiveJob] [ActiveStorage::AnalyzeJob] [e808ccf1-cc53-4c6f-8ac1-7f027521f66a]   [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
-[ActiveJob] [ActiveStorage::AnalyzeJob] [e808ccf1-cc53-4c6f-8ac1-7f027521f66a] Performing ActiveStorage::AnalyzeJob (Job ID: e808ccf1-cc53-4c6f-8ac1-7f027521f66a) from Async(default) enqueued at 2022-10-11T06:03:30Z with arguments: #<GlobalID:0x00007fb8f8ed1c10 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/3>>
-[ActiveJob] [ActiveStorage::AnalyzeJob] [e808ccf1-cc53-4c6f-8ac1-7f027521f66a] Skipping image analysis because the ruby-vips gem isn't installed
-[ActiveJob] [ActiveStorage::AnalyzeJob] [e808ccf1-cc53-4c6f-8ac1-7f027521f66a]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-[ActiveJob] [ActiveStorage::AnalyzeJob] [e808ccf1-cc53-4c6f-8ac1-7f027521f66a]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 3]]
-[ActiveJob] [ActiveStorage::AnalyzeJob] [e808ccf1-cc53-4c6f-8ac1-7f027521f66a]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
-[ActiveJob] [ActiveStorage::AnalyzeJob] [e808ccf1-cc53-4c6f-8ac1-7f027521f66a] Performed ActiveStorage::AnalyzeJob (Job ID: e808ccf1-cc53-4c6f-8ac1-7f027521f66a) from Async(default) in 40.01ms
-Started GET "/biodata_users/:id" for ::1 at 2022-10-11 13:03:41 +0700
-Processing by BiodataUsersController#show as */*
-  Parameters: {"id"=>":id"}
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:13:in `show'
-  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
-  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/biodata_users_controller.rb:14:in `show'
-[36m  Cloudinary Storage (0.2ms) [0m[34mGenerated URL for file at key: nvg4v7h2zb18sswln17qy7b0bkum (http://res.cloudinary.com/dzpzhe5xs/image/upload/nvg4v7h2zb18sswln17qy7b0bkum.jpeg)[0m
-Completed 200 OK in 8ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 2997)
-
-
-Started POST "/posts" for ::1 at 2022-10-11 13:04:04 +0700
-Processing by PostsController#create as */*
-  Parameters: {"title"=>"ini title baru", "link"=>"-", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "link", "descriptions", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "ini title baru"], ["link", "-"], ["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["created_at", "2022-10-11 06:04:04.666091"], ["updated_at", "2022-10-11 06:04:04.666091"], ["user_id", 1]]
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 3652)
-
-
-Started GET "/posts" for ::1 at 2022-10-11 13:04:09 +0700
-Processing by PostsController#index as */*
-  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
-  ↳ app/controllers/posts_controller.rb:5:in `index'
-Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 997)
-
-
-Started GET "/posts/1" for ::1 at 2022-10-11 13:04:24 +0700
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"1"}
-Filter chain halted as :authorize rendered or redirected
-Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 112)
-
-
-Started GET "/posts/2" for ::1 at 2022-10-11 13:04:36 +0700
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"2"}
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:18:in `show'
-Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1858)
-
-
-Started POST "/login" for ::1 at 2022-10-11 13:09:56 +0700
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by UsersController#login as */*
-  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:20:in `login'
-Completed 200 OK in 200ms (Views: 0.2ms | ActiveRecord: 2.6ms | Allocations: 8148)
-
-
-Started GET "/posts/user" for ::1 at 2022-10-11 13:10:14 +0700
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"user"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:18:in `show'
-Completed 404 Not Found in 9ms (ActiveRecord: 2.0ms | Allocations: 4146)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=user):
-  
-app/controllers/posts_controller.rb:18:in `show'
-Started GET "/posts/user" for ::1 at 2022-10-11 13:10:39 +0700
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"user"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:18:in `show'
-Completed 404 Not Found in 15ms (ActiveRecord: 5.0ms | Allocations: 7855)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=user):
-  
-app/controllers/posts_controller.rb:18:in `show'
-Started GET "/posts/user" for ::1 at 2022-10-11 13:11:07 +0700
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"user"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:18:in `show'
-Completed 404 Not Found in 19ms (ActiveRecord: 4.1ms | Allocations: 7909)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=user):
-  
-app/controllers/posts_controller.rb:18:in `show'
-Started POST "/posts" for ::1 at 2022-10-11 13:11:46 +0700
-Processing by PostsController#create as */*
-  Parameters: {"title"=>"ini title punya", "link"=>"-", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "link", "descriptions", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "ini title punya"], ["link", "-"], ["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["created_at", "2022-10-11 06:11:46.134622"], ["updated_at", "2022-10-11 06:11:46.134622"], ["user_id", 1]]
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-Completed 200 OK in 38ms (Views: 0.4ms | ActiveRecord: 8.0ms | Allocations: 16547)
-
-
-Started GET "/posts/user" for ::1 at 2022-10-11 13:11:50 +0700
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"user"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:18:in `show'
-Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 2101)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=user):
-  
-app/controllers/posts_controller.rb:18:in `show'
-Started GET "/posts/user" for ::1 at 2022-10-11 13:14:13 +0700
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"user"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (1.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:18:in `show'
-Completed 404 Not Found in 24ms (ActiveRecord: 7.3ms | Allocations: 7843)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=user):
-  
-app/controllers/posts_controller.rb:18:in `show'
-Started GET "/posts/user" for ::1 at 2022-10-11 13:14:51 +0700
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"user"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:18:in `show'
-Completed 404 Not Found in 21ms (ActiveRecord: 5.5ms | Allocations: 7843)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=user):
-  
-app/controllers/posts_controller.rb:18:in `show'
-Started GET "/posts/user" for ::1 at 2022-10-11 13:16:05 +0700
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"user"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:24:in `show'
-Completed 404 Not Found in 24ms (ActiveRecord: 5.6ms | Allocations: 14159)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=user):
-  
-app/controllers/posts_controller.rb:24:in `show'
-Started GET "/posts/user" for ::1 at 2022-10-11 13:17:21 +0700
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"user"}
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:24:in `show'
-Completed 404 Not Found in 26ms (ActiveRecord: 7.2ms | Allocations: 14161)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=user):
-  
-app/controllers/posts_controller.rb:24:in `show'
-Started GET "/posts/user" for ::1 at 2022-10-11 13:18:07 +0700
-Processing by PostsController#show as */*
-  Parameters: {"id"=>"user"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:24:in `show'
-Completed 404 Not Found in 16ms (ActiveRecord: 4.0ms | Allocations: 7858)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=user):
-  
-app/controllers/posts_controller.rb:24:in `show'
-Started GET "/user/posts" for ::1 at 2022-10-11 13:19:08 +0700
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by PostsController#find as */*
-Completed 500 Internal Server Error in 4084ms (ActiveRecord: 0.0ms | Allocations: 12482)
-
-
-  
-NoMethodError (undefined method `post' for nil:NilClass
-
-        @posts = @user.post
-                      ^^^^^):
-  
-app/controllers/posts_controller.rb:19:in `find'
-Started GET "/user/posts" for ::1 at 2022-10-11 13:19:32 +0700
-Processing by PostsController#find as */*
-Completed 500 Internal Server Error in 3772ms (ActiveRecord: 0.0ms | Allocations: 8536)
-
-
-  
-NoMethodError (undefined method `posts' for nil:NilClass
-
-        @posts = @user.posts
-                      ^^^^^^):
-  
-app/controllers/posts_controller.rb:19:in `find'
-Started GET "/user/posts" for ::1 at 2022-10-11 13:19:59 +0700
-Processing by PostsController#find as */*
-Completed 500 Internal Server Error in 3197ms (ActiveRecord: 0.0ms | Allocations: 8436)
-
-
-  
-NoMethodError (undefined method `posts' for nil:NilClass
-
-        @posts = @user.posts.all
-                      ^^^^^^):
-  
-app/controllers/posts_controller.rb:19:in `find'
-Started GET "/user/posts" for ::1 at 2022-10-11 13:20:18 +0700
-Processing by PostsController#find as */*
-Completed 500 Internal Server Error in 2346ms (ActiveRecord: 0.0ms | Allocations: 10165)
-
-
-  
-NoMethodError (undefined method `id' for nil:NilClass
-
-        @posts = Post.find(user_id: @user.id)
-                                         ^^^):
-  
-app/controllers/posts_controller.rb:19:in `find'
-Started GET "/user/posts" for ::1 at 2022-10-11 13:20:39 +0700
-Processing by PostsController#find as */*
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:19:in `find'
-Completed 404 Not Found in 2502ms (ActiveRecord: 10.3ms | Allocations: 20965)
-
-
-  
-ActiveRecord::RecordNotFound (Couldn't find Post with 'id'={:user_id=>1}):
-  
-app/controllers/posts_controller.rb:19:in `find'
-Started GET "/user/posts" for ::1 at 2022-10-11 13:20:57 +0700
-Processing by PostsController#find as */*
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:19:in `find'
-Completed 200 OK in 2359ms (Views: 0.3ms | ActiveRecord: 9.7ms | Allocations: 18612)
-
-
-Started POST "/login" for ::1 at 2022-10-11 13:21:16 +0700
-Processing by UsersController#login as */*
-  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:20:in `login'
-Completed 200 OK in 191ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1229)
-
-
-Started POST "/posts" for ::1 at 2022-10-11 13:21:26 +0700
-Processing by PostsController#create as */*
-  Parameters: {"title"=>"ini title punya", "link"=>"-", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "link", "descriptions", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "ini title punya"], ["link", "-"], ["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["created_at", "2022-10-11 06:21:26.699762"], ["updated_at", "2022-10-11 06:21:26.699762"], ["user_id", 1]]
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/posts_controller.rb:10:in `create'
-Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 2.8ms | Allocations: 7421)
-
-
-Started GET "/users/:id" for ::1 at 2022-10-11 13:21:37 +0700
-Processing by UsersController#show as */*
-  Parameters: {"id"=>":id"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/users_controller.rb:30:in `show'
-Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1860)
-
-
-Started GET "/user/posts" for ::1 at 2022-10-11 13:21:43 +0700
-Processing by PostsController#find as */*
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
-  ↳ app/controllers/posts_controller.rb:19:in `find'
-Completed 200 OK in 3300ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 8478)
-
-
-  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
-  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
-Started GET "/user/posts" for ::1 at 2022-10-11 13:22:50 +0700
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by PostsController#find as */*
-  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-Completed 200 OK in 2094ms (Views: 0.7ms | ActiveRecord: 4.1ms | Allocations: 24559)
-
-
-Started GET "/user/posts" for ::1 at 2022-10-11 13:23:11 +0700
-Processing by PostsController#find as */*
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
-  ↳ app/controllers/posts_controller.rb:18:in `find'
-Completed 200 OK in 62287ms (Views: 0.3ms | ActiveRecord: 3.1ms | Allocations: 37479)
-
-
-Started GET "/user/posts" for ::1 at 2022-10-11 13:24:19 +0700
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by PostsController#find as */*
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
-  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
-  ↳ app/controllers/posts_controller.rb:20:in `find'
-Completed 200 OK in 2692ms (Views: 13.9ms | ActiveRecord: 6.6ms | Allocations: 32108)
 
 
