@@ -28003,3 +28003,69 @@ Processing by PostsController#find as */*
 Completed 200 OK in 2692ms (Views: 13.9ms | ActiveRecord: 6.6ms | Allocations: 32108)
 
 
+Started GET "/posts/6" for ::1 at 2022-10-13 10:34:09 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+[36m  Cloudinary Storage (1.8ms) [0m[34mGenerated URL for file at key: g59bu3pjdpt47lx136alpye4z6yi (http://res.cloudinary.com/dzpzhe5xs/image/upload/g59bu3pjdpt47lx136alpye4z6yi.jpg)[0m
+Completed 200 OK in 76ms (Views: 0.3ms | ActiveRecord: 12.9ms | Allocations: 42718)
+
+
+Started POST "/posts" for ::1 at 2022-10-13 10:34:41 +0700
+Processing by PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private", "content"=>#<ActionDispatch::Http::UploadedFile:0x00007f61ae15aec0 @tempfile=#<Tempfile:/tmp/RackMultipart20221013-27450-9creo6.jpg>, @original_filename="2bb3c49386bad1e9a7504d662300f617(1).jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"content\"; filename=\"2bb3c49386bad1e9a7504d662300f617(1).jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:5:in `create'
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("title", "descriptions", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "ini title punya baru"], ["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["created_at", "2022-10-13 03:34:41.180197"], ["updated_at", "2022-10-13 03:34:41.180197"], ["user_id", 1]]
+  ↳ app/controllers/posts_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "mh8y8ope6tn7e3rujbfkh0wsson3"], ["filename", "2bb3c49386bad1e9a7504d662300f617(1).jpg"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 255758], ["checksum", "DCekE6fYc8TR2sxmHLMi6A=="], ["created_at", "2022-10-13 03:34:41.193656"]]
+  ↳ app/controllers/posts_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "content"], ["record_type", "Post"], ["record_id", 7], ["blob_id", 6], ["created_at", "2022-10-13 03:34:41.197688"]]
+  ↳ app/controllers/posts_controller.rb:5:in `create'
+  [1m[36mPost Update (0.2ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2022-10-13 03:34:41.199478"], ["id", 7]]
+  ↳ app/controllers/posts_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:5:in `create'
+[36m  Cloudinary Storage (4537.5ms) [0m[32mUploaded file to key: mh8y8ope6tn7e3rujbfkh0wsson3 (checksum: DCekE6fYc8TR2sxmHLMi6A==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: cc52acd5-4355-409b-b690-14fc84128249) to Async(default) with arguments: #<GlobalID:0x00007f61ae17b918 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/6>>
+Completed 200 OK in 4601ms (Views: 0.8ms | ActiveRecord: 10.3ms | Allocations: 158952)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc52acd5-4355-409b-b690-14fc84128249]   [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc52acd5-4355-409b-b690-14fc84128249] Performing ActiveStorage::AnalyzeJob (Job ID: cc52acd5-4355-409b-b690-14fc84128249) from Async(default) enqueued at 2022-10-13T03:34:45Z with arguments: #<GlobalID:0x00007f61ae15c568 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/6>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc52acd5-4355-409b-b690-14fc84128249] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc52acd5-4355-409b-b690-14fc84128249]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc52acd5-4355-409b-b690-14fc84128249]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 6]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc52acd5-4355-409b-b690-14fc84128249]   [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [cc52acd5-4355-409b-b690-14fc84128249] Performed ActiveStorage::AnalyzeJob (Job ID: cc52acd5-4355-409b-b690-14fc84128249) from Async(default) in 36.66ms
+Started GET "/posts/7" for ::1 at 2022-10-13 10:34:53 +0700
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:14:in `show'
+[36m  Cloudinary Storage (0.2ms) [0m[34mGenerated URL for file at key: mh8y8ope6tn7e3rujbfkh0wsson3 (http://res.cloudinary.com/dzpzhe5xs/image/upload/mh8y8ope6tn7e3rujbfkh0wsson3.jpg)[0m
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 1.0ms | Allocations: 3179)
+
+
