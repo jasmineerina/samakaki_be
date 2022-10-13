@@ -11,11 +11,11 @@ class PostsController < ApplicationController
 
     def show
         @post = Post.find(params[:id])
-        render json: {data: {post: @post}}
+        render json: {data: {post: @post,content: @post.content.url}}
     end
 
     private
     def post_params
-        params.permit(:title, :link, :descriptions, :status)
+        params.permit(:title, :descriptions, :status, :content)
     end
 end
