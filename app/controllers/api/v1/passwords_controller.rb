@@ -1,4 +1,4 @@
-class PasswordsController < ApplicationController
+class Api::V1::PasswordsController < ApplicationController
   def forgot
     if params[:email].blank? # check if email is present
       return render json: {error: "Email not present"}

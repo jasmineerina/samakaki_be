@@ -1,4 +1,4 @@
-class BiodataUsersController < ApplicationController
+class Api::V1::BiodataUsersController < ApplicationController
     before_action :authorize, only: [:create, :show, :update]
     def create
         @biodata = BiodataUser.new(biodata_params.merge(user_id: @user.id))

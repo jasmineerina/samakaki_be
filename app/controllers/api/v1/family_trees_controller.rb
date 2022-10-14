@@ -1,4 +1,4 @@
-class FamilyTreesController < ApplicationController
+class Api::V1::FamilyTreesController < ApplicationController
   before_action :authorize, only: [:create, :show, :update]
 
   def create

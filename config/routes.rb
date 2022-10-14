@@ -3,16 +3,21 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :users
-  post "login", to: "users#login"
-  post "regis", to: "users#create"
 
-  post 'password/forgot', to: 'passwords#forgot'
-  post 'password/reset', to: 'passwords#reset'
 
-  resources :biodata_users
-  resources :posts
-  get 'user/posts', to: 'posts#find'
-  resources :family_trees
+  namespace :api do
+    namespace :v1 do
+      resources :users
+      post "login", to: "users#login"
+      post 'password/forgot', to: 'passwords#forgot'
+      post 'password/reset', to: 'passwords#reset'
+
+      resources :biodata_users
+      resources :posts
+      get 'user/posts', to: 'posts#find'
+      resources :family_trees
+      resources :relations
+    end
+  end
 
 end
