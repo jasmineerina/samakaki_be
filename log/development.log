@@ -27139,3 +27139,501 @@ Processing by PostsController#show as */*
 Completed 200 OK in 24ms (Views: 0.7ms | ActiveRecord: 5.3ms | Allocations: 11519)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFamilyTrees (20221013073125)
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "microposts" ADD CONSTRAINT "fk_rails_558c81314b"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "microposts" ADD CONSTRAINT "fk_rails_558c81314b"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFamilyTrees (20221013073125)
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "family_trees" ADD CONSTRAINT "fk_rails_9950fe89d0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "family_trees" ADD CONSTRAINT "fk_rails_9950fe89d0"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFamilyTrees (20221013073125)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.5ms)[0m  [1m[35mCREATE TABLE "family_trees" ("id" bigserial primary key, "name" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE INDEX "index_family_trees_on_user_id" ON "family_trees" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221013073125"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/login" for ::1 at 2022-10-13 14:47:23 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 200ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 8156)
+
+
+Started POST "/family_trees" for ::1 at 2022-10-13 14:48:04 +0700
+Processing by FamilyTreesController#create as */*
+  Parameters: {"name"=>"dhimas family", "family_tree"=>{"name"=>"dhimas family"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 3.0ms | Allocations: 4237)
+
+
+  
+NoMethodError (undefined method `save' for nil:NilClass
+
+      if @family.save
+                ^^^^^):
+  
+app/controllers/family_trees_controller.rb:6:in `create'
+Started POST "/family_trees" for ::1 at 2022-10-13 14:48:18 +0700
+Processing by FamilyTreesController#create as */*
+  Parameters: {"name"=>"dhimas family", "family_tree"=>{"name"=>"dhimas family"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/family_trees_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:6:in `create'
+  [1m[36mFamilyTree Create (0.6ms)[0m  [1m[32mINSERT INTO "family_trees" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "dhimas family"], ["user_id", 1], ["created_at", "2022-10-13 07:48:18.849353"], ["updated_at", "2022-10-13 07:48:18.849353"]]
+  ↳ app/controllers/family_trees_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/family_trees_controller.rb:6:in `create'
+Completed 200 OK in 25ms (Views: 0.4ms | ActiveRecord: 6.5ms | Allocations: 12656)
+
+
+Started DELETE "/posts/4" for ::1 at 2022-10-13 14:53:30 +0700
+  
+NameError (undefined local variable or method `name' for main:Object
+
+name
+^^^^):
+  
+app/controllers/posts_controller.rb:38:in `<main>'
+Started DELETE "/posts/4" for ::1 at 2022-10-13 14:54:06 +0700
+Processing by PostsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+  [1m[36mPost Destroy (0.4ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+Completed 200 OK in 43ms (Views: 0.4ms | ActiveRecord: 12.4ms | Allocations: 16004)
+
+
+Started DELETE "/posts/4" for ::1 at 2022-10-13 14:57:26 +0700
+Processing by PostsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 4.4ms | Allocations: 9868)
+
+
+  
+NoMethodError (undefined method `user_id' for nil:NilClass
+
+        if @user.id == @post.user_id
+                            ^^^^^^^^):
+  
+app/controllers/posts_controller.rb:30:in `destroy'
+Started DELETE "/posts/4" for ::1 at 2022-10-13 14:58:05 +0700
+Processing by PostsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+Completed 500 Internal Server Error in 21342ms (ActiveRecord: 3.5ms | Allocations: 25719)
+
+
+  
+NoMethodError (undefined method `user_id' for nil:NilClass
+
+        if @user.id == @post.user_id
+                            ^^^^^^^^):
+  
+app/controllers/posts_controller.rb:30:in `destroy'
+Started DELETE "/posts/5" for ::1 at 2022-10-13 14:58:32 +0700
+Processing by PostsController#destroy as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+  [1m[36mPost Destroy (2.6ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/posts_controller.rb:32:in `destroy'
+Completed 200 OK in 71323ms (Views: 1.3ms | ActiveRecord: 5.1ms | Allocations: 17565)
+
+
+Started DELETE "/posts/1" for ::1 at 2022-10-13 14:59:56 +0700
+Processing by PostsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+Completed 500 Internal Server Error in 9605ms (ActiveRecord: 0.5ms | Allocations: 17704)
+
+
+  
+NoMethodError (undefined method `json' for #<PostsController:0x00000000029ce8>
+
+            render json{message:"this post is not yours"}
+                   ^^^^
+Did you mean?  JSON):
+  
+app/controllers/posts_controller.rb:35:in `destroy'
+Started DELETE "/posts/1" for ::1 at 2022-10-13 15:00:30 +0700
+Processing by PostsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+Completed 200 OK in 2277ms (Views: 0.7ms | ActiveRecord: 4.5ms | Allocations: 20249)
+
+
+Started GET "/family_trees" for ::1 at 2022-10-13 15:17:22 +0700
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for FamilyTreesController):
+  
+actionpack (7.0.4) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/cookies.rb:696:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/family_trees/1" for ::1 at 2022-10-13 15:17:30 +0700
+Processing by FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.2ms | Allocations: 222)
+
+
+Started GET "/family_trees/1" for ::1 at 2022-10-13 15:17:42 +0700
+Processing by FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mFamilyTree Load (0.4ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:14:in `show'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 9.6ms | Allocations: 12610)
+
+
+  
+NoMethodError (undefined method `content' for nil:NilClass
+
+      render json: {data: {post: @post,content: @post.content.url}}
+                                                     ^^^^^^^^):
+  
+app/controllers/family_trees_controller.rb:15:in `show'
+Started GET "/family_trees/1" for ::1 at 2022-10-13 15:17:58 +0700
+Processing by FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:14:in `show'
+Completed 200 OK in 17ms (Views: 0.3ms | ActiveRecord: 4.7ms | Allocations: 9023)
+
+
+Started GET "/family_trees/1" for ::1 at 2022-10-13 15:18:23 +0700
+Processing by FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:14:in `show'
+Completed 200 OK in 17ms (Views: 0.4ms | ActiveRecord: 5.2ms | Allocations: 9059)
+
+
+Started GET "/posts/7" for ::1 at 2022-10-13 15:18:58 +0700
+Processing by PostsController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:18:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 7], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `show'
+[36m  Cloudinary Storage (3.2ms) [0m[34mGenerated URL for file at key: mh8y8ope6tn7e3rujbfkh0wsson3 (http://res.cloudinary.com/dzpzhe5xs/image/upload/mh8y8ope6tn7e3rujbfkh0wsson3.jpg)[0m
+Completed 200 OK in 67ms (Views: 0.5ms | ActiveRecord: 9.4ms | Allocations: 33371)
+
+
+Started GET "/user/posts" for ::1 at 2022-10-13 15:19:33 +0700
+  
+AbstractController::ActionNotFound (The action 'find' could not be found for PostsController):
+  
+actionpack (7.0.4) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/cookies.rb:696:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/user/posts" for ::1 at 2022-10-13 15:20:21 +0700
+Processing by PostsController#find as */*
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 639)
+
+
+Started GET "/user/posts" for ::1 at 2022-10-13 15:20:34 +0700
+Processing by PostsController#find as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/posts_controller.rb:19:in `find'
+Completed 200 OK in 28ms (Views: 5.2ms | ActiveRecord: 6.2ms | Allocations: 12402)
+
+
+Started DELETE "/posts/3" for ::1 at 2022-10-13 15:21:08 +0700
+Processing by PostsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:28:in `destroy'
+  [1m[36mPost Destroy (1.8ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/posts_controller.rb:31:in `destroy'
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 2419)
+
+
+Started GET "/family_trees/1" for ::1 at 2022-10-13 15:30:36 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/family_trees_controller.rb:15: `@' without identifiers is not allowed as an instance variable name
+... render json: {data: {family: @},status: :success}
+...                              ^
+):
+  
+app/controllers/family_trees_controller.rb:15: `@' without identifiers is not allowed as an instance variable name
+app/controllers/family_trees_controller.rb:15: `@' without identifiers is not allowed as an instance variable name
+app/controllers/family_trees_controller.rb:15: `@' without identifiers is not allowed as an instance variable name
+Started GET "/family_trees/1" for ::1 at 2022-10-13 15:31:35 +0700
+Processing by FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:14:in `show'
+Completed 200 OK in 42ms (Views: 1.9ms | ActiveRecord: 5.2ms | Allocations: 16420)
+
+
+Started POST "/login" for ::1 at 2022-10-14 10:29:11 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `login'
+Completed 200 OK in 199ms (Views: 0.2ms | ActiveRecord: 4.8ms | Allocations: 8167)
+
+
+Started PUT "/family_trees/1" for ::1 at 2022-10-14 10:29:29 +0700
+Processing by FamilyTreesController#update as */*
+  Parameters: {"name"=>"saya", "id"=>"1", "family_tree"=>{"name"=>"saya"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.2ms | Allocations: 4016)
+
+
+  
+NameError (undefined local variable or method `id' for #<FamilyTreesController:0x0000000000d480>
+
+    family = FamilyTree.find(params[id])
+                                    ^^):
+  
+app/controllers/family_trees_controller.rb:19:in `update'
+Started PUT "/family_trees/1" for ::1 at 2022-10-14 10:29:48 +0700
+Processing by FamilyTreesController#update as */*
+  Parameters: {"name"=>"saya", "id"=>"1", "family_tree"=>{"name"=>"saya"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mFamilyTree Load (1.6ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:19:in `update'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 7.0ms | Allocations: 9417)
+
+
+  
+NoMethodError (undefined method `update' for nil:NilClass
+
+    if @family.update(family_params)
+              ^^^^^^^):
+  
+app/controllers/family_trees_controller.rb:20:in `update'
+Started PUT "/family_trees/1" for ::1 at 2022-10-14 10:31:37 +0700
+Processing by FamilyTreesController#update as */*
+  Parameters: {"name"=>"saya", "id"=>"1", "family_tree"=>{"name"=>"saya"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/family_trees_controller.rb:20:in `update'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:20:in `update'
+  [1m[36mFamilyTree Update (0.5ms)[0m  [1m[33mUPDATE "family_trees" SET "name" = $1, "updated_at" = $2 WHERE "family_trees"."id" = $3[0m  [["name", "saya"], ["updated_at", "2022-10-14 03:31:37.401327"], ["id", 1]]
+  ↳ app/controllers/family_trees_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/family_trees_controller.rb:20:in `update'
+Completed 200 OK in 30ms (Views: 0.4ms | ActiveRecord: 7.0ms | Allocations: 13728)
+
+
+Started GET "/family_trees/1" for ::1 at 2022-10-14 10:31:49 +0700
+Processing by FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:14:in `show'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1457)
+
+
+Started GET "/family_trees/1" for ::1 at 2022-10-14 10:32:14 +0700
+Processing by FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:14:in `show'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1288)
+
+
+Started GET "/family_trees/1" for ::1 at 2022-10-14 10:32:20 +0700
+Processing by FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 115)
+
+
+Started GET "/family_trees/1" for ::1 at 2022-10-14 10:32:26 +0700
+Processing by FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/family_trees_controller.rb:14:in `show'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1270)
+
+

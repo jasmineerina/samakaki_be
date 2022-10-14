@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resources :biodata_users
   resources :posts
   get 'user/posts', to: 'posts#find'
+  resources :family_trees
 
 end

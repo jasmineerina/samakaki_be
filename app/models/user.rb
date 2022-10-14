@@ -1,6 +1,7 @@
 require 'bcrypt'
 class User < ApplicationRecord
   has_one :biodata
+  has_many :family_trees
   has_many :posts
   validates :email, :presence => true, :uniqueness => true
 
