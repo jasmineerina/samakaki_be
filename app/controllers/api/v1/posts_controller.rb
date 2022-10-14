@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class Api::V1::PostsController < ApplicationController
     before_action :authorize, only: [:create, :show, :find,:destroy]
     def index
         @posts = Post.all

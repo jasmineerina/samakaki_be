@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
   before_action :authorize, only: [:show, :update, :destroy]
   def index
     @users = User.all.select('id', 'name','email','phone')
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       render json: {data:{user: @user.new_attribute, token: token}}
     else
-      render json: {"message": @user.errors}, status: :bad_request
+      render json: @user.errors, status: :bad_request
     end
   end
 
