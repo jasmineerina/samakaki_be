@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'user/posts', to: 'posts#find'
       resources :family_trees
       resources :relations
+      resources :events
     end
   end
 

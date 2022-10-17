@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one :biodata
   has_many :family_trees
   has_many :posts
+  has_many :events
   validates :email, :presence => true, :uniqueness => true
 
   include BCrypt
