@@ -25,6 +25,15 @@ class Api::V1::EventsController < ApplicationController
         render json: {data: {event: @event}, message: "The event succesfully deleted"}
     end
 
+    def update
+        @event = Event.find(params[:id])
+        if @event.update(event_params)
+            render json: {data: {event: @event}, message: "Your event was succesfully updated"}
+        else
+            render json: @event.errors
+        end
+  end
+
     private
     def event_params
         params.permit(:name, :date, :venue, :family_tree_id)
