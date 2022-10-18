@@ -1,11 +1,11 @@
 require 'bcrypt'
 class User < ApplicationRecord
-  has_one :biodata
+  has_one :biodata_user
   has_many :family_trees
   has_many :posts
   has_many :events
   validates :email, :presence => true, :uniqueness => true
-
+  has_many :user_relations
   include BCrypt
 
   def password
@@ -16,11 +16,12 @@ class User < ApplicationRecord
     @password = Password.create(new_password)
     self.password_digest = @password
   end
+
   def new_attribute
     {
       id: self.id,
       email: self.email,
-      name: self.name,
+      name: self.name
     }
   end
 

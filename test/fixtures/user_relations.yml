@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  connected_user_id: 1
+  status: 1
+  family_tree_id: 1
+  token: MyString
+  user: one
+  relation: one
+
+two:
+  connected_user_id: 1
+  status: 1
+  family_tree_id: 1
+  token: MyString
+  user: two
+  relation: two

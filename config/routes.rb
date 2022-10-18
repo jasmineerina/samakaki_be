@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :family_trees
       resources :relations
       resources :events
+      resources :user_relations
     end
   end
 
