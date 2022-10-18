@@ -28592,3 +28592,455 @@ Processing by Api::V1::EventsController#create as */*
 Completed 200 OK in 31ms (Views: 0.4ms | ActiveRecord: 7.0ms | Allocations: 26008)
 
 
+Started POST "/api/v1/login" for ::1 at 2022-10-17 14:33:13 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test1@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 200 OK in 228ms (Views: 0.2ms | ActiveRecord: 3.3ms | Allocations: 8146)
+
+
+Started GET "/api/v1/events/:id" for ::1 at 2022-10-17 14:33:28 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:14:in `show'
+Completed 404 Not Found in 10ms (ActiveRecord: 2.9ms | Allocations: 4340)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=:id):
+  
+app/controllers/api/v1/events_controller.rb:14:in `show'
+Started GET "/api/v1/events/1" for ::1 at 2022-10-17 14:34:20 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:14:in `show'
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 0.7ms | Allocations: 4960)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-18 11:23:12 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test1@gmail.com"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 200 OK in 238ms (Views: 0.2ms | ActiveRecord: 4.5ms | Allocations: 8146)
+
+
+Started GET "/api/v1/events/:id" for ::1 at 2022-10-18 11:23:40 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:14:in `show'
+Completed 404 Not Found in 44ms (ActiveRecord: 2.9ms | Allocations: 4344)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=:id):
+  
+app/controllers/api/v1/events_controller.rb:14:in `show'
+Started GET "/api/v1/events/1" for ::1 at 2022-10-18 11:23:54 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:14:in `show'
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 0.8ms | Allocations: 4960)
+
+
+Started DELETE "/api/v1/events/1" for ::1 at 2022-10-18 11:25:34 +0700
+Processing by Api::V1::EventsController#destroy as */*
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1374)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass
+
+        @event = Event.find_by_id(@user.id).destroy
+                                       ^^^):
+  
+app/controllers/api/v1/events_controller.rb:19:in `destroy'
+Started DELETE "/api/v1/events/1" for ::1 at 2022-10-18 11:25:56 +0700
+Processing by Api::V1::EventsController#destroy as */*
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2442)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass
+
+        @event = Event.find_by_id(@event.id).destroy
+                                        ^^^):
+  
+app/controllers/api/v1/events_controller.rb:19:in `destroy'
+Started DELETE "/api/v1/events/1" for ::1 at 2022-10-18 11:26:16 +0700
+Processing by Api::V1::EventsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 3.2ms | Allocations: 7887)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass
+
+        @event = Event.find_by_id(@event.id).destroy
+                                        ^^^):
+  
+app/controllers/api/v1/events_controller.rb:19:in `destroy'
+Started DELETE "/api/v1/events/1" for ::1 at 2022-10-18 11:26:34 +0700
+Processing by Api::V1::EventsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `destroy'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 3.8ms | Allocations: 9703)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass
+
+        @event = Event.find_by_id(@user.id).destroy
+                                           ^^^^^^^^):
+  
+app/controllers/api/v1/events_controller.rb:19:in `destroy'
+Started DELETE "/api/v1/events/1" for ::1 at 2022-10-18 11:27:18 +0700
+Processing by Api::V1::EventsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `destroy'
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `destroy'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `destroy'
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 5.9ms | Allocations: 16907)
+
+
+  
+NoMethodError (undefined method `new_attribute' for #<Event id: 1, name: "arisan keluarga", date: "2022-10-11 00:00:00.000000000 +0000", venue: "rumah kakek", user_id: 4, family_tree_id: 2, created_at: "2022-10-17 06:28:11.510564000 +0000", updated_at: "2022-10-17 06:28:11.510564000 +0000">
+Did you mean?  read_attribute):
+  
+app/controllers/api/v1/events_controller.rb:20:in `destroy'
+Started POST "/api/v1/events" for ::1 at 2022-10-18 11:27:51 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"piknik", "date"=>"2022-10-11", "venue"=>"taman adipura", "family_tree_id"=>2, "event"=>{"name"=>"piknik", "date"=>"2022-10-11", "venue"=>"taman adipura", "family_tree_id"=>2}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007f00f39aaf60>, params: {"name"=>"piknik", "date"=>"2022-10-11", "venue"=>"taman adipura", "family_tree_id"=>2, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"piknik", "date"=>"2022-10-11", "venue"=>"taman adipura", "family_tree_id"=>2}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+  [1m[36mFamilyTree Load (1.1ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+  [1m[36mEvent Create (2.0ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "piknik"], ["date", "2022-10-11 00:00:00"], ["venue", "taman adipura"], ["user_id", 4], ["family_tree_id", 2], ["created_at", "2022-10-18 04:27:51.409740"], ["updated_at", "2022-10-18 04:27:51.409740"]]
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+Completed 200 OK in 42ms (Views: 0.4ms | ActiveRecord: 10.7ms | Allocations: 18611)
+
+
+Started DELETE "/api/v1/events/2" for ::1 at 2022-10-18 11:28:02 +0700
+Processing by Api::V1::EventsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `destroy'
+  [1m[36mEvent Destroy (0.3ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `destroy'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `destroy'
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 1.8ms | Allocations: 3541)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-18 11:33:05 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test1@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test1@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 200 OK in 224ms (Views: 0.2ms | ActiveRecord: 3.2ms | Allocations: 8149)
+
+
+Started GET "/api/v1/events" for ::1 at 2022-10-18 11:33:20 +0700
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::EventsController):
+  
+actionpack (7.0.4) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/cookies.rb:696:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/api/v1/events" for ::1 at 2022-10-18 11:41:24 +0700
+  
+AbstractController::ActionNotFound (The action 'index' could not be found for Api::V1::EventsController):
+  
+actionpack (7.0.4) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/cookies.rb:696:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/api/v1/events/1" for ::1 at 2022-10-18 11:41:55 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:15:in `show'
+Completed 200 OK in 27ms (Views: 0.9ms | ActiveRecord: 5.3ms | Allocations: 16923)
+
+
+Started GET "/api/v1/events/2" for ::1 at 2022-10-18 11:42:01 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:15:in `show'
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 1462)
+
+
+Started GET "/api/v1/events/3" for ::1 at 2022-10-18 11:42:06 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:15:in `show'
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.5ms | Allocations: 1391)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-18 11:42:10 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"piknik", "date"=>"2022-10-11", "venue"=>"taman adipura", "family_tree_id"=>2, "event"=>{"name"=>"piknik", "date"=>"2022-10-11", "venue"=>"taman adipura", "family_tree_id"=>2}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007f5c233fe9f0>, params: {"name"=>"piknik", "date"=>"2022-10-11", "venue"=>"taman adipura", "family_tree_id"=>2, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"piknik", "date"=>"2022-10-11", "venue"=>"taman adipura", "family_tree_id"=>2}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+  [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "piknik"], ["date", "2022-10-11 00:00:00"], ["venue", "taman adipura"], ["user_id", 4], ["family_tree_id", 2], ["created_at", "2022-10-18 04:42:10.566202"], ["updated_at", "2022-10-18 04:42:10.566202"]]
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `create'
+Completed 200 OK in 24ms (Views: 0.3ms | ActiveRecord: 6.4ms | Allocations: 15658)
+
+
+Started GET "/api/v1/events/3" for ::1 at 2022-10-18 11:42:16 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:15:in `show'
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.5ms | Allocations: 1567)
+
+
+Started GET "/api/v1/events" for ::1 at 2022-10-18 11:43:47 +0700
+Processing by Api::V1::EventsController#index as */*
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `index'
+Completed 200 OK in 9ms (Views: 4.0ms | ActiveRecord: 2.6ms | Allocations: 4735)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-18 11:44:13 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"piknik kedua", "date"=>"2022-10-11", "venue"=>"taman adi", "family_tree_id"=>2, "event"=>{"name"=>"piknik kedua", "date"=>"2022-10-11", "venue"=>"taman adi", "family_tree_id"=>2}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007f5c2041e708>, params: {"name"=>"piknik kedua", "date"=>"2022-10-11", "venue"=>"taman adi", "family_tree_id"=>2, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"piknik kedua", "date"=>"2022-10-11", "venue"=>"taman adi", "family_tree_id"=>2}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mFamilyTree Load (0.1ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "piknik kedua"], ["date", "2022-10-11 00:00:00"], ["venue", "taman adi"], ["user_id", 4], ["family_tree_id", 2], ["created_at", "2022-10-18 04:44:13.908800"], ["updated_at", "2022-10-18 04:44:13.908800"]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+Completed 200 OK in 32ms (Views: 0.3ms | ActiveRecord: 5.8ms | Allocations: 14929)
+
+
+Started GET "/api/v1/events" for ::1 at 2022-10-18 11:44:17 +0700
+Processing by Api::V1::EventsController#index as */*
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 1022)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-18 11:44:30 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"piknik kedua", "date"=>"2022-10-11", "venue"=>"taman adi", "family_tree_id"=>1, "event"=>{"name"=>"piknik kedua", "date"=>"2022-10-11", "venue"=>"taman adi", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007f5c221a47c8>, params: {"name"=>"piknik kedua", "date"=>"2022-10-11", "venue"=>"taman adi", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"piknik kedua", "date"=>"2022-10-11", "venue"=>"taman adi", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "piknik kedua"], ["date", "2022-10-11 00:00:00"], ["venue", "taman adi"], ["user_id", 4], ["family_tree_id", 1], ["created_at", "2022-10-18 04:44:30.565181"], ["updated_at", "2022-10-18 04:44:30.565181"]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 4697)
+
+
+Started GET "/api/v1/events" for ::1 at 2022-10-18 11:44:34 +0700
+Processing by Api::V1::EventsController#index as */*
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 1133)
+
+
+Started GET "/api/v1/events?family_tree_id=2" for ::1 at 2022-10-18 11:45:01 +0700
+Processing by Api::V1::EventsController#index as */*
+  Parameters: {"family_tree_id"=>"2"}
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE (2)[0m
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.6ms | Allocations: 1862)
+
+
+  
+ActiveRecord::StatementInvalid (PG::DatatypeMismatch: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: SELECT "events".* FROM "events" WHERE (2)
+                                               ^
+):
+  
+app/controllers/api/v1/events_controller.rb:6:in `index'
+Started GET "/api/v1/events?family_tree_id=2" for ::1 at 2022-10-18 11:45:34 +0700
+Processing by Api::V1::EventsController#index as */*
+  Parameters: {"family_tree_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."family_tree_id" = $1[0m  [["family_tree_id", 2]]
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `index'
+Completed 200 OK in 22ms (Views: 5.2ms | ActiveRecord: 2.2ms | Allocations: 5030)
+
+
