@@ -36703,3 +36703,214 @@ Processing by Api::V1::EventsController#update as */*
 Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 4126)
 
 
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-18 13:45:45 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan sendiri", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan sendiri", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:29:in `update'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007f8fbc0b58d0>, params: {"name"=>"arisan sendiri", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan sendiri", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+Completed 200 OK in 40ms (Views: 0.5ms | ActiveRecord: 9.2ms | Allocations: 25448)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-18 13:45:52 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:29:in `update'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007f8fb673abe8>, params: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mEvent Update (0.5ms)[0m  [1m[33mUPDATE "events" SET "name" = $1, "updated_at" = $2 WHERE "events"."id" = $3[0m  [["name", "arisan bersama"], ["updated_at", "2022-10-18 06:45:52.215504"], ["id", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 2.9ms | Allocations: 5515)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-18 13:45:59 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 811)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-18 13:46:55 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:7:in `each_with_index'
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 1.1ms | Allocations: 10469)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-18 13:47:10 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"dhim@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"dhim@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 191ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 848)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-18 13:47:16 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"dhim@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"dhim@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 189ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 619)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-18 13:47:25 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"dhimas@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"dhimas@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimas@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 586)
+
+
+Started GET "/api/v1/user_relations/44" for ::1 at 2022-10-18 13:47:41 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `show'
+  [1m[36mBiodataUser Load (0.3ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+[36m  Cloudinary Storage (1.9ms) [0m[34mGenerated URL for file at key: 5u80qdbwhbc9hsmx8k8gayzqan5h (http://res.cloudinary.com/dzpzhe5xs/image/upload/5u80qdbwhbc9hsmx8k8gayzqan5h.jpg)[0m
+Completed 200 OK in 69ms (Views: 0.4ms | ActiveRecord: 10.0ms | Allocations: 43316)
+
+
+Started GET "/api/v1/users" for ::1 at 2022-10-18 13:47:50 +0700
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users"."id", "users"."name", "users"."email", "users"."phone" FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 1073)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-18 13:48:12 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"dhim@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"dhim@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 195ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 650)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-18 13:48:20 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"dhim@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"dhim@gmail.com"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 203ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 607)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-18 13:48:30 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"dhim@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"dhim@gmail.com"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 200 OK in 191ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 848)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-18 13:48:42 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `authorized_user'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:7:in `each_with_index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:8:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:11:in `block in index'
+  [1m[36mBiodataUser Load (0.3ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+[36m  Cloudinary Storage (0.1ms) [0m[34mGenerated URL for file at key: nvg4v7h2zb18sswln17qy7b0bkum (http://res.cloudinary.com/dzpzhe5xs/image/upload/nvg4v7h2zb18sswln17qy7b0bkum.jpeg)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:8:in `block in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:11:in `block in index'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+[36m  Cloudinary Storage (0.1ms) [0m[34mGenerated URL for file at key: 68htgorjd4qdvtlcpk9nxglt7wee (http://res.cloudinary.com/dzpzhe5xs/image/upload/68htgorjd4qdvtlcpk9nxglt7wee.jpeg)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:8:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 52], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:11:in `block in index'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+[36m  Cloudinary Storage (0.2ms) [0m[34mGenerated URL for file at key: 5u80qdbwhbc9hsmx8k8gayzqan5h (http://res.cloudinary.com/dzpzhe5xs/image/upload/5u80qdbwhbc9hsmx8k8gayzqan5h.jpg)[0m
+Completed 200 OK in 103ms (Views: 1.8ms | ActiveRecord: 5.7ms | Allocations: 27571)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-18 13:49:11 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:29:in `update'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007f8fbc02a168>, params: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 7.4ms | Allocations: 17708)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-18 13:49:16 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 109)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-18 13:49:21 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `authorized_user'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:29:in `update'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007f8fbe0d9d00>, params: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 1.4ms | Allocations: 4562)
+
+

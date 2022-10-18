@@ -1,5 +1,5 @@
 class Api::V1::EventsController < ApplicationController
-    before_action :authorize, only: [:create, :show, :destroy]
+    before_action :authorize, only: [:create, :show, :destroy, :update]
 
     def index
         @events = Event.where(family_tree_id: params[:family_tree_id])
