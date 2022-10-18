@@ -1,7 +1,12 @@
 class Api::V1::PostsController < ApplicationController
     before_action :authorize, only: [:create, :show, :find,:destroy]
     def index
-        @posts = Post.all
+        @relations = UserRelation.where(family_tree_id: params[:family_tree_id]).where.not(connected_user_id: nil)
+        @posts=[]
+        @relations.each_with_index do |relation|
+            @post = Post.find_by(user_id: relation.user_id)
+            @posts.push(@post)
+        end
         render json:{data:{post: @posts}}
     end
 

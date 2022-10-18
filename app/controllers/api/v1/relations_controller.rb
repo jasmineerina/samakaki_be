@@ -4,7 +4,7 @@ class Api::V1::RelationsController < ApplicationController
   def create
     @relation = Relation.new(relation_params.merge(user_id:@user.id,family_tree_id: params["family_tree_id"],connected_user_id:params["connected_user_id"]))
       if @relation.save
-        render json: @relation.get_relation_from_invitation
+        render json: {relation:@relation.get_relation_from_invitation, user_relation: @relation.user_relations}
       else
         render json: {"message": @relation.errors}, status: :bad_request
       end
