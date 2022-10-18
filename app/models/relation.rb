@@ -12,7 +12,7 @@ class Relation < ApplicationRecord
   private
 
   def  build_user_relation
-    token = JWT.encode({user_id: self.user_id, relation_id: self.relation_id},'secret')
+    token = JWT.encode({user_id: self.user_id, relation_id: self.id},'secret')
     self.user_relations.create(user_id: self.user_id, relation_id: self.id, family_tree_id: self.family_tree_id,connected_user_id: self.connected_user_id,token: token)
   end
 end

@@ -1,7 +1,7 @@
 class Api::V1::UserRelationsController < ApplicationController
   before_action :authorize, only: [:index]
     def index
-      @relations = UserRelation.where(user_id: @user.id)
+      @relations = UserRelation.where(user_id: @user.id).where.not(connected_user_id: nil)
       @relation_detail =[]
       @user=[]
       @relations.each_with_index do |relation, index|

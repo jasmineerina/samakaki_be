@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       resources :relations
       resources :events
       resources :user_relations
+      post 'invitation/register', to: 'invitations#create'
+
     end
   end
 
