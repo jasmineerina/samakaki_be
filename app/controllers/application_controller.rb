@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-  include ActiveStorage::SetCurrent
 
   def encode_token(payload,exp=1.days.from_now)
     payload[:exp] = exp.to_i
