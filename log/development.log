@@ -39260,3 +39260,51 @@ Processing by Api::V1::PostsController#index as */*
 Completed 200 OK in 22ms (Views: 1.2ms | ActiveRecord: 4.3ms | Allocations: 9018)
 
 
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-19 07:59:14 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "abcd@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `authorized_user'
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 17ms (Views: 0.2ms | ActiveRecord: 4.2ms | Allocations: 7130)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-19 07:59:22 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 200 OK in 201ms (Views: 0.1ms | ActiveRecord: 3.0ms | Allocations: 6359)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-19 07:59:30 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:23:in `authorized_user'
+  [1m[36mUserRelation Load (1.9ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["user_id", 4]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:7:in `each_with_index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:8:in `block in index'
+  [1m[36mRelation Load (0.9ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 110], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:11:in `block in index'
+  [1m[36mBiodataUser Load (0.8ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (1.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+[36m  Cloudinary Storage (4.4ms) [0m[34mGenerated URL for file at key: nvg4v7h2zb18sswln17qy7b0bkum (http://res.cloudinary.com/dzpzhe5xs/image/upload/nvg4v7h2zb18sswln17qy7b0bkum.jpeg)[0m
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:8:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 111], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:11:in `block in index'
+  [1m[36mCACHE BiodataUser Load (0.0ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+[36m  Cloudinary Storage (0.2ms) [0m[34mGenerated URL for file at key: nvg4v7h2zb18sswln17qy7b0bkum (http://res.cloudinary.com/dzpzhe5xs/image/upload/nvg4v7h2zb18sswln17qy7b0bkum.jpeg)[0m
+Completed 200 OK in 129ms (Views: 1.3ms | ActiveRecord: 20.5ms | Allocations: 53812)
+
+
