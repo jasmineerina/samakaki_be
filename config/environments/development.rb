@@ -35,7 +35,7 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
-  config.active_storage.default_url_options = {host: 'sama-kaki.herokuapp.com',protocol: 'https'}
+
 
 
   # Don't care if the mailer can't send.
