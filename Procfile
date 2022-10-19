@@ -1,1 +1,1 @@
-web: rails s -e development
+web: rails s
