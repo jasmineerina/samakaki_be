@@ -40434,3 +40434,163 @@ Processing by Api::V1::UserRelationsController#show as */*
 Completed 200 OK in 38ms (Views: 0.8ms | ActiveRecord: 7.7ms | Allocations: 17483)
 
 
+Started GET "/api/v1/posts?family_tree_id=1" for ::1 at 2022-10-20 13:22:09 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PostsController#index as */*
+  Parameters: {"family_tree_id"=>"1"}
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."family_tree_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["family_tree_id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:6:in `each_with_index'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+Completed 200 OK in 34ms (Views: 1.2ms | ActiveRecord: 6.7ms | Allocations: 19563)
+
+
+Started POST "/api/v1/posts" for ::1 at 2022-10-20 13:23:00 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru banget", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("title", "descriptions", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "ini title punya baru banget"], ["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["created_at", "2022-10-20 06:23:00.189025"], ["updated_at", "2022-10-20 06:23:00.189025"], ["user_id", 22]]
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:15:in `create'
+Completed 200 OK in 35ms (Views: 0.7ms | ActiveRecord: 7.6ms | Allocations: 18204)
+
+
+Started POST "/api/v1/posts" for ::1 at 2022-10-20 13:26:54 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru banget", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+  [1m[36mPost Create (0.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "descriptions", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "ini title punya baru banget"], ["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["created_at", "2022-10-20 06:26:55.003440"], ["updated_at", "2022-10-20 06:26:55.003440"], ["user_id", 22]]
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+Completed 200 OK in 27ms (Views: 0.3ms | ActiveRecord: 7.7ms | Allocations: 13437)
+
+
+Started GET "/api/v1/posts/100" for ::1 at 2022-10-20 13:27:02 +0700
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"100"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 100], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:44:in `set_post'
+Filter chain halted as :set_post rendered or redirected
+Completed 404 Not Found in 4ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1996)
+
+
+Started GET "/api/v1/posts/11" for ::1 at 2022-10-20 13:27:07 +0700
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:44:in `set_post'
+Filter chain halted as :set_post rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1234)
+
+
+Started GET "/api/v1/posts/20" for ::1 at 2022-10-20 13:27:14 +0700
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"20"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:44:in `set_post'
+Filter chain halted as :set_post rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1223)
+
+
+Started GET "/api/v1/posts/9" for ::1 at 2022-10-20 13:27:38 +0700
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:44:in `set_post'
+Filter chain halted as :set_post rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1221)
+
+
+Started GET "/api/v1/posts/9" for ::1 at 2022-10-20 13:28:08 +0700
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:44:in `set_post'
+Completed 200 OK in 22ms (Views: 0.6ms | ActiveRecord: 6.2ms | Allocations: 10245)
+
+
+Started GET "/api/v1/posts/1000" for ::1 at 2022-10-20 13:28:14 +0700
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"1000"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 1000], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:44:in `set_post'
+Filter chain halted as :set_post rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1253)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-20 13:29:21 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 22]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 25ms (Views: 5.3ms | ActiveRecord: 5.7ms | Allocations: 12405)
+
+
+Started DELETE "/api/v1/posts/3" for ::1 at 2022-10-20 13:31:47 +0700
+Processing by Api::V1::PostsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:43:in `set_post'
+Filter chain halted as :set_post rendered or redirected
+Completed 404 Not Found in 18ms (Views: 0.1ms | ActiveRecord: 4.5ms | Allocations: 8684)
+
+
+Started DELETE "/api/v1/posts/10" for ::1 at 2022-10-20 13:31:54 +0700
+Processing by Api::V1::PostsController#destroy as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:43:in `set_post'
+  [1m[36mPost Destroy (2.0ms)[0m  [1m[31mDELETE FROM "posts" WHERE "posts"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/api/v1/posts_controller.rb:30:in `destroy'
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 4.0ms | Allocations: 3326)
+
+
+Started DELETE "/api/v1/posts/2" for ::1 at 2022-10-20 13:32:09 +0700
+Processing by Api::V1::PostsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:43:in `set_post'
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1204)
+
+
