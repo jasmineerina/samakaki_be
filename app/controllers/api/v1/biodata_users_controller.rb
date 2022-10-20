@@ -7,7 +7,7 @@ class Api::V1::BiodataUsersController < ApplicationController
 
     def show
         @biodata = BiodataUser.find_by(user_id: @user.id)
-        render json: {data:{biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}}
+        render json: {data:{biodata: @biodata.new_attribute}}
     end
 
     def update
@@ -21,6 +21,6 @@ class Api::V1::BiodataUsersController < ApplicationController
 
     private
     def biodata_params
-        params.permit(:email, :dob, :address, :marriage_status, :status, :avatar)
+        params.permit(:email, :dob, :address, :marriage_status, :status)
     end
 end

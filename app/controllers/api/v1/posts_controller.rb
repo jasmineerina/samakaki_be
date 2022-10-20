@@ -26,7 +26,7 @@ class Api::V1::PostsController < ApplicationController
 
     def show
         @post = Post.find(params[:id])
-        render json: {data: {post: @post,content: @post.content.url},status: :success}
+        render json: {data: {post: @post},status: :success}
     end
 
     def destroy
@@ -41,7 +41,7 @@ class Api::V1::PostsController < ApplicationController
 
     private
     def post_params
-        params.permit(:title, :descriptions, :status, :content)
+        params.permit(:title, :descriptions, :status)
     end
 end
 
