@@ -10,7 +10,7 @@ class Api::V1::UserRelationsController < ApplicationController
           {
             user_relation:relation,relation:relation.relation,biodata:
             {
-              biodata:@user.biodata_user, avatar: @user.biodata_user.avatar.url
+              biodata:@user.biodata_user
             }
           }
         )
@@ -21,8 +21,9 @@ class Api::V1::UserRelationsController < ApplicationController
     def show
       @relation = UserRelation.find_by_id(params[:id])
       @user = User.find_by_id(@relation.connected_user_id)
-      render json: {data: {relation: @relation,user:@user.biodata_user,avatar:@user.biodata_user.avatar.url},status: :success}
+      render json: {data: {relation: @relation,user:@user,biodata:@user.biodata_user},status: :success}
     end
 end
 
 
+#  avatar: @user.biodata_user.avatar.url
