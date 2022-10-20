@@ -2,11 +2,7 @@ class Api::V1::BiodataUsersController < ApplicationController
     before_action :authorize, only: [:create, :show, :update]
     def create
         @biodata = BiodataUser.new(biodata_params.merge(user_id: @user.id))
-        if @biodata.save
-            render json: {data:{biodata: @biodata.new_attribute}}
-        else
-            render json: {"message": @biodata.errors}, status: :bad_request
-        end
+        @biodata.save ? response_to_json(@biodata.new_attribute, :success) : response_error(@biodata.errors, :unprocessable_entity)
     end
 
     def show

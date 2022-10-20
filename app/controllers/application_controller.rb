@@ -29,4 +29,12 @@ class ApplicationController < ActionController::API
     render json: {message: 'You have to log in'}, status: :unauthorized unless
     authorized_user
   end
+
+  def response_to_json(message, status)
+    render json: {data:message, status: status}
+  end
+
+  def response_error(message, status)
+    render json: { message: message }, status: status
+  end
 end

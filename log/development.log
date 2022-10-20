@@ -39622,3 +39622,638 @@ DEPRECATION WARNING: ActiveStorage::Current.host= is deprecated, instead use Act
   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
 [36m  Cloudinary Storage (0.2ms) [0m[34mGenerated URL for file at key: 896qddoxnom8nw2gaz2kxsvi19br (http://res.cloudinary.com/dzpzhe5xs/image/upload/896qddoxnom8nw2gaz2kxsvi19br.jpg)[0m
 [36m  Cloudinary Storage (0.2ms) [0m[34mGenerated URL for file at key: 896qddoxnom8nw2gaz2kxsvi19br (http://res.cloudinary.com/dzpzhe5xs/image/upload/896qddoxnom8nw2gaz2kxsvi19br.jpg)[0m
+Started POST "/api/v1/users" for ::1 at 2022-10-19 12:15:41 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 400 Bad Request in 206ms (Views: 3.5ms | ActiveRecord: 3.9ms | Allocations: 11571)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-19 12:15:54 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test10@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test10@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "test10@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-19 05:15:54.836986"], ["updated_at", "2022-10-19 05:15:54.836986"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 197ms (Views: 0.2ms | ActiveRecord: 3.0ms | Allocations: 4668)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-19 12:16:21 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test10@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test10@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 200 OK in 193ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1116)
+
+
+Started GET "/api/v1/users/:id" for ::1 at 2022-10-19 12:16:58 +0700
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:30:in `show'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 2226)
+
+
+Started GET "/api/v1/posts?family_tree_id=1" for ::1 at 2022-10-19 12:19:43 +0700
+Processing by Api::V1::PostsController#index as */*
+  Parameters: {"family_tree_id"=>"1"}
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."family_tree_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["family_tree_id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:6:in `each_with_index'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `block in index'
+Completed 200 OK in 31ms (Views: 0.6ms | ActiveRecord: 6.9ms | Allocations: 16058)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-19 12:22:23 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.3ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:13:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 8], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `show'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `show'
+[36m  Cloudinary Storage (2.4ms) [0m[34mGenerated URL for file at key: 5u80qdbwhbc9hsmx8k8gayzqan5h (http://res.cloudinary.com/dzpzhe5xs/image/upload/5u80qdbwhbc9hsmx8k8gayzqan5h.jpg)[0m
+Completed 200 OK in 54ms (Views: 0.3ms | ActiveRecord: 7.3ms | Allocations: 31831)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-19 12:30:29 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:29:in `update'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007fedea3768f8>, params: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mFamilyTree Load (1.0ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+Completed 200 OK in 79ms (Views: 0.4ms | ActiveRecord: 12.1ms | Allocations: 14268)
+
+
+Started GET "/api/v1/users/:id" for ::1 at 2022-10-20 07:35:34 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:54:in `set_user'
+Completed 200 OK in 38ms (Views: 0.2ms | ActiveRecord: 17.3ms | Allocations: 13614)
+
+
+Started GET "/api/v1/users/:id" for ::1 at 2022-10-20 07:36:09 +0700
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:50:in `set_user'
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 4.2ms | Allocations: 7254)
+
+
+Started DELETE "/api/v1/users/:id" for ::1 at 2022-10-20 07:37:10 +0700
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"id"=>":id"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 661)
+
+
+Started DELETE "/api/v1/users/:id" for ::1 at 2022-10-20 07:37:21 +0700
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:43:in `destroy'
+  [1m[36mUser Destroy (2.2ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 19]]
+  ↳ app/controllers/api/v1/users_controller.rb:43:in `destroy'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:43:in `destroy'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 7.9ms | Allocations: 7844)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:39:58 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test10@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test10@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:13:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "test10@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-20 00:39:59.296514"], ["updated_at", "2022-10-20 00:39:59.296514"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:13:in `create'
+Completed 200 OK in 202ms (Views: 0.2ms | ActiveRecord: 4.9ms | Allocations: 7133)
+
+
+Started GET "/api/v1/users/:id" for ::1 at 2022-10-20 07:40:08 +0700
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.2ms | Allocations: 6581)
+
+
+  
+NoMethodError (undefined method `set_user' for #<Api::V1::UsersController:0x0000000002cee8>
+
+              target.send(@method_name, &block)
+                    ^^^^^
+Did you mean?  set_request!):
+  
+activesupport (7.0.4) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.4) lib/active_support/callbacks.rb:180:in `block (2 levels) in halting_and_conditional'
+actionpack (7.0.4) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.4) lib/active_support/callbacks.rb:181:in `block in halting_and_conditional'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.4) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.4) lib/active_support/callbacks.rb:106:in `run_callbacks'
+actionpack (7.0.4) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.4) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.4) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.4) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.4) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.4) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.4) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.4) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.4) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.4) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.4) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.4) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.4) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.4) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/cookies.rb:696:in `call'
+activerecord (7.0.4) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.4) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.4) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.4) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.4) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.4) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.4) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.4) lib/rails/engine.rb:530:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/api/v1/users/:id" for ::1 at 2022-10-20 07:41:24 +0700
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 3.0ms | Allocations: 6290)
+
+
+Started PUT "/api/v1/users/:id" for ::1 at 2022-10-20 07:43:23 +0700
+Error occurred while parsing request parameters.
+Contents:
+
+{   
+    "name":"testing",
+    "password":"test123",
+}
+Processing by Api::V1::UsersController#update as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 400 Bad Request in 10ms (ActiveRecord: 2.9ms | Allocations: 4378)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+app/controllers/api/v1/users_controller.rb:54:in `user_params'
+app/controllers/api/v1/users_controller.rb:34:in `update'
+Started PUT "/api/v1/users/:id" for ::1 at 2022-10-20 07:43:31 +0700
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"name"=>"testing", "password"=>"[FILTERED]", "id"=>":id", "user"=>{"name"=>"testing"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:34:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test10@gmail.com"], ["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:34:in `update'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["name", "testing"], ["updated_at", "2022-10-20 00:43:31.147468"], ["id", 20]]
+  ↳ app/controllers/api/v1/users_controller.rb:34:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:34:in `update'
+Completed 200 OK in 11ms (Views: 0.5ms | ActiveRecord: 1.9ms | Allocations: 4309)
+
+
+Started PUT "/api/v1/users/:id" for ::1 at 2022-10-20 07:43:45 +0700
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"name"=>"testing", "password"=>"[FILTERED]", "id"=>":id", "user"=>{"name"=>"testing"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:34:in `update'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test10@gmail.com"], ["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:34:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:34:in `update'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 4.4ms | Allocations: 5752)
+
+
+Started DELETE "/api/v1/users/:id" for ::1 at 2022-10-20 07:46:10 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#destroy as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 20]]
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:38:in `destroy'
+Completed 200 OK in 26ms (Views: 0.3ms | ActiveRecord: 5.6ms | Allocations: 14180)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:46:21 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test10@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test10@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "test10@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-20 00:46:21.275288"], ["updated_at", "2022-10-20 00:46:21.275288"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 204ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 5158)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:48:24 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/users_controller.rb:26: syntax error, unexpected ':', expecting `end'
+...@user.new_attribute,:success) : response_error(@user.errors,...
+...                              ^
+):
+  
+app/controllers/api/v1/users_controller.rb:26: syntax error, unexpected ':', expecting `end'
+app/controllers/api/v1/users_controller.rb:26: syntax error, unexpected ':', expecting `end'
+app/controllers/api/v1/users_controller.rb:26: syntax error, unexpected ':', expecting `end'
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:49:36 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/users_controller.rb:26: syntax error, unexpected ':', expecting `end'
+...@user.new_attribute,:success) : response_error(@user.errors,...
+...                              ^
+):
+  
+app/controllers/api/v1/users_controller.rb:26: syntax error, unexpected ':', expecting `end'
+app/controllers/api/v1/users_controller.rb:26: syntax error, unexpected ':', expecting `end'
+app/controllers/api/v1/users_controller.rb:26: syntax error, unexpected ':', expecting `end'
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:49:53 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/users_controller.rb:30: syntax error, unexpected ':', expecting `end'
+...@user.new_attribute,:success) : response_error(@user.errors,...
+...                              ^
+):
+  
+app/controllers/api/v1/users_controller.rb:30: syntax error, unexpected ':', expecting `end'
+app/controllers/api/v1/users_controller.rb:30: syntax error, unexpected ':', expecting `end'
+app/controllers/api/v1/users_controller.rb:30: syntax error, unexpected ':', expecting `end'
+Started GET "/api/v1/users/:id" for ::1 at 2022-10-20 07:50:34 +0700
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test10@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 3.3ms | Allocations: 6292)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:50:41 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testing@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testing@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "testing@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-20 00:50:42.127260"], ["updated_at", "2022-10-20 00:50:42.127260"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 209ms (Views: 0.2ms | ActiveRecord: 2.2ms | Allocations: 3573)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:51:28 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testing@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testing@gmail.com", "phone"=>"08981231"}}
+Completed 500 Internal Server Error in 195ms (ActiveRecord: 2.3ms | Allocations: 5315)
+
+
+  
+NameError (undefined local variable or method `user' for #<Api::V1::UsersController:0x00000000036a10>
+
+    user.save ? response_to_json(token, :ok) : response_error(@user.errors, :unprocessable_entity)
+    ^^^^
+Did you mean?  @user):
+  
+app/controllers/api/v1/users_controller.rb:12:in `create'
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:51:45 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testing@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testing@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 422 Unprocessable Entity in 199ms (Views: 1.4ms | ActiveRecord: 3.4ms | Allocations: 6353)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:51:51 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testinglagi@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testinglagi@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "testinglagi@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-20 00:51:51.822032"], ["updated_at", "2022-10-20 00:51:51.822032"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 198ms (Views: 0.1ms | ActiveRecord: 2.3ms | Allocations: 3183)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:52:48 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testinglagi@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testinglagi@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 422 Unprocessable Entity in 197ms (Views: 0.5ms | ActiveRecord: 3.4ms | Allocations: 5427)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:52:53 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testinglagi1@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testinglagi1@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagi1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "testinglagi1@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-20 00:52:53.763213"], ["updated_at", "2022-10-20 00:52:53.763213"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 197ms (Views: 0.4ms | ActiveRecord: 1.6ms | Allocations: 3329)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:53:32 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected ',', expecting =>
+...save ? response_to_json({@user,token}, :ok) : response_error...
+...                              ^
+):
+  
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected ',', expecting =>
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:53:42 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected ',', expecting =>
+...save ? response_to_json({@user,@token}, :ok) : response_erro...
+...                              ^
+):
+  
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected ',', expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected ',', expecting =>
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:53:59 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected instance variable, expecting =>
+... response_to_json({@user @token}, :ok) : response_error(@use...
+...                         ^~~~~~
+):
+  
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected instance variable, expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected instance variable, expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected instance variable, expecting =>
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:54:04 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected '}', expecting =>
+...sponse_to_json({@user + @token}, :ok) : response_error(@user...
+...                              ^
+):
+  
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected '}', expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected '}', expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected '}', expecting =>
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:54:44 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected '}', expecting =>
+...e_to_json({@user.merge(@token)}, :ok) : response_error(@user...
+...                              ^
+):
+  
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected '}', expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected '}', expecting =>
+app/controllers/api/v1/users_controller.rb:12: syntax error, unexpected '}', expecting =>
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:54:54 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testinglagi1@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testinglagi1@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagi1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 422 Unprocessable Entity in 198ms (Views: 0.7ms | ActiveRecord: 2.5ms | Allocations: 5463)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:54:59 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testinglagi11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testinglagi11@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagi11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "testinglagi11@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-20 00:54:59.611033"], ["updated_at", "2022-10-20 00:54:59.611033"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 2.2ms | Allocations: 8297)
+
+
+  
+NoMethodError (undefined method `merge' for #<User id: 25, name: "test", email: "testinglagi11@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-20 00:54:59.611033000 +0000", updated_at: "2022-10-20 00:54:59.611033000 +0000", reset_password_token: nil, reset_password_sent_at: nil>):
+  
+app/controllers/api/v1/users_controller.rb:12:in `create'
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:55:43 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testinglagi11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testinglagi11@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagi11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 422 Unprocessable Entity in 199ms (Views: 0.5ms | ActiveRecord: 2.6ms | Allocations: 5464)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 07:55:48 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testinglagi111@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testinglagi111@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagi111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "testinglagi111@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-20 00:55:48.562501"], ["updated_at", "2022-10-20 00:55:48.562501"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 198ms (Views: 0.3ms | ActiveRecord: 2.2ms | Allocations: 3308)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-20 07:57:25 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"testing@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"testing@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 193ms (Views: 0.3ms | ActiveRecord: 3.7ms | Allocations: 3256)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-20 07:57:44 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"testing@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"testing@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 194ms (Views: 0.3ms | ActiveRecord: 2.3ms | Allocations: 3230)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-20 07:58:01 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"testing@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"testing@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 194ms (Views: 0.2ms | ActiveRecord: 3.4ms | Allocations: 3151)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-20 07:59:18 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"testing@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"testing@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 422 Unprocessable Entity in 195ms (Views: 0.1ms | ActiveRecord: 2.8ms | Allocations: 2920)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-20 11:05:09 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"testing@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"testing@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 422 Unprocessable Entity in 193ms (Views: 0.1ms | ActiveRecord: 3.4ms | Allocations: 3028)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-20 11:05:18 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"testing@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"testing@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 199ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 838)
+
+
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-20 11:05:45 +0700
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2000-10-10", "address"=>"maguwoharjo", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f5d65cdc3e0 @tempfile=#<Tempfile:/tmp/RackMultipart20221020-62205-hbkv8g.jpeg>, @original_filename="zyro-image.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"zyro-image.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Create (0.7ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2000-10-10 00:00:00"], ["address", "maguwoharjo"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-20 04:05:45.360963"], ["updated_at", "2022-10-20 04:05:45.360963"], ["user_id", 22]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Load (0.8ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Blob Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "j4khd5gyut8knchoi7yvxjnol7gt"], ["filename", "zyro-image.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 73836], ["checksum", "Y9vx21Wg2JCr6J/cICH46A=="], ["created_at", "2022-10-20 04:05:45.382746"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.7ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 9], ["blob_id", 12], ["created_at", "2022-10-20 04:05:45.385040"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-20 04:05:45.387359"], ["id", 9]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+[36m  Cloudinary Storage (2210.5ms) [0m[32mUploaded file to key: j4khd5gyut8knchoi7yvxjnol7gt (checksum: Y9vx21Wg2JCr6J/cICH46A==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 1176bced-05af-4b76-bbe2-afd15d6f3817) to Async(default) with arguments: #<GlobalID:0x00007f5d67827b18 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/12>>
+Completed 200 OK in 2292ms (Views: 0.7ms | ActiveRecord: 13.9ms | Allocations: 186782)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817]   [1m[36mActiveStorage::Blob Load (0.5ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817] Performing ActiveStorage::AnalyzeJob (Job ID: 1176bced-05af-4b76-bbe2-afd15d6f3817) from Async(default) enqueued at 2022-10-20T04:05:47Z with arguments: #<GlobalID:0x00007f5d677b6120 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/12>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 12]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817] Performed ActiveStorage::AnalyzeJob (Job ID: 1176bced-05af-4b76-bbe2-afd15d6f3817) from Async(default) in 20.99ms

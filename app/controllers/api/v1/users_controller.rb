@@ -8,47 +8,36 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.password = params[:password]
-    token = encode_token({user_id: @user.id, email: @user.email})
-    if @user.save
-      render json: {data:{user: @user.new_attribute, token: token}}
-    else
-      render json: @user.errors, status: :bad_request
-    end
+    @token = encode_token({user_id: @user.id, email: @user.email})
+    @user.save ? response_to_json({user:@user,token:@token}, :ok) : response_error(@user.errors, :unprocessable_entity)
   end
 
   def login
     @user = User.find_by(email: params[:email])
     if @user && @user.password == params[:password]
-      token = encode_token({id: @user.id, email: @user.email})
-      render json: {data:{user: @user.new_attribute, token: token}}
+      @token = encode_token({id: @user.id, email: @user.email})
+      response_to_json({user:@user.new_attribute,token:@token},:success)
     else
-      render json: {error: 'Invalid email or password'}, status: :unprocessable_entity
+      response_error("email atau password salah",:unprocessable_entity)
     end
   end
 
   def show
-    @user = User.find_by_id(@user.id)
-    render json: @user.new_attribute
-  rescue ActiveRecord::RecordNotFound => e
-    render json: {
-      error: e.to_s
-      }, status: :not_found
+    response_to_json(@user.new_attribute,:success)
   end
 
   def update
-    if @user.update(user_params)
-      render json: @user.new_attribute
-    else
-      render json: @user.errors, status: :bad_request
-    end
+    @user.update(user_params) ? response_to_json(@user.new_attribute, :ok) : response_error(@user.errors, :unprocessable_entity)
   end
 
   def destroy
-    @user = User.find_by_id(@user.id).destroy
-    render json: {data: {user: @user.new_attribute}, message: "Your account deleted succesfully"}
+    @user.destroy ? response_to_json(@user.new_attribute, :success) : response_error(@user.errors, :error)
   end
 
   private
+
+
+
 
   def user_params
     params.require(:user).permit(:name, :email, :phone, :password_digest)
