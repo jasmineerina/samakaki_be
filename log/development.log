@@ -41944,3 +41944,81 @@ Processing by Api::V1::EventsController#update as */*
 Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 3.1ms | Allocations: 5321)
 
 
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-21 12:27:35 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UserRelationsController#index as */*
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 947)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-21 12:27:49 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (1.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["user_id", 22]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:7:in `each_with_index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:8:in `block in index'
+  [1m[36mRelation Load (1.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:11:in `block in index'
+  [1m[36mBiodataUser Load (0.8ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+Completed 200 OK in 84ms (Views: 0.5ms | ActiveRecord: 15.3ms | Allocations: 36888)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-21 12:28:16 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testi@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testi@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "testi@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-21 05:28:16.259985"], ["updated_at", "2022-10-21 05:28:16.259985"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 197ms (Views: 0.3ms | ActiveRecord: 2.0ms | Allocations: 5287)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-21 12:28:25 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["user_id", 29]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:7:in `each_with_index'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1377)
+
+
+Started GET "/api/v1/user_relations/50" for ::1 at 2022-10-21 12:29:38 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"50"}
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `show'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+Completed 200 OK in 41ms (Views: 3.0ms | ActiveRecord: 8.3ms | Allocations: 17502)
+
+
+Started GET "/api/v1/user_relations/50" for ::1 at 2022-10-21 12:30:04 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"50"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 637)
+
+
+Started GET "/api/v1/user_relations/50" for ::1 at 2022-10-21 12:30:24 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"50"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `show'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+Completed 200 OK in 38ms (Views: 0.5ms | ActiveRecord: 7.4ms | Allocations: 24421)
+
+

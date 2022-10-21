@@ -1,5 +1,5 @@
 class Api::V1::UserRelationsController < ApplicationController
-  before_action :authorize, only: [:index]
+  before_action :authorize, only: [:index,:show]
     def index
       @relations = UserRelation.where(user_id: @user.id).where.not(connected_user_id: nil)
       @relation_detail =[]
@@ -15,13 +15,13 @@ class Api::V1::UserRelationsController < ApplicationController
           }
         )
       end
-      render json: {data:@relation_detail,status: :success}
+      response_to_json({relations: @relations},:success)
     end
 
     def show
       @relation = UserRelation.find_by_id(params[:id])
       @user = User.find_by_id(@relation.connected_user_id)
-      render json: {data: {relation: @relation,user:@user,biodata:@user.biodata_user},status: :success}
+      response_to_json({relation: @relation,user:@user,biodata:@user.biodata_user},status: :success)
     end
 end
 
