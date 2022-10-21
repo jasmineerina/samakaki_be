@@ -41759,3 +41759,188 @@ Processing by Api::V1::FamilyTreesController#update as */*
 Completed 200 OK in 23ms (Views: 0.1ms | ActiveRecord: 7.8ms | Allocations: 12556)
 
 
+Started POST "/api/v1/events" for ::1 at 2022-10-21 09:47:39 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007fd7e0528658>, params: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mEvent Create (1.7ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "arisan keluarga"], ["date", "2022-10-11 00:00:00"], ["venue", "rumah kakek"], ["user_id", 22], ["family_tree_id", 1], ["created_at", "2022-10-21 02:47:39.215208"], ["updated_at", "2022-10-21 02:47:39.215208"]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+Completed 200 OK in 42ms (Views: 0.4ms | ActiveRecord: 11.6ms | Allocations: 26706)
+
+
+Started DELETE "/api/v1/events/2" for ::1 at 2022-10-21 09:47:57 +0700
+Processing by Api::V1::EventsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:20:in `destroy'
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/events_controller.rb:20:in `destroy'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:20:in `destroy'
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 2.3ms | Allocations: 3804)
+
+
+Started GET "/api/v1/events/2" for ::1 at 2022-10-21 09:49:15 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1657)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=2):
+  
+app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Started GET "/api/v1/events/2" for ::1 at 2022-10-21 09:50:00 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Filter chain halted as :set_event rendered or redirected
+Completed 404 Not Found in 18ms (Views: 0.2ms | ActiveRecord: 4.2ms | Allocations: 9018)
+
+
+Started GET "/api/v1/events/1" for ::1 at 2022-10-21 09:50:04 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 2.3ms | Allocations: 3097)
+
+
+Started GET "/api/v1/events/2" for ::1 at 2022-10-21 09:50:16 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Filter chain halted as :set_event rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1205)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-21 09:50:28 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007fd7e2d8cbd0>, params: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "arisan keluarga"], ["date", "2022-10-11 00:00:00"], ["venue", "rumah kakek"], ["user_id", 22], ["family_tree_id", 1], ["created_at", "2022-10-21 02:50:28.077629"], ["updated_at", "2022-10-21 02:50:28.077629"]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 5.1ms | Allocations: 10552)
+
+
+Started GET "/api/v1/events/2" for ::1 at 2022-10-21 09:50:33 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Filter chain halted as :set_event rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1254)
+
+
+Started GET "/api/v1/events/3" for ::1 at 2022-10-21 09:50:37 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1325)
+
+
+Started GET "/api/v1/events?family_tree_id=2" for ::1 at 2022-10-21 09:51:08 +0700
+Processing by Api::V1::EventsController#index as */*
+  Parameters: {"family_tree_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."family_tree_id" = $1[0m  [["family_tree_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 849)
+
+
+Started GET "/api/v1/events?family_tree_id=1" for ::1 at 2022-10-21 09:51:14 +0700
+Processing by Api::V1::EventsController#index as */*
+  Parameters: {"family_tree_id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."family_tree_id" = $1[0m  [["family_tree_id", 1]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1059)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-21 09:53:32 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 637)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-21 09:53:42 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:31:in `set_event'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007fd7e3dcb280>, params: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+Completed 200 OK in 35ms (Views: 0.8ms | ActiveRecord: 6.4ms | Allocations: 17816)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-21 09:53:52 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama kamu", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama kamu", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:31:in `set_event'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007fd7e1ed57e0>, params: {"name"=>"arisan bersama kamu", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan bersama kamu", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mEvent Update (0.4ms)[0m  [1m[33mUPDATE "events" SET "name" = $1, "updated_at" = $2 WHERE "events"."id" = $3[0m  [["name", "arisan bersama kamu"], ["updated_at", "2022-10-21 02:53:52.978495"], ["id", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 3.1ms | Allocations: 5321)
+
+

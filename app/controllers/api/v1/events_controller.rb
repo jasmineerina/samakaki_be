@@ -1,40 +1,37 @@
 class Api::V1::EventsController < ApplicationController
     before_action :authorize, only: [:create, :show, :destroy, :update]
+    before_action :set_event, only: [:show,:destroy, :update]
 
     def index
         @events = Event.where(family_tree_id: params[:family_tree_id])
-        render json: {data: {events: @events}, status: :success}
+        response_to_json({events:@events},:success)
     end
 
     def create
         @event = Event.new(event_params.merge(user_id: @user.id))
-        if @event.save
-            render json: {data:{event: @event}, status: :success}
-        else
-            render json: {"message": @event.errors}, status: :bad_request
-        end
+        @event.save ? response_to_json({event:@event}, :success) : response_error(@event.errors, :unprocessable_entity)
     end
 
     def show
-        @event = Event.find(params[:id])
-        render json: {data: {event: @event}, status: :success}
+        response_to_json({event:@event},:success)
     end
 
     def destroy
-        @event = Event.find_by_id(params[:id]).destroy
-        render json: {data: {event: @event}, message: "The event succesfully deleted"}
+        @event.destroy
+        response_to_json({event:@event,message:"Berhasil menghapus event"},:success)
     end
 
     def update
-        @event = Event.find(params[:id])
-        if @event.update(event_params)
-            render json: {data: {event: @event}, message: "Your event was succesfully updated"}
-        else
-            render json: @event.errors
-        end
-  end
+        @event.update(event_params )? response_to_json({event:@event},:success):response_error(@event.errors,:unprocessable_entity)
+    end
 
     private
+
+    def set_event
+        @event = Event.find_by(id: params[:id])
+        response_error("event not found", :not_found) unless @event.presence
+    end
+
     def event_params
         params.permit(:name, :date, :venue, :family_tree_id)
     end
