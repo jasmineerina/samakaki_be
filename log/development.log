@@ -42022,3 +42022,20 @@ Processing by Api::V1::UserRelationsController#show as */*
 Completed 200 OK in 38ms (Views: 0.5ms | ActiveRecord: 7.4ms | Allocations: 24421)
 
 
+Started PUT "/api/v1/relations/53" for ::1 at 2022-10-21 12:36:45 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::RelationsController#update as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"left", "number"=>1, "id"=>"53", "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"left", "number"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/relations_controller.rb:10:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:11:in `update'
+  [1m[36mRelation Update (1.5ms)[0m  [1m[33mUPDATE "relations" SET "position" = $1, "updated_at" = $2 WHERE "relations"."id" = $3[0m  [["position", 1], ["updated_at", "2022-10-21 05:36:45.798008"], ["id", 53]]
+  ↳ app/controllers/api/v1/relations_controller.rb:11:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:11:in `update'
+Completed 200 OK in 49ms (Views: 0.4ms | ActiveRecord: 12.1ms | Allocations: 31218)
+
+

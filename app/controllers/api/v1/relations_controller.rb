@@ -3,20 +3,12 @@ class Api::V1::RelationsController < ApplicationController
 
   def create
     @relation = Relation.new(relation_params.merge(user_id:@user.id,family_tree_id: params["family_tree_id"],connected_user_id:params["connected_user_id"]))
-      if @relation.save
-        render json: {relation:@relation.get_relation_from_invitation, user_relation: @relation.user_relations}
-      else
-        render json: {"message": @relation.errors}, status: :bad_request
-      end
+    @relation.save ? response_to_json({relation:@relation.get_relation_from_invitation, user_relation: @relation.user_relations}, :success) : response_error(@relation.errors, :unprocessable_entity)
   end
 
   def update
     @relation = Relation.find(params[:id])
-    if @relation.update(relation_params)
-      render json: {data: {relation: @relation}, message: "Your relation was succesfully updated"}
-    else
-      render json: @relation.errors
-    end
+    @relation.update(relation_params) ? response_to_json({relation: @relation,message:"berhasil update relation"}, :success) : response_error(@relation.errors,:unprocessable_entity)
   end
 
   private
