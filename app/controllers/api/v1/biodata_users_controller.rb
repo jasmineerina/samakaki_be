@@ -7,7 +7,7 @@ class Api::V1::BiodataUsersController < ApplicationController
     end
 
     def show
-        response_to_json({biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}, :success)
+        response_to_json({biodata: @biodata.new_attribute}, :success)
     end
 
     def update
