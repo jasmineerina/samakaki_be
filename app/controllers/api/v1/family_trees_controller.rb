@@ -1,30 +1,25 @@
 class Api::V1::FamilyTreesController < ApplicationController
   before_action :authorize, only: [:create, :show, :update]
+  before_action :set_family, only: [:show,:update]
 
   def create
     @family = FamilyTree.new(family_params.merge(user_id: @user.id))
-      if @family.save
-          render json: {data:{family_tree: @family},status: :success}
-      else
-          render json: {"message": @family.errors}, status: :bad_request
-      end
+    @family.save ? response_to_json({family_name:@family.name}, :success) : response_error(@family.errors, :unprocessable_entity)
   end
 
   def show
-      @family = FamilyTree.find(params[:id])
-      render json: {data: {family: @family},status: :success}
+    response_to_json({family_name: @family.name},:success)
   end
 
   def update
-    @family = FamilyTree.find(params[:id])
-    if @family.update(family_params)
-        render json: {data: {family: @family}, message: "Your family name was succesfully updated"}
-    else
-        render json: @family.errors
-    end
+    @family.update(family_params) ? response_to_json({family_name:@family.name}, :success) : response_error(@family.errors, :unprocessable_entity)
   end
 
   private
+  def set_family
+    @family = FamilyTree.find_by(id: params[:id])
+    response_error("family not found", :not_found) unless @family.presence
+  end
 
   def family_params
     params.require(:family_tree).permit(:name)
