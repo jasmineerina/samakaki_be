@@ -10,9 +10,9 @@ class Api::V1::PasswordsController < ApplicationController
       user.generate_password_token! #generate pass token
       # SEND EMAIL HERE
       UserMailer.welcome_email(user).deliver_now
-      render json: {status: "ok"}, status: :ok
+      response_to_json("Token sudah dikirimkan ke email anda",:success)
     else
-      render json: {error: ["Email address not found. Please check and try again"]}, status: :not_found
+      response_error("Email tidak dapat ditemukan",:not_found)
     end
   end
 
@@ -27,12 +27,13 @@ class Api::V1::PasswordsController < ApplicationController
 
     if user.present? && user.password_token_valid?
       if user.reset_password!(params[:password])
-        render json: {status: "ok"}, status: :ok
+        binding.pry
+        response_to_json("Password berhasil diubah",:success)
       else
-        render json: {error: user.errors.full_messages}, status: :unprocessable_entity
+        response_error("Password tidak dapat sama dengan password yang lama",:unprocessable_entity)
       end
     else
-      render json: {error:  ["Link not valid or expired. Try generating a new link."]}, status: :not_found
+      response_error("Token invalid, Coba generate ulang token",:unprocessable_entity)
     end
   end
 end
