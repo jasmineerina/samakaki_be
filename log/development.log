@@ -41244,3 +41244,24 @@ ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=200):
   
 app/controllers/api/v1/posts_controller.rb:28:in `show'
 >>>>>>> 73b3a0c (solve conflict)
+Started GET "/api/v1/posts/200" for ::1 at 2022-10-21 07:26:54 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"200"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 200], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:43:in `set_post'
+Filter chain halted as :set_post rendered or redirected
+Completed 404 Not Found in 25ms (Views: 0.2ms | ActiveRecord: 4.4ms | Allocations: 15035)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-21 07:27:12 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 22]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 14ms (Views: 7.9ms | ActiveRecord: 2.4ms | Allocations: 8089)
+
+
