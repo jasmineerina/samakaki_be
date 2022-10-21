@@ -40257,13 +40257,19 @@ Completed 200 OK in 2292ms (Views: 0.7ms | ActiveRecord: 13.9ms | Allocations: 1
 [ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 12]]
 [ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
 [ActiveJob] [ActiveStorage::AnalyzeJob] [1176bced-05af-4b76-bbe2-afd15d6f3817] Performed ActiveStorage::AnalyzeJob (Job ID: 1176bced-05af-4b76-bbe2-afd15d6f3817) from Async(default) in 20.99ms
+<<<<<<< HEAD
 Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 13:11:09 +0700
   [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+=======
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:09:42 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+>>>>>>> refactor/biodata
 Processing by Api::V1::BiodataUsersController#show as */*
   Parameters: {"id"=>":id"}
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
   ↳ app/controllers/application_controller.rb:24:in `authorized_user'
   [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 1]]
+<<<<<<< HEAD
   ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `show'
 Completed 200 OK in 31ms (Views: 0.3ms | ActiveRecord: 7.0ms | Allocations: 18882)
 
@@ -40432,5 +40438,351 @@ Processing by Api::V1::UserRelationsController#show as */*
   [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
   ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
 Completed 200 OK in 38ms (Views: 0.8ms | ActiveRecord: 7.7ms | Allocations: 17483)
+=======
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:29:in `set_biodata'
+  [1m[36mCACHE BiodataUser Load (0.0ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:11:in `show'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:11:in `show'
+[36m  Cloudinary Storage (3.1ms) [0m[34mGenerated URL for file at key: j4khd5gyut8knchoi7yvxjnol7gt (http://res.cloudinary.com/dzpzhe5xs/image/upload/j4khd5gyut8knchoi7yvxjnol7gt.jpeg)[0m
+Completed 200 OK in 87ms (Views: 0.3ms | ActiveRecord: 12.1ms | Allocations: 44654)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:12:29 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:29:in `set_biodata'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+[36m  Cloudinary Storage (0.2ms) [0m[34mGenerated URL for file at key: j4khd5gyut8knchoi7yvxjnol7gt (http://res.cloudinary.com/dzpzhe5xs/image/upload/j4khd5gyut8knchoi7yvxjnol7gt.jpeg)[0m
+Completed 200 OK in 51ms (Views: 0.3ms | ActiveRecord: 10.0ms | Allocations: 24138)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-20 11:12:38 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testinglagia111@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testinglagia111@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "testinglagia111@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-20 04:12:38.615653"], ["updated_at", "2022-10-20 04:12:38.615653"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 231ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 5281)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:12:50 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:29:in `set_biodata'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.4ms | Allocations: 2454)
+
+
+  
+NoMethodError (undefined method `new_attribute' for nil:NilClass
+
+        response_to_json({biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}, :success)
+                                           ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:14:39 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:29:in `set_biodata'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.4ms | Allocations: 2412)
+
+
+  
+NoMethodError (undefined method `new_attribute' for nil:NilClass
+
+        response_to_json({biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}, :success)
+                                           ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:14:53 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:29:in `set_biodata'
+Completed 500 Internal Server Error in 41955ms (ActiveRecord: 4.5ms | Allocations: 25612)
+
+
+  
+NoMethodError (undefined method `new_attribute' for nil:NilClass
+
+        response_to_json({biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}, :success)
+                                           ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:15:41 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:29:in `set_biodata'
+Completed 500 Internal Server Error in 20408ms (ActiveRecord: 0.4ms | Allocations: 13129)
+
+
+  
+NoMethodError (undefined method `new_attribute' for nil:NilClass
+
+        response_to_json({biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}, :success)
+                                           ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:16:04 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:29:in `set_biodata'
+Filter chain halted as :set_biodata rendered or redirected
+Completed 404 Not Found in 22ms (Views: 0.2ms | ActiveRecord: 6.7ms | Allocations: 10242)
+
+
+Started PUT "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:17:39 +0700
+Processing by Api::V1::BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2000-12-12", "address"=>"sleman", "marriage_status"=>"single", "status"=>"public", "id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+Filter chain halted as :set_biodata rendered or redirected
+Completed 404 Not Found in 19ms (Views: 0.2ms | ActiveRecord: 5.0ms | Allocations: 10100)
+
+
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-20 11:17:57 +0700
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2000-10-10", "address"=>"maguwoharjo", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f72620ecde8 @tempfile=#<Tempfile:/tmp/RackMultipart20221020-74612-rdbb8t.jpeg>, @original_filename="zyro-image.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"zyro-image.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2000-10-10 00:00:00"], ["address", "maguwoharjo"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-20 04:17:57.777430"], ["updated_at", "2022-10-20 04:17:57.777430"], ["user_id", 22]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "1063m78nu62d0huhd68m3elqblag"], ["filename", "zyro-image.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "cloudinary"], ["byte_size", 73836], ["checksum", "Y9vx21Wg2JCr6J/cICH46A=="], ["created_at", "2022-10-20 04:17:57.799199"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.6ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 10], ["blob_id", 13], ["created_at", "2022-10-20 04:17:57.801651"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-20 04:17:57.804931"], ["id", 10]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+[36m  Cloudinary Storage (2616.7ms) [0m[32mUploaded file to key: 1063m78nu62d0huhd68m3elqblag (checksum: Y9vx21Wg2JCr6J/cICH46A==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: b3aa1a17-1203-4046-b38e-4f81a01bf2a5) to Async(default) with arguments: #<GlobalID:0x00007f72621052a8 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/13>>
+Completed 200 OK in 2690ms (Views: 0.6ms | ActiveRecord: 8.5ms | Allocations: 170625)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b3aa1a17-1203-4046-b38e-4f81a01bf2a5]   [1m[36mActiveStorage::Blob Load (0.9ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b3aa1a17-1203-4046-b38e-4f81a01bf2a5] Performing ActiveStorage::AnalyzeJob (Job ID: b3aa1a17-1203-4046-b38e-4f81a01bf2a5) from Async(default) enqueued at 2022-10-20T04:18:00Z with arguments: #<GlobalID:0x00007f72620f1ed8 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/13>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b3aa1a17-1203-4046-b38e-4f81a01bf2a5] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b3aa1a17-1203-4046-b38e-4f81a01bf2a5]   [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b3aa1a17-1203-4046-b38e-4f81a01bf2a5]   [1m[36mActiveStorage::Blob Update (0.9ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 13]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b3aa1a17-1203-4046-b38e-4f81a01bf2a5]   [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [b3aa1a17-1203-4046-b38e-4f81a01bf2a5] Performed ActiveStorage::AnalyzeJob (Job ID: b3aa1a17-1203-4046-b38e-4f81a01bf2a5) from Async(default) in 82.13ms
+Started PUT "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:18:04 +0700
+Processing by Api::V1::BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2000-12-12", "address"=>"sleman", "marriage_status"=>"single", "status"=>"public", "id"=>":id"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.3ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+Filter chain halted as :set_biodata rendered or redirected
+Completed 404 Not Found in 9ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 2449)
+
+
+Started PUT "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:18:20 +0700
+Processing by Api::V1::BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2000-12-12", "address"=>"sleman", "marriage_status"=>"single", "status"=>"public", "id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+Filter chain halted as :set_biodata rendered or redirected
+Completed 404 Not Found in 21ms (Views: 0.1ms | ActiveRecord: 6.7ms | Allocations: 10228)
+
+
+Started PUT "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:18:32 +0700
+Processing by Api::V1::BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2000-12-12", "address"=>"sleman", "marriage_status"=>"single", "status"=>"public", "id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.1ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+[31mUnpermitted parameter: :id. Context: { controller: Api::V1::BiodataUsersController, action: update, request: #<ActionDispatch::Request:0x00007f726232d698>, params: {"dob"=>"2000-12-12", "address"=>"sleman", "marriage_status"=>"single", "status"=>"public", "controller"=>"api/v1/biodata_users", "action"=>"update", "id"=>":id"} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `update'
+  [1m[36mBiodataUser Update (0.3ms)[0m  [1m[33mUPDATE "biodata_users" SET "dob" = $1, "address" = $2, "updated_at" = $3 WHERE "biodata_users"."id" = $4[0m  [["dob", "2000-12-12 00:00:00"], ["address", "sleman"], ["updated_at", "2022-10-20 04:18:32.804374"], ["id", 9]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `update'
+Completed 200 OK in 33ms (Views: 0.7ms | ActiveRecord: 8.4ms | Allocations: 16354)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:18:39 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+[36m  Cloudinary Storage (0.1ms) [0m[34mGenerated URL for file at key: 1063m78nu62d0huhd68m3elqblag (http://res.cloudinary.com/dzpzhe5xs/image/upload/1063m78nu62d0huhd68m3elqblag.jpeg)[0m
+Completed 200 OK in 38ms (Views: 0.2ms | ActiveRecord: 6.8ms | Allocations: 14397)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:18:54 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.1ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 2413)
+
+
+  
+NoMethodError (undefined method `new_attribute' for nil:NilClass
+
+        response_to_json({biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}, :success)
+                                           ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:19:30 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:25:in `set_biodata'
+Completed 500 Internal Server Error in 80598ms (ActiveRecord: 4.4ms | Allocations: 25386)
+
+
+  
+NoMethodError (undefined method `new_attribute' for nil:NilClass
+
+        response_to_json({biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}, :success)
+                                           ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:21:07 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+Filter chain halted as :set_biodata rendered or redirected
+Completed 404 Not Found in 18ms (Views: 0.1ms | ActiveRecord: 4.8ms | Allocations: 9777)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:21:14 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.3ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+Filter chain halted as :set_biodata rendered or redirected
+Completed 404 Not Found in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1542)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:21:48 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.3ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+Filter chain halted as :set_biodata rendered or redirected
+Completed 404 Not Found in 22ms (Views: 0.2ms | ActiveRecord: 6.7ms | Allocations: 9664)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:22:29 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:10:in `show'
+[36m  Cloudinary Storage (0.1ms) [0m[34mGenerated URL for file at key: 1063m78nu62d0huhd68m3elqblag (http://res.cloudinary.com/dzpzhe5xs/image/upload/1063m78nu62d0huhd68m3elqblag.jpeg)[0m
+Completed 200 OK in 45ms (Views: 0.2ms | ActiveRecord: 11.1ms | Allocations: 24216)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:22:58 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.1ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:25:in `set_biodata'
+Completed 500 Internal Server Error in 24523ms (ActiveRecord: 3.5ms | Allocations: 20605)
+
+
+  
+NoMethodError (undefined method `new_attribute' for nil:NilClass
+
+        response_to_json({biodata: @biodata.new_attribute,avatar: @biodata.avatar.url}, :success)
+                                           ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/biodata_users_controller.rb:11:in `show'
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:24:53 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testinglagia111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+Filter chain halted as :set_biodata rendered or redirected
+Completed 404 Not Found in 21ms (Views: 0.2ms | ActiveRecord: 4.5ms | Allocations: 9505)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-20 11:24:58 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.1ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:24:in `set_biodata'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:11:in `show'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:11:in `show'
+[36m  Cloudinary Storage (0.1ms) [0m[34mGenerated URL for file at key: 1063m78nu62d0huhd68m3elqblag (http://res.cloudinary.com/dzpzhe5xs/image/upload/1063m78nu62d0huhd68m3elqblag.jpeg)[0m
+Completed 200 OK in 3189ms (Views: 0.2ms | ActiveRecord: 8.5ms | Allocations: 22799)
+>>>>>>> refactor/biodata
 
 
