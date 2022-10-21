@@ -27,7 +27,6 @@ class Api::V1::PasswordsController < ApplicationController
 
     if user.present? && user.password_token_valid?
       if user.reset_password!(params[:password])
-        binding.pry
         response_to_json("Password berhasil diubah",:success)
       else
         response_error("Password tidak dapat sama dengan password yang lama",:unprocessable_entity)

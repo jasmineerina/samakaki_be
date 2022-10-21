@@ -2,12 +2,13 @@ class Api::V1::InvitationsController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.password = params[:password]
-    if @user.save
+    if params[:token].present?
+      @user.save
       @token= JWT.decode(params[:token], 'secret')[0]
       @relation=UserRelation.find_by(relation_id:@token["relation_id"])
-      render json: {data:{user: @user.new_attribute,relation:@relation.relation.relation_name,user_id:@relation.user.new_attribute}}
+      response_to_json({user: @user.new_attribute,relation:@relation.relation.relation_name,user_id:@relation.user.new_attribute},:success)
     else
-      render json: @user.errors, status: :bad_request
+      response_error("token invitations tidak valid",:unprocessable_entity)
     end
   end
 
