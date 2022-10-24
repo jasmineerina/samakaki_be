@@ -41265,3 +41265,1042 @@ Processing by Api::V1::PostsController#find as */*
 Completed 200 OK in 14ms (Views: 7.9ms | ActiveRecord: 2.4ms | Allocations: 8089)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFamilyTrees (20221013073125)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.5ms)[0m  [1m[35mCREATE TABLE "family_trees" ("id" bigserial primary key, "name" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE INDEX "index_family_trees_on_user_id" ON "family_trees" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221013073125"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRelations (20221014070058)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "relations" ("id" bigserial primary key, "name" character varying, "relation_name" integer, "position" integer, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221014070058"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserRelations (20221017034202)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "user_relations" ("id" bigserial primary key, "connected_user_id" integer, "status" integer, "family_tree_id" integer, "token" character varying, "user_id" bigint NOT NULL, "relation_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_2284410ac8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_d4f1d55a74"
+FOREIGN KEY ("relation_id")
+  REFERENCES "relations" ("id")
+)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE INDEX "index_user_relations_on_user_id" ON "user_relations" ("user_id")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE INDEX "index_user_relations_on_relation_id" ON "user_relations" ("relation_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017034202"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20221017053400)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "name" character varying, "date" timestamp(6), "venue" character varying, "user_id" bigint, "family_tree_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE INDEX "index_events_on_user_id" ON "events" ("user_id")[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE INDEX "index_events_on_family_tree_id" ON "events" ("family_tree_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (5.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017053400"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/regis" for ::1 at 2022-10-24 09:05:52 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [POST] "/regis"):
+  
+Started POST "/api/v1/users" for ::1 at 2022-10-24 09:06:55 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test12@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test12@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 422 Unprocessable Entity in 207ms (Views: 3.6ms | ActiveRecord: 4.9ms | Allocations: 11567)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-24 09:07:03 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test2@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test2@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "test2@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-24 02:07:04.121708"], ["updated_at", "2022-10-24 02:07:04.121708"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 203ms (Views: 0.7ms | ActiveRecord: 2.6ms | Allocations: 4675)
+
+
+Started POST "/login" for ::1 at 2022-10-24 09:07:10 +0700
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+Started POST "/api/v1/login" for ::1 at 2022-10-24 09:07:40 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test12@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test12@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 194ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1106)
+
+
+Started GET "/api/v1/users/:id" for ::1 at 2022-10-24 09:08:11 +0700
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>":id"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 686)
+
+
+Started GET "/api/v1/users/:id" for ::1 at 2022-10-24 09:08:22 +0700
+Processing by Api::V1::UsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 933)
+
+
+Started PUT "/users/:id" for ::1 at 2022-10-24 09:08:30 +0700
+  
+ActionController::RoutingError (No route matches [PUT] "/users/:id"):
+  
+Started PUT "/api/v1/users/:id" for ::1 at 2022-10-24 09:08:41 +0700
+Processing by Api::V1::UsersController#update as */*
+  Parameters: {"name"=>"admin2111", "password"=>"[FILTERED]", "email"=>"dhim@mail.com", "id"=>":id", "user"=>{"name"=>"admin2111", "email"=>"dhim@mail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:30:in `update'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "dhim@mail.com"], ["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:30:in `update'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "email" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["name", "admin2111"], ["email", "dhim@mail.com"], ["updated_at", "2022-10-24 02:08:41.215564"], ["id", 40]]
+  ↳ app/controllers/api/v1/users_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:30:in `update'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.0ms | Allocations: 3986)
+
+
+Started GET "/api/v1/users" for ::1 at 2022-10-24 09:08:50 +0700
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users"."id", "users"."name", "users"."email", "users"."phone" FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1167)
+
+
+Started POST "/password/forgot" for ::1 at 2022-10-24 09:09:05 +0700
+  
+ActionController::RoutingError (No route matches [POST] "/password/forgot"):
+  
+Started POST "/api/v1/forgot/password" for ::1 at 2022-10-24 09:09:18 +0700
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/forgot/password"):
+  
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-24 09:09:27 +0700
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"test12@gmail.com", "password"=>{"email"=>"test12@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+Completed 404 Not Found in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms | Allocations: 761)
+
+
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-24 09:09:33 +0700
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>{"email"=>"test2@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test2@gmail.com"], ["id", 41], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-24 02:09:33.400863"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 41]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 170)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.3ms | Allocations: 391)
+UserMailer#welcome_email: processed outbound mail in 9.7ms
+Delivered mail 6355f3dd6c980_1b083958-496@dhimas-pc.mail (4.9ms)
+Date: Mon, 24 Oct 2022 09:09:33 +0700
+From: from@example.com
+To: test2@gmail.com
+Message-ID: <6355f3dd6c980_1b083958-496@dhimas-pc.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>TOKEN RESET  test</h1>
+  <p>
+    You have successfully get token,
+    your token is: 12d273f6ad0de95a0e31.<br>
+  </p>
+<p>Thanks for joining and have a great day!</p>
+
+
+  </body>
+</html>
+
+Completed 200 OK in 54ms (Views: 0.2ms | ActiveRecord: 3.7ms | Allocations: 19333)
+
+
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-24 09:09:59 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test12@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+Completed 404 Not Found in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 818)
+
+
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-24 09:10:17 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test2@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test2@gmail.com"], ["id", 41], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2, "reset_password_token" = $3 WHERE "users"."id" = $4[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2022-10-24 02:10:17.358172"], ["reset_password_token", "[FILTERED]"], ["id", 41]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+Completed 200 OK in 198ms (Views: 0.1ms | ActiveRecord: 1.9ms | Allocations: 3444)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-24 09:10:34 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test12@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 956)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-24 09:10:44 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test2@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 197ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 828)
+
+
+Started GET "/api/v1/biodata_users/:id" for ::1 at 2022-10-24 09:10:53 +0700
+Processing by Api::V1::BiodataUsersController#show as */*
+  Parameters: {"id"=>":id"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (1.1ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:23:in `set_biodata'
+Filter chain halted as :set_biodata rendered or redirected
+Completed 404 Not Found in 10ms (Views: 0.2ms | ActiveRecord: 2.8ms | Allocations: 3601)
+
+
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-24 09:11:14 +0700
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :biodata_user. Context: { controller: Api::V1::BiodataUsersController, action: create, request: #<ActionDispatch::Request:0x00007f2d892297b0>, params: {"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public", "controller"=>"api/v1/biodata_users", "action"=>"create", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang km. 12,5", "marriage_status"=>"single", "status"=>"public"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mBiodataUser Create (0.6ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2001-05-15 00:00:00"], ["address", "kaliurang km. 12,5"], ["marriage_status", "single"], ["status", "public"], ["created_at", "2022-10-24 02:11:14.182139"], ["updated_at", "2022-10-24 02:11:14.182139"], ["user_id", 41]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+Completed 200 OK in 35ms (Views: 0.2ms | ActiveRecord: 3.6ms | Allocations: 19323)
+
+
+Started PUT "/biodata_users/:id" for ::1 at 2022-10-24 09:11:29 +0700
+  
+ActionController::RoutingError (No route matches [PUT] "/biodata_users/:id"):
+  
+Started PUT "/api/v1/biodata_users/:id" for ::1 at 2022-10-24 09:11:40 +0700
+Processing by Api::V1::BiodataUsersController#update as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public", "id"=>":id", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:23:in `set_biodata'
+[31mUnpermitted parameters: :id, :biodata_user. Context: { controller: Api::V1::BiodataUsersController, action: update, request: #<ActionDispatch::Request:0x00007f2d8be794f0>, params: {"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public", "controller"=>"api/v1/biodata_users", "action"=>"update", "id"=>":id", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"gubug qatros", "marriage_status"=>"single", "status"=>"public"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `update'
+  [1m[36mBiodataUser Update (0.2ms)[0m  [1m[33mUPDATE "biodata_users" SET "address" = $1, "updated_at" = $2 WHERE "biodata_users"."id" = $3[0m  [["address", "gubug qatros"], ["updated_at", "2022-10-24 02:11:40.283746"], ["id", 2]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `update'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:14:in `update'
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 4472)
+
+
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 09:12:22 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 645)
+
+
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 09:12:32 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :title. Context: { controller: Api::V1::PostsController, action: create, request: #<ActionDispatch::Request:0x00007f2d89562a58>, params: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private", "controller"=>"api/v1/posts", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+  [1m[36mPost Create (1.2ms)[0m  [1m[32mINSERT INTO "posts" ("title", "link", "descriptions", "status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", nil], ["link", nil], ["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["created_at", "2022-10-24 02:12:32.491071"], ["updated_at", "2022-10-24 02:12:32.491071"], ["user_id", 41]]
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+Completed 200 OK in 25ms (Views: 0.3ms | ActiveRecord: 5.8ms | Allocations: 9896)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (5010.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (38.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_development"[0m
+  [1m[35m (22.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_test"[0m
+  [1m[35m (195.0ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_development" ENCODING = 'unicode'[0m
+  [1m[35m (94.1ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_test" ENCODING = 'unicode'[0m
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221006042408)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "phone" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042408"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBiodataUsers (20221006042746)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "biodata_users" ("id" bigserial primary key, "dob" timestamp(6), "address" character varying, "marriage_status" character varying, "status" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042746"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20221006043047)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "descriptions" character varying, "status" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006043047"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordResetColumnsToUser (20221007033547)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221007033547"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFamilyTrees (20221013073125)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "family_trees" ("id" bigserial primary key, "name" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_family_trees_on_user_id" ON "family_trees" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221013073125"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRelations (20221014070058)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "relations" ("id" bigserial primary key, "name" character varying, "relation_name" integer, "position" integer, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221014070058"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserRelations (20221017034202)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "user_relations" ("id" bigserial primary key, "connected_user_id" integer, "status" integer, "family_tree_id" integer, "token" character varying, "user_id" bigint NOT NULL, "relation_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_2284410ac8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_d4f1d55a74"
+FOREIGN KEY ("relation_id")
+  REFERENCES "relations" ("id")
+)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE INDEX "index_user_relations_on_user_id" ON "user_relations" ("user_id")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE INDEX "index_user_relations_on_relation_id" ON "user_relations" ("relation_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017034202"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20221017053400)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "name" character varying, "date" timestamp(6), "venue" character varying, "user_id" bigint, "family_tree_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE INDEX "index_events_on_user_id" ON "events" ("user_id")[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE INDEX "index_events_on_family_tree_id" ON "events" ("family_tree_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017053400"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-24 02:14:14.093558"], ["updated_at", "2022-10-24 02:14:14.093558"]]
+  [1m[36mTRANSACTION (22.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 09:14:20 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 12ms (Views: 0.3ms | ActiveRecord: 1.4ms | Allocations: 7147)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-24 09:14:25 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test2@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test2@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 422 Unprocessable Entity in 1ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 794)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-24 09:14:34 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "test@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-24 02:14:34.481988"], ["updated_at", "2022-10-24 02:14:34.481988"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 204ms (Views: 0.3ms | ActiveRecord: 3.8ms | Allocations: 10555)
+
+
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 09:14:44 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :title. Context: { controller: Api::V1::PostsController, action: create, request: #<ActionDispatch::Request:0x00007f2dd4d17730>, params: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private", "controller"=>"api/v1/posts", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+  [1m[36mPost Create (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("descriptions", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["user_id", 1], ["created_at", "2022-10-24 02:14:44.370020"], ["updated_at", "2022-10-24 02:14:44.370020"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:16:in `create'
+Completed 200 OK in 29ms (Views: 0.4ms | ActiveRecord: 5.3ms | Allocations: 10674)
+
+
+Started GET "/api/v1/posts?family_tree_id=1" for ::1 at 2022-10-24 09:14:54 +0700
+Processing by Api::V1::PostsController#index as */*
+  Parameters: {"family_tree_id"=>"1"}
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."family_tree_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["family_tree_id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:7:in `each_with_index'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 1.3ms | Allocations: 3558)
+
+
+Started GET "/api/v1/posts/7" for ::1 at 2022-10-24 09:14:59 +0700
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"7"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 560)
+
+
+Started GET "/api/v1/posts/7" for ::1 at 2022-10-24 09:15:03 +0700
+Processing by Api::V1::PostsController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:43:in `set_post'
+Filter chain halted as :set_post rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1948)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 09:15:11 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 12ms (Views: 3.1ms | ActiveRecord: 0.4ms | Allocations: 4643)
+
+
+Started POST "/api/v1/family_trees" for ::1 at 2022-10-24 09:15:23 +0700
+Processing by Api::V1::FamilyTreesController#create as */*
+  Parameters: {"name"=>"uji family", "family_tree"=>{"name"=>"uji family"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+  [1m[36mFamilyTree Create (0.4ms)[0m  [1m[32mINSERT INTO "family_trees" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "uji family"], ["user_id", 1], ["created_at", "2022-10-24 02:15:23.835722"], ["updated_at", "2022-10-24 02:15:23.835722"]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 4.0ms | Allocations: 6458)
+
+
+Started GET "/api/v1/family_trees/1" for ::1 at 2022-10-24 09:15:29 +0700
+Processing by Api::V1::FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 536)
+
+
+Started GET "/api/v1/family_trees/1" for ::1 at 2022-10-24 09:15:34 +0700
+Processing by Api::V1::FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:14:in `show'
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 1911)
+
+
+Started PUT "/api/v1/family_trees/1" for ::1 at 2022-10-24 09:15:43 +0700
+Processing by Api::V1::FamilyTreesController#update as */*
+  Parameters: {"name"=>"popo family", "id"=>"1", "family_tree"=>{"name"=>"popo family"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:20:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:20:in `update'
+  [1m[36mFamilyTree Update (0.3ms)[0m  [1m[33mUPDATE "family_trees" SET "name" = $1, "updated_at" = $2 WHERE "family_trees"."id" = $3[0m  [["name", "popo family"], ["updated_at", "2022-10-24 02:15:43.334224"], ["id", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:20:in `update'
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 4304)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-24 09:15:59 +0700
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>2, "connected_user_id"=>1, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (0.5ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dhimas"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-24 02:15:59.214845"], ["updated_at", "2022-10-24 02:15:59.214845"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 1]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 30ms (Views: 0.4ms | ActiveRecord: 7.6ms | Allocations: 17013)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-24 09:16:18 +0700
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>2, "connected_user_id"=>3, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (0.3ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dhimas"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-24 02:16:18.570668"], ["updated_at", "2022-10-24 02:16:18.570668"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.5ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 2]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 16ms (Views: 0.5ms | ActiveRecord: 3.2ms | Allocations: 5725)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-24 09:16:33 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"family@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"family@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "family@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-24 02:16:33.373857"], ["updated_at", "2022-10-24 02:16:33.373857"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 216ms (Views: 0.3ms | ActiveRecord: 2.5ms | Allocations: 3162)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-24 09:16:46 +0700
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>1, "connected_user_id"=>2, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (0.3ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dhimas"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-24 02:16:46.803335"], ["updated_at", "2022-10-24 02:16:46.803335"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mUserRelation Create (0.7ms)[0m  [1m[32mINSERT INTO "user_relations" ("connected_user_id", "status", "family_tree_id", "token", "user_id", "relation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["connected_user_id", 2], ["status", 0], ["family_tree_id", 1], ["token", "[FILTERED]"], ["user_id", 1], ["relation_id", 3], ["created_at", "2022-10-24 02:16:46.841282"], ["updated_at", "2022-10-24 02:16:46.841282"]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 3]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 51ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 6908)
+
+
+Started GET "/api/v1/user_relations/1" for ::1 at 2022-10-24 09:17:00 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `show'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.1ms | Allocations: 5512)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column biodata_users.user_id does not exist
+LINE 1: ...LECT "biodata_users".* FROM "biodata_users" WHERE "biodata_u...
+                                                             ^
+):
+  
+app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-24 09:17:59 +0700
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :biodata_user. Context: { controller: Api::V1::BiodataUsersController, action: create, request: #<ActionDispatch::Request:0x00007f2dd4dad000>, params: {"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public", "controller"=>"api/v1/biodata_users", "action"=>"create", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public"}} }[0m
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 5.7ms | Allocations: 9746)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'user_id' for BiodataUser.
+
+          raise UnknownAttributeError.new(self, k.to_s)
+          ^^^^^):
+  
+app/controllers/api/v1/biodata_users_controller.rb:5:in `create'
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (31.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_development"[0m
+  [1m[35m (21.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_test"[0m
+  [1m[35m (70.8ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_development" ENCODING = 'unicode'[0m
+  [1m[35m (72.5ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_test" ENCODING = 'unicode'[0m
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221006042408)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "phone" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042408"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBiodataUsers (20221006042746)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "biodata_users" ("id" bigserial primary key, "dob" timestamp(6), "address" character varying, "marriage_status" character varying, "status" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE INDEX "index_biodata_users_on_user_id" ON "biodata_users" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "biodata_user" ADD CONSTRAINT "fk_rails_c815f46632"
+FOREIGN KEY ("user_id")
+  REFERENCES "user" ("id")
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBiodataUsers (20221006042746)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "biodata_users" ("id" bigserial primary key, "dob" timestamp(6), "address" character varying, "marriage_status" character varying, "status" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE INDEX "index_biodata_users_on_user_id" ON "biodata_users" ("user_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD CONSTRAINT "fk_rails_45e39fd8b1"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042746"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20221006043047)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "descriptions" character varying, "status" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "posts" ADD CONSTRAINT "fk_rails_5b5ddfd518"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006043047"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordResetColumnsToUser (20221007033547)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221007033547"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFamilyTrees (20221013073125)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "family_trees" ("id" bigserial primary key, "name" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE INDEX "index_family_trees_on_user_id" ON "family_trees" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221013073125"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRelations (20221014070058)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "relations" ("id" bigserial primary key, "name" character varying, "relation_name" integer, "position" integer, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221014070058"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserRelations (20221017034202)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE TABLE "user_relations" ("id" bigserial primary key, "connected_user_id" integer, "status" integer, "family_tree_id" integer, "token" character varying, "user_id" bigint NOT NULL, "relation_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_2284410ac8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_d4f1d55a74"
+FOREIGN KEY ("relation_id")
+  REFERENCES "relations" ("id")
+)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE INDEX "index_user_relations_on_user_id" ON "user_relations" ("user_id")[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE INDEX "index_user_relations_on_relation_id" ON "user_relations" ("relation_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017034202"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20221017053400)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "name" character varying, "date" timestamp(6), "venue" character varying, "user_id" bigint, "family_tree_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE INDEX "index_events_on_user_id" ON "events" ("user_id")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE INDEX "index_events_on_family_tree_id" ON "events" ("family_tree_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017053400"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-24 02:19:35.589375"], ["updated_at", "2022-10-24 02:19:35.589375"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-24 09:19:41 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 11ms (Views: 0.3ms | ActiveRecord: 3.3ms | Allocations: 6178)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-24 09:19:45 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"family@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"family@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "family@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-24 02:19:45.930834"], ["updated_at", "2022-10-24 02:19:45.930834"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 208ms (Views: 0.3ms | ActiveRecord: 3.4ms | Allocations: 10599)
+
+
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-24 09:19:56 +0700
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :biodata_user. Context: { controller: Api::V1::BiodataUsersController, action: create, request: #<ActionDispatch::Request:0x00007fbceb70efb8>, params: {"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public", "controller"=>"api/v1/biodata_users", "action"=>"create", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang jarene penak km. 12,5", "marriage_status"=>"single", "status"=>"public"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mBiodataUser Create (0.8ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2001-05-15 00:00:00"], ["address", "kaliurang jarene penak km. 12,5"], ["marriage_status", "single"], ["status", "public"], ["user_id", 1], ["created_at", "2022-10-24 02:19:56.736026"], ["updated_at", "2022-10-24 02:19:56.736026"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 4.6ms | Allocations: 11247)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-24 09:20:06 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"test@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "test@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-24 02:20:06.762469"], ["updated_at", "2022-10-24 02:20:06.762469"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 198ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 3269)
+
+
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-24 09:20:27 +0700
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang jarene rapenak ", "marriage_status"=>"single", "status"=>"public", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang jarene rapenak ", "marriage_status"=>"single", "status"=>"public"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :biodata_user. Context: { controller: Api::V1::BiodataUsersController, action: create, request: #<ActionDispatch::Request:0x00007fbd09748650>, params: {"dob"=>"2001-05-15", "address"=>"kaliurang jarene rapenak ", "marriage_status"=>"single", "status"=>"public", "controller"=>"api/v1/biodata_users", "action"=>"create", "biodata_user"=>{"dob"=>"2001-05-15", "address"=>"kaliurang jarene rapenak ", "marriage_status"=>"single", "status"=>"public"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mBiodataUser Create (0.3ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2001-05-15 00:00:00"], ["address", "kaliurang jarene rapenak "], ["marriage_status", "single"], ["status", "public"], ["user_id", 2], ["created_at", "2022-10-24 02:20:27.499850"], ["updated_at", "2022-10-24 02:20:27.499850"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:6:in `create'
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 2.6ms | Allocations: 3839)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-24 09:20:42 +0700
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>1, "connected_user_id"=>2, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (0.4ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dhimas"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-24 02:20:42.581538"], ["updated_at", "2022-10-24 02:20:42.581538"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 1]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 50ms (Views: 0.5ms | ActiveRecord: 11.2ms | Allocations: 22149)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-24 09:20:50 +0700
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>1, "connected_user_id"=>1, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (0.2ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dhimas"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-24 02:20:50.574656"], ["updated_at", "2022-10-24 02:20:50.574656"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.4ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 2]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 3.0ms | Allocations: 5867)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-24 09:20:57 +0700
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>1, "connected_user_id"=>2, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (0.3ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dhimas"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-24 02:20:57.609894"], ["updated_at", "2022-10-24 02:20:57.609894"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 3]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 2.8ms | Allocations: 5748)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-24 09:21:15 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"family@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"family@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 422 Unprocessable Entity in 194ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 620)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-24 09:21:23 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"family@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"family@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 422 Unprocessable Entity in 199ms (Views: 2.2ms | ActiveRecord: 0.3ms | Allocations: 3895)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-24 09:21:34 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"family@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"family@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 191ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 770)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-24 09:21:56 +0700
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>1, "connected_user_id"=>2, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (0.2ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dhimas"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-24 02:21:56.443966"], ["updated_at", "2022-10-24 02:21:56.443966"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 4]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 14ms (Views: 0.5ms | ActiveRecord: 3.0ms | Allocations: 5731)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-24 09:22:10 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 191ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 765)
+
+
+Started POST "/api/v1/family_trees" for ::1 at 2022-10-24 09:22:23 +0700
+Processing by Api::V1::FamilyTreesController#create as */*
+  Parameters: {"name"=>"uji family", "family_tree"=>{"name"=>"uji family"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+  [1m[36mFamilyTree Create (1.2ms)[0m  [1m[32mINSERT INTO "family_trees" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "uji family"], ["user_id", 1], ["created_at", "2022-10-24 02:22:23.541966"], ["updated_at", "2022-10-24 02:22:23.541966"]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+Completed 200 OK in 48ms (Views: 0.3ms | ActiveRecord: 2.8ms | Allocations: 6392)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-24 09:22:29 +0700
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>1, "connected_user_id"=>2, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (0.3ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dhimas"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-24 02:22:29.164427"], ["updated_at", "2022-10-24 02:22:29.164427"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.4ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mUserRelation Create (0.7ms)[0m  [1m[32mINSERT INTO "user_relations" ("connected_user_id", "status", "family_tree_id", "token", "user_id", "relation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["connected_user_id", 2], ["status", 0], ["family_tree_id", 1], ["token", "[FILTERED]"], ["user_id", 1], ["relation_id", 5], ["created_at", "2022-10-24 02:22:29.172943"], ["updated_at", "2022-10-24 02:22:29.172943"]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 5]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 18ms (Views: 0.4ms | ActiveRecord: 3.7ms | Allocations: 6949)
+
+
+Started GET "/api/v1/user_relations/1" for ::1 at 2022-10-24 09:22:39 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `show'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 0.6ms | Allocations: 4254)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-24 09:22:52 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007fbd093c81b0>, params: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "arisan keluarga"], ["date", "2022-10-11 00:00:00"], ["venue", "rumah kakek"], ["user_id", 1], ["family_tree_id", 1], ["created_at", "2022-10-24 02:22:52.967554"], ["updated_at", "2022-10-24 02:22:52.967554"]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+Completed 200 OK in 16ms (Views: 0.4ms | ActiveRecord: 4.9ms | Allocations: 10308)
+
+
+Started GET "/api/v1/events/1" for ::1 at 2022-10-24 09:22:59 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 538)
+
+
+Started GET "/api/v1/events/1" for ::1 at 2022-10-24 09:23:04 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:19:in `show'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1955)
+
+
+Started GET "/api/v1/events?family_tree_id=2" for ::1 at 2022-10-24 09:23:26 +0700
+Processing by Api::V1::EventsController#index as */*
+  Parameters: {"family_tree_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."family_tree_id" = $1[0m  [["family_tree_id", 2]]
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 846)
+
+
+Started GET "/api/v1/events?family_tree_id=1" for ::1 at 2022-10-24 09:23:32 +0700
+Processing by Api::V1::EventsController#index as */*
+  Parameters: {"family_tree_id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."family_tree_id" = $1[0m  [["family_tree_id", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.2ms | Allocations: 938)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-24 09:23:55 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:29:in `update'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007fbceb8e1930>, params: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mFamilyTree Load (0.1ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mEvent Update (0.2ms)[0m  [1m[33mUPDATE "events" SET "name" = $1, "updated_at" = $2 WHERE "events"."id" = $3[0m  [["name", "arisan bersama"], ["updated_at", "2022-10-24 02:23:55.916908"], ["id", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 2.7ms | Allocations: 5293)
+
+
