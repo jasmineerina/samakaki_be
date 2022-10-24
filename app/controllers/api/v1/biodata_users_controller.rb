@@ -1,13 +1,16 @@
 class Api::V1::BiodataUsersController < ApplicationController
     before_action :authorize, only: [:create, :show, :update]
     before_action :set_biodata, only: [:show,  :update]
+    before_action do
+      ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
+    end
     def create
         @biodata = BiodataUser.new(biodata_params.merge(user_id: @user.id))
-        @biodata.save ? response_to_json(@biodata.new_attribute, :success) : response_error(@biodata.errors, :unprocessable_entity)
+        @biodata.save ? response_to_json({biodata:@biodata,avatar:@biodata.avatar.url}, :success) : response_error(@biodata.errors, :unprocessable_entity)
     end
 
     def show
-        response_to_json({biodata: @biodata.new_attribute}, :success)
+        response_to_json({biodata:@biodata,avatar:@biodata.avatar.url}, :success)
     end
 
     def update
@@ -16,7 +19,7 @@ class Api::V1::BiodataUsersController < ApplicationController
 
     private
     def biodata_params
-        params.permit(:email, :dob, :address, :marriage_status, :status)
+        params.permit(:email, :dob, :address, :marriage_status, :status, :avatar)
     end
 
     def set_biodata
