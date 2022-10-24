@@ -41265,6 +41265,7 @@ Processing by Api::V1::PostsController#find as */*
 Completed 200 OK in 14ms (Views: 7.9ms | ActiveRecord: 2.4ms | Allocations: 8089)
 
 
+<<<<<<< HEAD
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to CreateFamilyTrees (20221013073125)
@@ -41412,11 +41413,224 @@ Processing by Api::V1::PasswordsController#forgot as */*
   [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test2@gmail.com"], ["id", 41], ["LIMIT", 1]]
   ↳ app/models/user.rb:31:in `generate_password_token!'
   [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-24 02:09:33.400863"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 41]]
+=======
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-21 07:37:19 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"dhim@gmail.com", "password"=>{"email"=>"dhim@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "dhim@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-21 00:37:19.622962"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 1.2ms | Allocations: 390)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.2ms | Allocations: 642)
+UserMailer#welcome_email: processed outbound mail in 14.1ms
+Delivered mail 6351e9bfa18d3_24e9f396c257b@dhimas-pc.mail (4.2ms)
+Date: Fri, 21 Oct 2022 07:37:19 +0700
+From: from@example.com
+To: dhim@gmail.com
+Message-ID: <6351e9bfa18d3_24e9f396c257b@dhimas-pc.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>TOKEN RESET  admin2111</h1>
+  <p>
+    You have successfully get token,
+    your token is: 15cff09f6f7ae1b08133.<br>
+  </p>
+<p>Thanks for joining and have a great day!</p>
+
+
+  </body>
+</html>
+
+Completed 200 OK in 65ms (Views: 0.2ms | ActiveRecord: 5.6ms | Allocations: 33365)
+
+
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-21 07:37:35 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "dhim@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2, "reset_password_token" = $3 WHERE "users"."id" = $4[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2022-10-21 00:37:35.632422"], ["reset_password_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+Completed 200 OK in 219ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 3794)
+
+
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-21 07:37:41 +0700
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"dhim@gmail.com", "password"=>{"email"=>"dhim@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "dhim@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-21 00:37:41.453606"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 1.3ms | Allocations: 170)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.2ms | Allocations: 391)
+UserMailer#welcome_email: processed outbound mail in 5.8ms
+Delivered mail 6351e9d571726_24e9f3994261@dhimas-pc.mail (2.8ms)
+Date: Fri, 21 Oct 2022 07:37:41 +0700
+From: from@example.com
+To: dhim@gmail.com
+Message-ID: <6351e9d571726_24e9f3994261@dhimas-pc.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>TOKEN RESET  admin2111</h1>
+  <p>
+    You have successfully get token,
+    your token is: df76dfd05c7b9f56773a.<br>
+  </p>
+<p>Thanks for joining and have a great day!</p>
+
+
+  </body>
+</html>
+
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 7588)
+
+
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-21 07:37:51 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "dhim@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2, "reset_password_token" = $3 WHERE "users"."id" = $4[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2022-10-21 00:37:51.838796"], ["reset_password_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+Completed 200 OK in 201ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 3580)
+
+
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-21 07:38:48 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+Completed 422 Unprocessable Entity in 9ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 4026)
+
+
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-21 07:38:52 +0700
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"dhim@gmail.com", "password"=>{"email"=>"dhim@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhim@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "dhim@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-21 00:38:52.893646"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 23)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.3ms | Allocations: 124)
+UserMailer#welcome_email: processed outbound mail in 6.7ms
+Delivered mail 6351ea1cde24f_24e9f3994275@dhimas-pc.mail (7.8ms)
+Date: Fri, 21 Oct 2022 07:38:52 +0700
+From: from@example.com
+To: dhim@gmail.com
+Message-ID: <6351ea1cde24f_24e9f3994275@dhimas-pc.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>TOKEN RESET  admin2111</h1>
+  <p>
+    You have successfully get token,
+    your token is: 97204deaca480f9ae61b.<br>
+  </p>
+<p>Thanks for joining and have a great day!</p>
+
+
+  </body>
+</html>
+
+Completed 200 OK in 32ms (Views: 0.1ms | ActiveRecord: 3.5ms | Allocations: 10818)
+
+
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-21 07:39:01 +0700
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test@gmail.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-21 00:39:01.706384"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 4]]
+>>>>>>> refactor_code
   ↳ app/models/user.rb:31:in `generate_password_token!'
   [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
   ↳ app/models/user.rb:31:in `generate_password_token!'
   Rendering layout layouts/mailer.html.erb
   Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+<<<<<<< HEAD
   Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 170)
   Rendered layout layouts/mailer.html.erb (Duration: 1.3ms | Allocations: 391)
 UserMailer#welcome_email: processed outbound mail in 9.7ms
@@ -41425,6 +41639,16 @@ Date: Mon, 24 Oct 2022 09:09:33 +0700
 From: from@example.com
 To: test2@gmail.com
 Message-ID: <6355f3dd6c980_1b083958-496@dhimas-pc.mail>
+=======
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 99)
+UserMailer#welcome_email: processed outbound mail in 13.5ms
+Delivered mail 6351ea25b4246_24e9f394428fd@dhimas-pc.mail (1.8ms)
+Date: Fri, 21 Oct 2022 07:39:01 +0700
+From: from@example.com
+To: test@gmail.com
+Message-ID: <6351ea25b4246_24e9f394428fd@dhimas-pc.mail>
+>>>>>>> refactor_code
 Subject: Welcome to My Awesome Site
 Mime-Version: 1.0
 Content-Type: text/html;
@@ -41444,7 +41668,11 @@ Content-Transfer-Encoding: 7bit
     <h1>TOKEN RESET  test</h1>
   <p>
     You have successfully get token,
+<<<<<<< HEAD
     your token is: 12d273f6ad0de95a0e31.<br>
+=======
+    your token is: e5729f87d98d61710976.<br>
+>>>>>>> refactor_code
   </p>
 <p>Thanks for joining and have a great day!</p>
 
@@ -41452,6 +41680,7 @@ Content-Transfer-Encoding: 7bit
   </body>
 </html>
 
+<<<<<<< HEAD
 Completed 200 OK in 54ms (Views: 0.2ms | ActiveRecord: 3.7ms | Allocations: 19333)
 
 
@@ -42302,5 +42531,683 @@ Processing by Api::V1::EventsController#update as */*
   [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
   ↳ app/controllers/api/v1/events_controller.rb:30:in `update'
 Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 2.7ms | Allocations: 5293)
+=======
+Completed 200 OK in 55ms (Views: 0.1ms | ActiveRecord: 2.5ms | Allocations: 6631)
+
+
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-21 07:39:16 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test@gmail.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2, "reset_password_token" = $3 WHERE "users"."id" = $4[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2022-10-21 00:39:17.032196"], ["reset_password_token", "[FILTERED]"], ["id", 4]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+Completed 200 OK in 47825ms (Views: 0.2ms | ActiveRecord: 2.5ms | Allocations: 42693)
+
+
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-21 07:40:11 +0700
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test@gmail.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-21 00:40:11.840629"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 4]]
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:31:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 0.1ms | Allocations: 23)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.4ms | Allocations: 124)
+UserMailer#welcome_email: processed outbound mail in 2.7ms
+Delivered mail 6351ea6bcf62d_24e9f396c297e@dhimas-pc.mail (1.8ms)
+Date: Fri, 21 Oct 2022 07:40:11 +0700
+From: from@example.com
+To: test@gmail.com
+Message-ID: <6351ea6bcf62d_24e9f396c297e@dhimas-pc.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>TOKEN RESET  test</h1>
+  <p>
+    You have successfully get token,
+    your token is: 0d9f5a0dc57ac451d0ec.<br>
+  </p>
+<p>Thanks for joining and have a great day!</p>
+
+
+  </body>
+</html>
+
+Completed 200 OK in 26ms (Views: 0.3ms | ActiveRecord: 5.6ms | Allocations: 14111)
+
+
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-21 07:40:24 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.3ms | Allocations: 6213)
+
+
+  
+NoMethodError (undefined method `password!' for #<User id: 4, name: "test", email: "test@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-17 07:46:07.542967000 +0000", updated_at: "2022-10-21 00:40:11.840629000 +0000", reset_password_token: [FILTERED], reset_password_sent_at: [FILTERED]>
+Did you mean?  password
+               password=):
+  
+app/controllers/api/v1/passwords_controller.rb:29:in `reset'
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-21 07:41:31 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 3.9ms | Allocations: 11354)
+
+
+  
+NoMethodError (undefined method `password_digest!' for #<User id: 4, name: "test", email: "test@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-17 07:46:07.542967000 +0000", updated_at: "2022-10-21 00:40:11.840629000 +0000", reset_password_token: [FILTERED], reset_password_sent_at: [FILTERED]>
+Did you mean?  password_digest
+               password_digest?
+               password_digest=
+               password_digest_was):
+  
+app/controllers/api/v1/passwords_controller.rb:29:in `reset'
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-21 07:41:43 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 2.7ms | Allocations: 11349)
+
+
+  
+NoMethodError (undefined method `password_digests!' for #<User id: 4, name: "test", email: "test@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-17 07:46:07.542967000 +0000", updated_at: "2022-10-21 00:40:11.840629000 +0000", reset_password_token: [FILTERED], reset_password_sent_at: [FILTERED]>
+Did you mean?  password_digest
+               password_digest?
+               password_digest=
+               password_digest_was):
+  
+app/controllers/api/v1/passwords_controller.rb:29:in `reset'
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-21 07:41:51 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"test@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "test@gmail.com"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2, "reset_password_token" = $3 WHERE "users"."id" = $4[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2022-10-21 00:41:51.387578"], ["reset_password_token", "[FILTERED]"], ["id", 4]]
+  ↳ app/models/user.rb:41:in `reset_password!'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:41:in `reset_password!'
+Completed 200 OK in 25667ms (Views: 0.2ms | ActiveRecord: 4.2ms | Allocations: 26571)
+
+
+Started POST "/api/v1/family_trees" for ::1 at 2022-10-21 09:31:55 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::FamilyTreesController#create as */*
+  Parameters: {"name"=>"uji family hafiz", "family_tree"=>{"name"=>"uji family hafiz"}}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 2.9ms | Allocations: 946)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-21 09:32:04 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"testing@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"testing@gmail.com"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 200ms (Views: 0.2ms | ActiveRecord: 6.3ms | Allocations: 7943)
+
+
+Started POST "/api/v1/family_trees" for ::1 at 2022-10-21 09:32:19 +0700
+Processing by Api::V1::FamilyTreesController#create as */*
+  Parameters: {"name"=>"uji family hafiz", "family_tree"=>{"name"=>"uji family hafiz"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:7:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:7:in `create'
+  [1m[36mFamilyTree Create (2.1ms)[0m  [1m[32mINSERT INTO "family_trees" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "uji family hafiz"], ["user_id", 22], ["created_at", "2022-10-21 02:32:19.456540"], ["updated_at", "2022-10-21 02:32:19.456540"]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:7:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:7:in `create'
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 5.5ms | Allocations: 9429)
+
+
+Started GET "/api/v1/family_trees/1" for ::1 at 2022-10-21 09:35:19 +0700
+Processing by Api::V1::FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:24:in `set_family'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 5.0ms | Allocations: 10501)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/controllers/application_controller.rb:33:in `response_to_json'
+app/controllers/api/v1/family_trees_controller.rb:11:in `show'
+Started GET "/api/v1/family_trees/1" for ::1 at 2022-10-21 09:35:49 +0700
+Processing by Api::V1::FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:24:in `set_family'
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 5.7ms | Allocations: 10396)
+
+
+Started GET "/api/v1/family_trees/10" for ::1 at 2022-10-21 09:36:00 +0700
+Processing by Api::V1::FamilyTreesController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:24:in `set_family'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1577)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find FamilyTree with 'id'=10):
+  
+app/controllers/api/v1/family_trees_controller.rb:24:in `set_family'
+Started GET "/api/v1/family_trees/10" for ::1 at 2022-10-21 09:36:53 +0700
+Processing by Api::V1::FamilyTreesController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:24:in `set_family'
+Filter chain halted as :set_family rendered or redirected
+Completed 404 Not Found in 16ms (Views: 0.1ms | ActiveRecord: 3.9ms | Allocations: 9290)
+
+
+Started GET "/api/v1/family_trees/1" for ::1 at 2022-10-21 09:36:58 +0700
+Processing by Api::V1::FamilyTreesController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:24:in `set_family'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 1.7ms | Allocations: 2342)
+
+
+Started PUT "/api/v1/family_trees/1" for ::1 at 2022-10-21 09:38:10 +0700
+Processing by Api::V1::FamilyTreesController#update as */*
+  Parameters: {"name"=>"popo family", "id"=>"1", "family_tree"=>{"name"=>"popo family"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:20:in `set_family'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:15:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:15:in `update'
+  [1m[36mFamilyTree Update (0.3ms)[0m  [1m[33mUPDATE "family_trees" SET "name" = $1, "updated_at" = $2 WHERE "family_trees"."id" = $3[0m  [["name", "popo family"], ["updated_at", "2022-10-21 02:38:10.749260"], ["id", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:15:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:15:in `update'
+Completed 200 OK in 23ms (Views: 0.1ms | ActiveRecord: 7.8ms | Allocations: 12556)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-21 09:47:39 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007fd7e0528658>, params: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mEvent Create (1.7ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "arisan keluarga"], ["date", "2022-10-11 00:00:00"], ["venue", "rumah kakek"], ["user_id", 22], ["family_tree_id", 1], ["created_at", "2022-10-21 02:47:39.215208"], ["updated_at", "2022-10-21 02:47:39.215208"]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+Completed 200 OK in 42ms (Views: 0.4ms | ActiveRecord: 11.6ms | Allocations: 26706)
+
+
+Started DELETE "/api/v1/events/2" for ::1 at 2022-10-21 09:47:57 +0700
+Processing by Api::V1::EventsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:20:in `destroy'
+  [1m[36mEvent Destroy (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/v1/events_controller.rb:20:in `destroy'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:20:in `destroy'
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 2.3ms | Allocations: 3804)
+
+
+Started GET "/api/v1/events/2" for ::1 at 2022-10-21 09:49:15 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1657)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=2):
+  
+app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Started GET "/api/v1/events/2" for ::1 at 2022-10-21 09:50:00 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Filter chain halted as :set_event rendered or redirected
+Completed 404 Not Found in 18ms (Views: 0.2ms | ActiveRecord: 4.2ms | Allocations: 9018)
+
+
+Started GET "/api/v1/events/1" for ::1 at 2022-10-21 09:50:04 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Completed 200 OK in 19ms (Views: 0.5ms | ActiveRecord: 2.3ms | Allocations: 3097)
+
+
+Started GET "/api/v1/events/2" for ::1 at 2022-10-21 09:50:16 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Filter chain halted as :set_event rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1205)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-21 09:50:28 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007fd7e2d8cbd0>, params: {"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"arisan keluarga", "date"=>"2022-10-11", "venue"=>"rumah kakek", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "arisan keluarga"], ["date", "2022-10-11 00:00:00"], ["venue", "rumah kakek"], ["user_id", 22], ["family_tree_id", 1], ["created_at", "2022-10-21 02:50:28.077629"], ["updated_at", "2022-10-21 02:50:28.077629"]]
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:12:in `create'
+Completed 200 OK in 20ms (Views: 0.2ms | ActiveRecord: 5.1ms | Allocations: 10552)
+
+
+Started GET "/api/v1/events/2" for ::1 at 2022-10-21 09:50:33 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Filter chain halted as :set_event rendered or redirected
+Completed 404 Not Found in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 1254)
+
+
+Started GET "/api/v1/events/3" for ::1 at 2022-10-21 09:50:37 +0700
+Processing by Api::V1::EventsController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:36:in `set_event'
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1325)
+
+
+Started GET "/api/v1/events?family_tree_id=2" for ::1 at 2022-10-21 09:51:08 +0700
+Processing by Api::V1::EventsController#index as */*
+  Parameters: {"family_tree_id"=>"2"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."family_tree_id" = $1[0m  [["family_tree_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 849)
+
+
+Started GET "/api/v1/events?family_tree_id=1" for ::1 at 2022-10-21 09:51:14 +0700
+Processing by Api::V1::EventsController#index as */*
+  Parameters: {"family_tree_id"=>"1"}
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."family_tree_id" = $1[0m  [["family_tree_id", 1]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.2ms | Allocations: 1059)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-21 09:53:32 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 1.0ms | Allocations: 637)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-21 09:53:42 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:31:in `set_event'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007fd7e3dcb280>, params: {"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan bersama", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+Completed 200 OK in 35ms (Views: 0.8ms | ActiveRecord: 6.4ms | Allocations: 17816)
+
+
+Started PUT "/api/v1/events/1" for ::1 at 2022-10-21 09:53:52 +0700
+Processing by Api::V1::EventsController#update as */*
+  Parameters: {"name"=>"arisan bersama kamu", "date"=>"2022-10-11", "venue"=>"rumah kakek", "id"=>"1", "event"=>{"name"=>"arisan bersama kamu", "date"=>"2022-10-11", "venue"=>"rumah kakek"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:31:in `set_event'
+[31mUnpermitted parameters: :id, :event. Context: { controller: Api::V1::EventsController, action: update, request: #<ActionDispatch::Request:0x00007fd7e1ed57e0>, params: {"name"=>"arisan bersama kamu", "date"=>"2022-10-11", "venue"=>"rumah kakek", "controller"=>"api/v1/events", "action"=>"update", "id"=>"1", "event"=>{"name"=>"arisan bersama kamu", "date"=>"2022-10-11", "venue"=>"rumah kakek"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mEvent Update (0.4ms)[0m  [1m[33mUPDATE "events" SET "name" = $1, "updated_at" = $2 WHERE "events"."id" = $3[0m  [["name", "arisan bersama kamu"], ["updated_at", "2022-10-21 02:53:52.978495"], ["id", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:25:in `update'
+Completed 200 OK in 15ms (Views: 0.4ms | ActiveRecord: 3.1ms | Allocations: 5321)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-21 12:27:35 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UserRelationsController#index as */*
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 947)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-21 12:27:49 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (1.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["user_id", 22]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:7:in `each_with_index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:8:in `block in index'
+  [1m[36mRelation Load (1.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 112], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:11:in `block in index'
+  [1m[36mBiodataUser Load (0.8ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:13:in `block in index'
+Completed 200 OK in 84ms (Views: 0.5ms | ActiveRecord: 15.3ms | Allocations: 36888)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-21 12:28:16 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"test", "email"=>"testi@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"test", "email"=>"testi@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "testi@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-21 05:28:16.259985"], ["updated_at", "2022-10-21 05:28:16.259985"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 197ms (Views: 0.3ms | ActiveRecord: 2.0ms | Allocations: 5287)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-21 12:28:25 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["user_id", 29]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:7:in `each_with_index'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1377)
+
+
+Started GET "/api/v1/user_relations/50" for ::1 at 2022-10-21 12:29:38 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"50"}
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `show'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+Completed 200 OK in 41ms (Views: 3.0ms | ActiveRecord: 8.3ms | Allocations: 17502)
+
+
+Started GET "/api/v1/user_relations/50" for ::1 at 2022-10-21 12:30:04 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"50"}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 637)
+
+
+Started GET "/api/v1/user_relations/50" for ::1 at 2022-10-21 12:30:24 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"50"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `show'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+Completed 200 OK in 38ms (Views: 0.5ms | ActiveRecord: 7.4ms | Allocations: 24421)
+
+
+Started PUT "/api/v1/relations/53" for ::1 at 2022-10-21 12:36:45 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::RelationsController#update as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"left", "number"=>1, "id"=>"53", "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"left", "number"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 53], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/relations_controller.rb:10:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:11:in `update'
+  [1m[36mRelation Update (1.5ms)[0m  [1m[33mUPDATE "relations" SET "position" = $1, "updated_at" = $2 WHERE "relations"."id" = $3[0m  [["position", 1], ["updated_at", "2022-10-21 05:36:45.798008"], ["id", 53]]
+  ↳ app/controllers/api/v1/relations_controller.rb:11:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:11:in `update'
+Completed 200 OK in 49ms (Views: 0.4ms | ActiveRecord: 12.1ms | Allocations: 31218)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-21 12:42:47 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>1, "connected_user_id"=>1, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+Filter chain halted as :authorize rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 1.8ms | Allocations: 932)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-21 12:43:00 +0700
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>1, "connected_user_id"=>1, "relation"=>{"name"=>"dhimas", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "testing@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (1.5ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "dhimas"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-21 05:43:00.354601"], ["updated_at", "2022-10-21 05:43:00.354601"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mUserRelation Create (0.8ms)[0m  [1m[32mINSERT INTO "user_relations" ("connected_user_id", "status", "family_tree_id", "token", "user_id", "relation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["connected_user_id", 1], ["status", 0], ["family_tree_id", 1], ["token", "[FILTERED]"], ["user_id", 22], ["relation_id", 113], ["created_at", "2022-10-21 05:43:00.410361"], ["updated_at", "2022-10-21 05:43:00.410361"]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 113]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 93ms (Views: 0.4ms | ActiveRecord: 16.2ms | Allocations: 37406)
+
+
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-21 12:43:21 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"tesss@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "invitation"=>{"name"=>"test", "email"=>"tesss@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :token, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007fa53726dcf0>, params: {"name"=>"test", "email"=>"tesss@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"test", "email"=>"tesss@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tesss@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "tesss@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-21 05:43:21.468304"], ["updated_at", "2022-10-21 05:43:21.468304"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+  [1m[36mUserRelation Load (0.4ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:7:in `create'
+  [1m[36mRelation Load (0.5ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:8:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:8:in `create'
+Completed 200 OK in 214ms (Views: 0.2ms | ActiveRecord: 3.0ms | Allocations: 7440)
+
+
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-21 12:43:36 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"tesss@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "invitation"=>{"name"=>"test", "email"=>"tesss@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007fa5357cd918>, params: {"name"=>"test", "email"=>"tesss@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"test", "email"=>"tesss@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tesss@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+Completed 422 Unprocessable Entity in 200ms (Views: 4.4ms | ActiveRecord: 0.5ms | Allocations: 3870)
+
+
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-21 12:43:41 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"tesss1@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "invitation"=>{"name"=>"test", "email"=>"tesss1@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007fa5357882a0>, params: {"name"=>"test", "email"=>"tesss1@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"test", "email"=>"tesss1@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tesss1@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "tesss1@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-21 05:43:41.310190"], ["updated_at", "2022-10-21 05:43:41.310190"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:5:in `create'
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 1.8ms | Allocations: 3358)
+
+
+  
+JWT::DecodeError (Nil JSON web token):
+  
+app/controllers/api/v1/invitations_controller.rb:6:in `create'
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-21 12:45:43 +0700
+Error occurred while parsing request parameters.
+Contents:
+
+{   
+    "name":"test",
+    "email":"tesss11@gmail.com",
+    "phone":"08981231",
+    "password":"dhimas123",
+}
+Processing by Api::V1::InvitationsController#create as */*
+Completed 400 Bad Request in 5ms (ActiveRecord: 0.0ms | Allocations: 3001)
+
+
+  
+ActionDispatch::Http::Parameters::ParseError (Error occurred while parsing request parameters):
+  
+app/controllers/api/v1/invitations_controller.rb:18:in `user_params'
+app/controllers/api/v1/invitations_controller.rb:3:in `create'
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-21 12:45:50 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "invitation"=>{"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007fa535602778>, params: {"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}} }[0m
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 2.5ms | Allocations: 4039)
+
+
+  
+NoMethodError (undefined method `presence?' for nil:NilClass
+
+    if params[:token].presence?
+                     ^^^^^^^^^^
+Did you mean?  presence
+               present?
+               presence_in):
+  
+app/controllers/api/v1/invitations_controller.rb:5:in `create'
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-21 12:46:06 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "invitation"=>{"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007fa535707c18>, params: {"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}} }[0m
+Completed 422 Unprocessable Entity in 201ms (Views: 0.1ms | ActiveRecord: 3.0ms | Allocations: 5417)
+
+
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-21 12:46:41 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "invitation"=>{"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007fa5370b3bd0>, params: {"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]"}} }[0m
+Completed 422 Unprocessable Entity in 204ms (Views: 0.2ms | ActiveRecord: 2.8ms | Allocations: 5355)
+
+
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-21 12:46:52 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "invitation"=>{"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :token, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007fa5356b2fd8>, params: {"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"test", "email"=>"tesss11@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tesss11@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:6:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "test"], ["email", "tesss11@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-21 05:46:52.830743"], ["updated_at", "2022-10-21 05:46:52.830743"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.9ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:8:in `create'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 113], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+Completed 200 OK in 231ms (Views: 0.2ms | ActiveRecord: 9.2ms | Allocations: 17093)
+>>>>>>> refactor_code
 
 
