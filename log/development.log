@@ -44240,3 +44240,656 @@ Processing by ActiveStorage::DiskController#show as JPEG
 Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 169)
 
 
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 14:42:04 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"descriptions"=>"isi nya contoh untuk database", "status"=>"private", "content"=>#<ActionDispatch::Http::UploadedFile:0x00007fb22112dc18 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-36817-z3qbk2.jpeg>, @original_filename="toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"content\"; filename=\"toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Create (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("descriptions", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["user_id", 2], ["created_at", "2022-10-24 07:42:04.352658"], ["updated_at", "2022-10-24 07:42:04.352658"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "5hgaviyj9b150qhrh19cb0broylh"], ["filename", "toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 52859], ["checksum", "VOR3KynOiaIJN+SIwANi/w=="], ["created_at", "2022-10-24 07:42:04.373075"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "content"], ["record_type", "Post"], ["record_id", 4], ["blob_id", 16], ["created_at", "2022-10-24 07:42:04.374985"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Update (0.3ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2022-10-24 07:42:04.377090"], ["id", 4]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+[36m  Disk Storage (0.3ms) [0m[32mUploaded file to key: 5hgaviyj9b150qhrh19cb0broylh (checksum: VOR3KynOiaIJN+SIwANi/w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 2ef37b5a-526f-4e2b-99db-08258b5cd53f) to Async(default) with arguments: #<GlobalID:0x00007fb221351378 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/16>>
+Completed 200 OK in 114ms (Views: 0.3ms | ActiveRecord: 17.3ms | Allocations: 50980)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ef37b5a-526f-4e2b-99db-08258b5cd53f]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ef37b5a-526f-4e2b-99db-08258b5cd53f] Performing ActiveStorage::AnalyzeJob (Job ID: 2ef37b5a-526f-4e2b-99db-08258b5cd53f) from Async(default) enqueued at 2022-10-24T07:42:04Z with arguments: #<GlobalID:0x00007fb22130a8b0 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/16>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ef37b5a-526f-4e2b-99db-08258b5cd53f] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ef37b5a-526f-4e2b-99db-08258b5cd53f]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ef37b5a-526f-4e2b-99db-08258b5cd53f]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 16]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ef37b5a-526f-4e2b-99db-08258b5cd53f]   [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [2ef37b5a-526f-4e2b-99db-08258b5cd53f] Performed ActiveStorage::AnalyzeJob (Job ID: 2ef37b5a-526f-4e2b-99db-08258b5cd53f) from Async(default) in 11.36ms
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 14:43:51 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"descriptions"=>"isi nya contoh untuk database", "status"=>"private", "content"=>#<ActionDispatch::Http::UploadedFile:0x00007fb22322b708 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-36817-ew2tfn.jpeg>, @original_filename="toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"content\"; filename=\"toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("descriptions", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["user_id", 2], ["created_at", "2022-10-24 07:43:51.599322"], ["updated_at", "2022-10-24 07:43:51.599322"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "s2kp6vu02hls8z9sjygc51zc9u2m"], ["filename", "toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 52859], ["checksum", "VOR3KynOiaIJN+SIwANi/w=="], ["created_at", "2022-10-24 07:43:51.615244"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "content"], ["record_type", "Post"], ["record_id", 5], ["blob_id", 17], ["created_at", "2022-10-24 07:43:51.617827"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Update (0.3ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2022-10-24 07:43:51.620313"], ["id", 5]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+[36m  Disk Storage (0.4ms) [0m[32mUploaded file to key: s2kp6vu02hls8z9sjygc51zc9u2m (checksum: VOR3KynOiaIJN+SIwANi/w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 982eaa55-ad45-428a-9e1d-6970f26e5be5) to Async(default) with arguments: #<GlobalID:0x00007fb22139ba40 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/17>>
+[36m  Disk Storage (1.0ms) [0m[34mGenerated URL for file at key: s2kp6vu02hls8z9sjygc51zc9u2m (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjekpyY0RaMmRUQXlhR3h6T0hvNWMycDVaMk0xTVhwak9YVXliUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pTSVBhVzFoWjJVdmFuQmxaem9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjRUMDc6NDg6NTEuNjI2WiIsInB1ciI6ImJsb2Jfa2V5In19--11488b624d24a55656d196bc8a5ca325116efdde/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+Completed 200 OK in 65ms (Views: 0.2ms | ActiveRecord: 13.6ms | Allocations: 33289)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [982eaa55-ad45-428a-9e1d-6970f26e5be5]   [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [982eaa55-ad45-428a-9e1d-6970f26e5be5] Performing ActiveStorage::AnalyzeJob (Job ID: 982eaa55-ad45-428a-9e1d-6970f26e5be5) from Async(default) enqueued at 2022-10-24T07:43:51Z with arguments: #<GlobalID:0x00007fb221386aa0 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/17>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [982eaa55-ad45-428a-9e1d-6970f26e5be5] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [982eaa55-ad45-428a-9e1d-6970f26e5be5]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [982eaa55-ad45-428a-9e1d-6970f26e5be5]   [1m[36mActiveStorage::Blob Update (0.4ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 17]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [982eaa55-ad45-428a-9e1d-6970f26e5be5]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [982eaa55-ad45-428a-9e1d-6970f26e5be5] Performed ActiveStorage::AnalyzeJob (Job ID: 982eaa55-ad45-428a-9e1d-6970f26e5be5) from Async(default) in 24.54ms
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 14:44:09 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"descriptions"=>"isi nya contoh untuk database", "status"=>"private", "content"=>#<ActionDispatch::Http::UploadedFile:0x00007fb223c2adf8 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-36817-zipp7x.jpeg>, @original_filename="toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"content\"; filename=\"toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 4.1ms | Allocations: 6921)
+
+
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/post.rb:7: syntax error, unexpected local variable or method, expecting '}'
+      descriptions: self.descriptions,
+      ^~~~~~~~~~~~
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/post.rb:8: syntax error, unexpected label, expecting '='
+      status: self.status,
+      ^~~~~~~
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/post.rb:9: syntax error, unexpected label, expecting '='
+      content: self.content.url,
+      ^~~~~~~~
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/post.rb:10: syntax error, unexpected '}', expecting '='
+    }
+    ^
+):
+  
+app/models/post.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/models/post.rb:8: syntax error, unexpected label, expecting '='
+app/models/post.rb:9: syntax error, unexpected label, expecting '='
+app/models/post.rb:10: syntax error, unexpected '}', expecting '='
+app/models/post.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/models/post.rb:8: syntax error, unexpected label, expecting '='
+app/models/post.rb:9: syntax error, unexpected label, expecting '='
+app/models/post.rb:10: syntax error, unexpected '}', expecting '='
+app/models/post.rb:7: syntax error, unexpected local variable or method, expecting '}'
+app/models/post.rb:8: syntax error, unexpected label, expecting '='
+app/models/post.rb:9: syntax error, unexpected label, expecting '='
+app/models/post.rb:10: syntax error, unexpected '}', expecting '='
+app/controllers/api/v1/posts_controller.rb:18:in `create'
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 14:44:16 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"descriptions"=>"isi nya contoh untuk database", "status"=>"private", "content"=>#<ActionDispatch::Http::UploadedFile:0x00007fb223239e98 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-36817-p5xip0.jpeg>, @original_filename="toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"content\"; filename=\"toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("descriptions", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["user_id", 2], ["created_at", "2022-10-24 07:44:17.016558"], ["updated_at", "2022-10-24 07:44:17.016558"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "zfjtf6z5ub0bfwpj9bjj0lpcgj9h"], ["filename", "toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 52859], ["checksum", "VOR3KynOiaIJN+SIwANi/w=="], ["created_at", "2022-10-24 07:44:17.032593"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "content"], ["record_type", "Post"], ["record_id", 6], ["blob_id", 18], ["created_at", "2022-10-24 07:44:17.035499"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Update (0.3ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2022-10-24 07:44:17.038352"], ["id", 6]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+[36m  Disk Storage (0.3ms) [0m[32mUploaded file to key: zfjtf6z5ub0bfwpj9bjj0lpcgj9h (checksum: VOR3KynOiaIJN+SIwANi/w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 56a684e7-5034-408c-8f6f-805338477e29) to Async(default) with arguments: #<GlobalID:0x00007fb221289b48 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/18>>
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: zfjtf6z5ub0bfwpj9bjj0lpcgj9h (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbVpxZEdZMmVqVjFZakJpWm5kd2FqbGlhbW93YkhCaloybzVhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pTSVBhVzFoWjJVdmFuQmxaem9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjRUMDc6NDk6MTcuMDQ0WiIsInB1ciI6ImJsb2Jfa2V5In19--8e6f3aeb672d9ac70404aea7894ef5c302fff6d4/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+Completed 200 OK in 71ms (Views: 0.2ms | ActiveRecord: 15.6ms | Allocations: 33019)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [56a684e7-5034-408c-8f6f-805338477e29]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [56a684e7-5034-408c-8f6f-805338477e29] Performing ActiveStorage::AnalyzeJob (Job ID: 56a684e7-5034-408c-8f6f-805338477e29) from Async(default) enqueued at 2022-10-24T07:44:17Z with arguments: #<GlobalID:0x00007fb221267e80 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/18>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [56a684e7-5034-408c-8f6f-805338477e29] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [56a684e7-5034-408c-8f6f-805338477e29]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [56a684e7-5034-408c-8f6f-805338477e29]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 18]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [56a684e7-5034-408c-8f6f-805338477e29]   [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [56a684e7-5034-408c-8f6f-805338477e29] Performed ActiveStorage::AnalyzeJob (Job ID: 56a684e7-5034-408c-8f6f-805338477e29) from Async(default) in 12.29ms
+Started GET "/api/v1/posts?family_tree_id=1" for ::1 at 2022-10-24 14:45:50 +0700
+Processing by Api::V1::PostsController#index as */*
+  Parameters: {"family_tree_id"=>"1"}
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."family_tree_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["family_tree_id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `each_with_index'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:11:in `block in index'
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 4.9ms | Allocations: 11872)
+
+
+  
+NoMethodError (undefined method `new_attribute' for nil:NilClass
+
+            @posts.push(@post.new_attribute)
+                             ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/posts_controller.rb:12:in `block in index'
+app/controllers/api/v1/posts_controller.rb:10:in `each_with_index'
+app/controllers/api/v1/posts_controller.rb:10:in `index'
+Started GET "/api/v1/posts?family_tree_id=1" for ::1 at 2022-10-24 14:46:06 +0700
+Processing by Api::V1::PostsController#index as */*
+  Parameters: {"family_tree_id"=>"1"}
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."family_tree_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["family_tree_id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `each_with_index'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:11:in `block in index'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 4.2ms | Allocations: 10576)
+
+
+  
+NoMethodError (undefined method `new_attribute' for [nil]:Array
+
+        response_to_json({posts:@posts.new_attribute}, :ok)
+                                      ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/posts_controller.rb:14:in `index'
+Started GET "/api/v1/posts?family_tree_id=1" for ::1 at 2022-10-24 14:46:47 +0700
+Processing by Api::V1::PostsController#index as */*
+  Parameters: {"family_tree_id"=>"1"}
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."family_tree_id" = $1 AND "user_relations"."connected_user_id" IS NOT NULL[0m  [["family_tree_id", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:10:in `each_with_index'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:11:in `block in index'
+Completed 500 Internal Server Error in 13402ms (ActiveRecord: 5.2ms | Allocations: 25362)
+
+
+  
+NoMethodError (undefined method `new_attribute' for nil:NilClass
+
+            @posts.push(@post.new_attribute)
+                             ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/posts_controller.rb:13:in `block in index'
+app/controllers/api/v1/posts_controller.rb:10:in `each_with_index'
+app/controllers/api/v1/posts_controller.rb:10:in `index'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:48:15 +0700
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:48:15 +0700
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:48:15 +0700
+Processing by Api::V1::PostsController#find as */*
+Processing by Api::V1::PostsController#find as */*
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 42ms (Views: 8.1ms | ActiveRecord: 9.1ms | Allocations: 22965)
+
+
+Completed 200 OK in 42ms (Views: 7.3ms | ActiveRecord: 16.3ms | Allocations: 23124)
+
+
+Completed 200 OK in 43ms (Views: 6.7ms | ActiveRecord: 17.0ms | Allocations: 23658)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:48:20 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 42ms (Views: 9.9ms | ActiveRecord: 6.5ms | Allocations: 22388)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:48:28 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 2.4ms | Allocations: 15211)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `new_attribute' for #<ActiveRecord::Associations::CollectionProxy [#<Post id: 1, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:35:18.706808000 +0000", updated_at: "2022-10-24 07:35:18.706808000 +0000">, #<Post id: 2, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:35:37.946126000 +0000", updated_at: "2022-10-24 07:35:37.962047000 +0000">, #<Post id: 3, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:37:02.509151000 +0000", updated_at: "2022-10-24 07:37:02.519678000 +0000">, #<Post id: 4, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:42:04.352658000 +0000", updated_at: "2022-10-24 07:42:04.377090000 +0000">, #<Post id: 5, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:43:51.599322000 +0000", updated_at: "2022-10-24 07:43:51.620313000 +0000">, #<Post id: 6, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:44:17.016558000 +0000", updated_at: "2022-10-24 07:44:17.038352000 +0000">]>
+Did you mean?  bind_attribute):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:48:50 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 3.6ms | Allocations: 15154)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `new_attribute' for #<ActiveRecord::Associations::CollectionProxy [#<Post id: 1, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:35:18.706808000 +0000", updated_at: "2022-10-24 07:35:18.706808000 +0000">, #<Post id: 2, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:35:37.946126000 +0000", updated_at: "2022-10-24 07:35:37.962047000 +0000">, #<Post id: 3, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:37:02.509151000 +0000", updated_at: "2022-10-24 07:37:02.519678000 +0000">, #<Post id: 4, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:42:04.352658000 +0000", updated_at: "2022-10-24 07:42:04.377090000 +0000">, #<Post id: 5, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:43:51.599322000 +0000", updated_at: "2022-10-24 07:43:51.620313000 +0000">, #<Post id: 6, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:44:17.016558000 +0000", updated_at: "2022-10-24 07:44:17.038352000 +0000">]>
+Did you mean?  bind_attribute):
+  
+app/controllers/api/v1/posts_controller.rb:24:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:49:04 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 3.6ms | Allocations: 11502)
+
+
+  
+NoMethodError (undefined method `post' for #<User id: 2, name: "test", email: "test@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-24 02:20:06.762469000 +0000", updated_at: "2022-10-24 02:20:06.762469000 +0000", reset_password_token: nil, reset_password_sent_at: nil>
+Did you mean?  posts):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:49:11 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 3.6ms | Allocations: 11484)
+
+
+  
+NoMethodError (undefined method `post' for #<User id: 2, name: "test", email: "test@gmail.com", phone: "08981231", password_digest: [FILTERED], created_at: "2022-10-24 02:20:06.762469000 +0000", updated_at: "2022-10-24 02:20:06.762469000 +0000", reset_password_token: nil, reset_password_sent_at: nil>
+Did you mean?  posts):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:49:24 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 25ms (Views: 5.6ms | ActiveRecord: 5.5ms | Allocations: 12825)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:50:22 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 39ms (Views: 21.2ms | ActiveRecord: 6.9ms | Allocations: 11135)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:52:40 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 3.3ms | Allocations: 13954)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `new_attribute' for #<ActiveRecord::Relation [#<Post id: 1, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:35:18.706808000 +0000", updated_at: "2022-10-24 07:35:18.706808000 +0000">, #<Post id: 2, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:35:37.946126000 +0000", updated_at: "2022-10-24 07:35:37.962047000 +0000">, #<Post id: 3, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:37:02.509151000 +0000", updated_at: "2022-10-24 07:37:02.519678000 +0000">, #<Post id: 4, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:42:04.352658000 +0000", updated_at: "2022-10-24 07:42:04.377090000 +0000">, #<Post id: 5, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:43:51.599322000 +0000", updated_at: "2022-10-24 07:43:51.620313000 +0000">, #<Post id: 6, descriptions: "isi nya contoh untuk database", status: "private", user_id: 2, created_at: "2022-10-24 07:44:17.016558000 +0000", updated_at: "2022-10-24 07:44:17.038352000 +0000">]>
+Did you mean?  bind_attribute):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:53:36 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/posts_controller.rb:23: syntax error, unexpected local variable or method, expecting `end'
+....where(user_id: @user.id)select(new_attribute).take
+...                         ^~~~~~
+):
+  
+app/controllers/api/v1/posts_controller.rb:23: syntax error, unexpected local variable or method, expecting `end'
+app/controllers/api/v1/posts_controller.rb:23: syntax error, unexpected local variable or method, expecting `end'
+app/controllers/api/v1/posts_controller.rb:23: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:53:43 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/posts_controller.rb:23: syntax error, unexpected local variable or method, expecting `end'
+....where(user_id: @user.id)select(:id, :descriptions, :content...
+...                         ^~~~~~
+):
+  
+app/controllers/api/v1/posts_controller.rb:23: syntax error, unexpected local variable or method, expecting `end'
+app/controllers/api/v1/posts_controller.rb:23: syntax error, unexpected local variable or method, expecting `end'
+app/controllers/api/v1/posts_controller.rb:23: syntax error, unexpected local variable or method, expecting `end'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:53:52 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions", "content" FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:23:in `find'
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 3.7ms | Allocations: 9876)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column "content" does not exist
+LINE 1: SELECT "posts"."id", "posts"."descriptions", "content" FROM ...
+                                                     ^
+):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:54:00 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:23:in `find'
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 6.0ms | Allocations: 10495)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:54:15 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 24ms (Views: 4.8ms | ActiveRecord: 5.8ms | Allocations: 10700)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:54:22 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 5.1ms | Allocations: 13623)
+
+
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["user_id", 2], ["LIMIT", 11]]
+  
+NoMethodError (undefined method `new_attribute' for #<ActiveRecord::Relation [#<Post id: 1, descriptions: "isi nya contoh untuk database">, #<Post id: 2, descriptions: "isi nya contoh untuk database">, #<Post id: 3, descriptions: "isi nya contoh untuk database">, #<Post id: 4, descriptions: "isi nya contoh untuk database">, #<Post id: 5, descriptions: "isi nya contoh untuk database">, #<Post id: 6, descriptions: "isi nya contoh untuk database">]>
+Did you mean?  bind_attribute):
+  
+app/controllers/api/v1/posts_controller.rb:23:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:56:54 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 5.4ms | Allocations: 10754)
+
+
+  
+ActiveModel::MissingAttributeError (missing attribute: status):
+  
+app/models/post.rb:8:in `new_attribute'
+app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+app/controllers/api/v1/posts_controller.rb:25:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:57:23 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 5.6ms | Allocations: 10653)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:57:36 +0700
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/controllers/api/v1/posts_controller.rb:25: formal argument cannot be an instance variable
+...posts.each_with_index do |@post|
+...                          ^~~~~
+):
+  
+app/controllers/api/v1/posts_controller.rb:25: formal argument cannot be an instance variable
+app/controllers/api/v1/posts_controller.rb:25: formal argument cannot be an instance variable
+app/controllers/api/v1/posts_controller.rb:25: formal argument cannot be an instance variable
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:57:42 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 10.9ms | Allocations: 10732)
+
+
+  
+ActiveModel::MissingAttributeError (missing attribute: status):
+  
+app/models/post.rb:8:in `new_attribute'
+app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+app/controllers/api/v1/posts_controller.rb:25:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:57:50 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (1.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (2.5ms) [0m[34mGenerated URL for file at key: olo4ueudeo097avwue8i01a6knrg (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiMnh2TkhWbGRXUmxiekE1TjJGMmQzVmxPR2t3TVdFMmEyNXlad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAyOjUwLjIzM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d58cff61da38d921bf07c4492d22c201e904d67d/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: 7kv41933k4sr3uya33uqi84ooxq1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOMnQyTkRFNU16TnJOSE55TTNWNVlUTXpkWEZwT0RSdmIzaHhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAyOjUwLjI0MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--7eaae85ab837cace3f633922244e2159abc27003/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: 5hgaviyj9b150qhrh19cb0broylh (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOV2huWVhacGVXbzVZakUxTUhGb2NtZ3hPV05pTUdKeWIzbHNhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAyOjUwLjI0NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--78e19676caa172eb46bff122783f69d5c2b270fd/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: s2kp6vu02hls8z9sjygc51zc9u2m (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjekpyY0RaMmRUQXlhR3h6T0hvNWMycDVaMk0xTVhwak9YVXliUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAyOjUwLjI0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--ed9bb533810e72459ba5b1b9cf5d30b27214189a/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: zfjtf6z5ub0bfwpj9bjj0lpcgj9h (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbVpxZEdZMmVqVjFZakJpWm5kd2FqbGlhbW93YkhCaloybzVhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAyOjUwLjI1NFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--ebaa8f25e20ac0f0390bdb3610dc7f9efe384adb/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+Completed 200 OK in 90ms (Views: 0.4ms | ActiveRecord: 14.6ms | Allocations: 37495)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:58:09 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: olo4ueudeo097avwue8i01a6knrg (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiMnh2TkhWbGRXUmxiekE1TjJGMmQzVmxPR2t3TVdFMmEyNXlad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjEwLjA4MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--79c909acd24e26e7c161b61aa9d139889aac8968/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: 7kv41933k4sr3uya33uqi84ooxq1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOMnQyTkRFNU16TnJOSE55TTNWNVlUTXpkWEZwT0RSdmIzaHhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjEwLjA4N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--ed24906d6a4112191c4b65e4b7eb70d020026946/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (1.2ms) [0m[34mGenerated URL for file at key: 5hgaviyj9b150qhrh19cb0broylh (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOV2huWVhacGVXbzVZakUxTUhGb2NtZ3hPV05pTUdKeWIzbHNhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjEwLjA5MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--415a1186d490d5f60eef58ae8f4dde9a491b6201/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: s2kp6vu02hls8z9sjygc51zc9u2m (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjekpyY0RaMmRUQXlhR3h6T0hvNWMycDVaMk0xTVhwak9YVXliUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjEwLjA5N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--047ff42bd3fdcabc8a570f6e04e23039760e87b7/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: zfjtf6z5ub0bfwpj9bjj0lpcgj9h (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbVpxZEdZMmVqVjFZakJpWm5kd2FqbGlhbW93YkhCaloybzVhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjEwLjEwMVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--903bb0162e3113c1c6e4ad4b2534a9e76e673751/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+Completed 200 OK in 103ms (Views: 0.9ms | ActiveRecord: 16.2ms | Allocations: 32166)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:58:38 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.9ms) [0m[34mGenerated URL for file at key: olo4ueudeo097avwue8i01a6knrg (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiMnh2TkhWbGRXUmxiekE1TjJGMmQzVmxPR2t3TVdFMmEyNXlad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjM4LjMxM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--b8bffdc7cd603c7ba869919e877f1c4c78a22ba6/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.9ms) [0m[34mGenerated URL for file at key: 7kv41933k4sr3uya33uqi84ooxq1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOMnQyTkRFNU16TnJOSE55TTNWNVlUTXpkWEZwT0RSdmIzaHhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjM4LjMxOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c3b6b15ecc19a5ae21bf62f55be50d73e2d08f9f/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.3ms) [0m[34mGenerated URL for file at key: 5hgaviyj9b150qhrh19cb0broylh (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOV2huWVhacGVXbzVZakUxTUhGb2NtZ3hPV05pTUdKeWIzbHNhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjM4LjMyNFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--0d33a9b83d86a029a4b7a63ac08a17a2c5f0d0ab/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: s2kp6vu02hls8z9sjygc51zc9u2m (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjekpyY0RaMmRUQXlhR3h6T0hvNWMycDVaMk0xTVhwak9YVXliUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjM4LjMyOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--a845178f6bbaa4f3a0057f2c82dc407ac2c2066b/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: zfjtf6z5ub0bfwpj9bjj0lpcgj9h (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbVpxZEdZMmVqVjFZakJpWm5kd2FqbGlhbW93YkhCaloybzVhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjAzOjM4LjMzMloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--9ddeaa3605cef556830f0b23f0525b4438d157a4/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+Completed 200 OK in 86ms (Views: 0.9ms | ActiveRecord: 13.7ms | Allocations: 32208)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:59:06 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 5.6ms | Allocations: 10645)
+
+
+  
+ActiveModel::MissingAttributeError (missing attribute: status):
+  
+app/models/post.rb:8:in `new_attribute'
+app/controllers/api/v1/posts_controller.rb:26:in `block in find'
+app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+app/controllers/api/v1/posts_controller.rb:25:in `find'
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:59:34 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts"."id", "posts"."descriptions" FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 29ms (Views: 4.6ms | ActiveRecord: 9.4ms | Allocations: 10795)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 14:59:45 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Completed 200 OK in 30ms (Views: 10.0ms | ActiveRecord: 6.7ms | Allocations: 11049)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 15:00:07 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: olo4ueudeo097avwue8i01a6knrg (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiMnh2TkhWbGRXUmxiekE1TjJGMmQzVmxPR2t3TVdFMmEyNXlad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjA3Ljg0OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--a0482b73660a145461aea3cbf76835a8b5adc7d4/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: 7kv41933k4sr3uya33uqi84ooxq1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOMnQyTkRFNU16TnJOSE55TTNWNVlUTXpkWEZwT0RSdmIzaHhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjA3Ljg1M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--a1ff23f52a11c70d0a6432568fb1d384c2f0ca87/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.3ms) [0m[34mGenerated URL for file at key: 5hgaviyj9b150qhrh19cb0broylh (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOV2huWVhacGVXbzVZakUxTUhGb2NtZ3hPV05pTUdKeWIzbHNhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjA3Ljg1N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c8363a43f71b17d1fde6926f460ef42179d86e0f/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: s2kp6vu02hls8z9sjygc51zc9u2m (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjekpyY0RaMmRUQXlhR3h6T0hvNWMycDVaMk0xTVhwak9YVXliUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjA3Ljg2MFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--1548c043e4d89594979cf163aa40b2cf7b8f80ff/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: zfjtf6z5ub0bfwpj9bjj0lpcgj9h (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbVpxZEdZMmVqVjFZakJpWm5kd2FqbGlhbW93YkhCaloybzVhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjA3Ljg2NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--65a1e475f220c1da17dd2e8394a3a576db5448e9/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+Completed 200 OK in 63ms (Views: 1.2ms | ActiveRecord: 11.6ms | Allocations: 32618)
+
+
+Started GET "/api/v1/user/posts" for ::1 at 2022-10-24 15:00:18 +0700
+Processing by Api::V1::PostsController#find as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:25:in `each_with_index'
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: olo4ueudeo097avwue8i01a6knrg (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiMnh2TkhWbGRXUmxiekE1TjJGMmQzVmxPR2t3TVdFMmEyNXlad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjE4LjQ4OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--0935101d55e61d7b2a4dc090e5b7cdef313fb6eb/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: 7kv41933k4sr3uya33uqi84ooxq1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOMnQyTkRFNU16TnJOSE55TTNWNVlUTXpkWEZwT0RSdmIzaHhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjE4LjQ5M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--efecaad14c383f87c96481d73d99bd1b6b263aa7/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: 5hgaviyj9b150qhrh19cb0broylh (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOV2huWVhacGVXbzVZakUxTUhGb2NtZ3hPV05pTUdKeWIzbHNhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjE4LjQ5N1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--d2cd4db4da903370ba4a3ab777f2b82a3e2c8c9e/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: s2kp6vu02hls8z9sjygc51zc9u2m (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhjekpyY0RaMmRUQXlhR3h6T0hvNWMycDVaMk0xTVhwak9YVXliUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjE4LjUwMVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--cc63d12a2bcfe35f0c9448c54f291978adc69609/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 6], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/models/post.rb:9:in `new_attribute'
+[36m  Disk Storage (0.3ms) [0m[34mGenerated URL for file at key: zfjtf6z5ub0bfwpj9bjj0lpcgj9h (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbVpxZEdZMmVqVjFZakJpWm5kd2FqbGlhbW93YkhCaloybzVhQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIyLTEwLTI0VDA4OjA1OjE4LjUwNFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--08e15c6b5ca08cc3d9d83a6befaef1a2c81bd2d4/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+Completed 200 OK in 69ms (Views: 0.4ms | ActiveRecord: 12.6ms | Allocations: 32310)
+
+

@@ -9,29 +9,33 @@ class Api::V1::PostsController < ApplicationController
         @posts=[]
         @relations.each_with_index do |relation|
             @post = Post.find_by(user_id: relation.user_id)
-            @posts.push(@post)
+            @posts.push(@post.new_attribute)
         end
         response_to_json({posts:@posts}, :ok)
     end
 
     def create
         @post = Post.new(post_params.merge(user_id: @user.id))
-        @post.save ? response_to_json(@post.content.url, :success) : response_error(@post.errors, :unprocessable_entity)
+        @post.save ? response_to_json(@post.new_attribute, :success) : response_error(@post.errors, :unprocessable_entity)
     end
 
     def find
-        @posts = @user.posts
-        response_to_json(@posts,:success)
+        @posts = Post.where(user_id: @user.id)
+        @posts_detail = []
+        @posts.each_with_index do |post|
+            @posts_detail.push(post.new_attribute)
+        end
+        response_to_json({posts: @posts_detail},:success)
     end
 
     def show
-        response_to_json(@post,:success)
+        response_to_json(@post.new_attribute,:success)
     end
 
     def destroy
         if @user.id == @post.user_id
             @post.delete
-            response_to_json(@post,"berhasil menghapus postingan")
+            response_to_json(@post.new_attribute,"berhasil menghapus postingan")
         else
             response_error("postingan ini bukan milik anda",:unauthorized)
         end
