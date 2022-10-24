@@ -6,7 +6,8 @@ class BiodataUser < ApplicationRecord
       dob: self.dob,
       address: self.address,
       marriage_status: self.marriage_status,
-      status: self.status
+      status: self.status,
+      avatar: self.avatar.url
     }
   end
 end

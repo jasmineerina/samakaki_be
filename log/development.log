@@ -44037,3 +44037,206 @@ Processing by ActiveStorage::DiskController#show as JPEG
 Completed 304 Not Modified in 7ms (ActiveRecord: 0.0ms | Allocations: 153)
 
 
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-24 13:36:44 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f34067103e0 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-33259-wsya78.jpg>, @original_filename="a7ca20e5453f294eb4cf2f960e7ac98b.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"a7ca20e5453f294eb4cf2f960e7ac98b.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 5.1ms | Allocations: 13071)
+
+
+  
+SyntaxError (/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/biodata_user.rb:10: syntax error, unexpected local variable or method, expecting '}'
+      avatar: self.avatar.url
+      ^~~~~~
+/home/dhimas/qatros/Samakaki/samakaki-backend/app/models/biodata_user.rb:11: syntax error, unexpected '}', expecting `end'
+    }
+    ^
+):
+  
+app/models/biodata_user.rb:10: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:11: syntax error, unexpected '}', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:11: syntax error, unexpected '}', expecting `end'
+app/models/biodata_user.rb:10: syntax error, unexpected local variable or method, expecting '}'
+app/models/biodata_user.rb:11: syntax error, unexpected '}', expecting `end'
+app/controllers/api/v1/biodata_users_controller.rb:8:in `create'
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-24 13:37:03 +0700
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007f3406750648 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-33259-y5ofdd.jpg>, @original_filename="a7ca20e5453f294eb4cf2f960e7ac98b.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"a7ca20e5453f294eb4cf2f960e7ac98b.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mBiodataUser Create (0.6ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2001-05-15 00:00:00"], ["address", "kaliurang"], ["marriage_status", "single"], ["status", "public"], ["user_id", 1], ["created_at", "2022-10-24 06:37:03.446116"], ["updated_at", "2022-10-24 06:37:03.446116"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 17], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 17], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mActiveStorage::Blob Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "is3b61lahitpu16uz2yba18ttrej"], ["filename", "a7ca20e5453f294eb4cf2f960e7ac98b.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 22460], ["checksum", "iDnpADqjk4WxwYHy8xydaA=="], ["created_at", "2022-10-24 06:37:03.485166"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 17], ["blob_id", 12], ["created_at", "2022-10-24 06:37:03.488320"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mBiodataUser Update (0.5ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-24 06:37:03.490968"], ["id", 17]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+[36m  Disk Storage (0.4ms) [0m[32mUploaded file to key: is3b61lahitpu16uz2yba18ttrej (checksum: iDnpADqjk4WxwYHy8xydaA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: d8871343-2a37-495d-b4b0-cb333f875fc7) to Async(default) with arguments: #<GlobalID:0x00007f340c3b11f8 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/12>>
+[36m  Disk Storage (3.6ms) [0m[34mGenerated URL for file at key: is3b61lahitpu16uz2yba18ttrej (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhhWE16WWpZeGJHRm9hWFJ3ZFRFMmRYb3llV0poTVRoMGRISmxhZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbElnOXBiV0ZuWlM5cWNHVm5PaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMi0xMC0yNFQwNjo0MjowMy41MDJaIiwicHVyIjoiYmxvYl9rZXkifX0=--57da2b5680a5b88886ed2580b9efc87ad8a477fc/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 118ms (Views: 0.4ms | ActiveRecord: 16.1ms | Allocations: 48308)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d8871343-2a37-495d-b4b0-cb333f875fc7]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d8871343-2a37-495d-b4b0-cb333f875fc7] Performing ActiveStorage::AnalyzeJob (Job ID: d8871343-2a37-495d-b4b0-cb333f875fc7) from Async(default) enqueued at 2022-10-24T06:37:03Z with arguments: #<GlobalID:0x00007f3406748b00 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/12>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d8871343-2a37-495d-b4b0-cb333f875fc7] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d8871343-2a37-495d-b4b0-cb333f875fc7]   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d8871343-2a37-495d-b4b0-cb333f875fc7]   [1m[36mActiveStorage::Blob Update (0.6ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 12]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d8871343-2a37-495d-b4b0-cb333f875fc7]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [d8871343-2a37-495d-b4b0-cb333f875fc7] Performed ActiveStorage::AnalyzeJob (Job ID: d8871343-2a37-495d-b4b0-cb333f875fc7) from Async(default) in 24.18ms
+Started POST "/api/v1/biodata_users" for ::1 at 2022-10-24 14:31:40 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::BiodataUsersController#create as */*
+  Parameters: {"dob"=>"2001-05-15", "address"=>"kaliurang", "marriage_status"=>"single", "status"=>"public", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x00007fa663730cd8 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-34669-vhoshs.jpg>, @original_filename="a7ca20e5453f294eb4cf2f960e7ac98b.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"avatar\"; filename=\"a7ca20e5453f294eb4cf2f960e7ac98b.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mBiodataUser Create (0.7ms)[0m  [1m[32mINSERT INTO "biodata_users" ("dob", "address", "marriage_status", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["dob", "2001-05-15 00:00:00"], ["address", "kaliurang"], ["marriage_status", "single"], ["status", "public"], ["user_id", 1], ["created_at", "2022-10-24 07:31:40.529155"], ["updated_at", "2022-10-24 07:31:40.529155"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 18], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 18], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "7cqalo64mtfu44qkmnr2pq91ckay"], ["filename", "a7ca20e5453f294eb4cf2f960e7ac98b.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 22460], ["checksum", "iDnpADqjk4WxwYHy8xydaA=="], ["created_at", "2022-10-24 07:31:40.568288"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.5ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "avatar"], ["record_type", "BiodataUser"], ["record_id", 18], ["blob_id", 13], ["created_at", "2022-10-24 07:31:40.570537"]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mBiodataUser Update (0.5ms)[0m  [1m[33mUPDATE "biodata_users" SET "updated_at" = $1 WHERE "biodata_users"."id" = $2[0m  [["updated_at", "2022-10-24 07:31:40.573495"], ["id", 18]]
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/biodata_users_controller.rb:9:in `create'
+[36m  Disk Storage (0.3ms) [0m[32mUploaded file to key: 7cqalo64mtfu44qkmnr2pq91ckay (checksum: iDnpADqjk4WxwYHy8xydaA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: fa30f5e2-9c30-4882-9589-489651642011) to Async(default) with arguments: #<GlobalID:0x00007fa6810d9c90 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/13>>
+[36m  Disk Storage (3.3ms) [0m[34mGenerated URL for file at key: 7cqalo64mtfu44qkmnr2pq91ckay (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOMk54WVd4dk5qUnRkR1oxTkRSeGEyMXVjakp3Y1RreFkydGhlUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbElnOXBiV0ZuWlM5cWNHVm5PaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMi0xMC0yNFQwNzozNjo0MC41ODZaIiwicHVyIjoiYmxvYl9rZXkifX0=--afb431527256d4ab8d9e4eed436471a8f5f9fac7/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 121ms (Views: 0.4ms | ActiveRecord: 17.3ms | Allocations: 54503)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa30f5e2-9c30-4882-9589-489651642011]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa30f5e2-9c30-4882-9589-489651642011] Performing ActiveStorage::AnalyzeJob (Job ID: fa30f5e2-9c30-4882-9589-489651642011) from Async(default) enqueued at 2022-10-24T07:31:40Z with arguments: #<GlobalID:0x00007fa681026c30 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/13>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa30f5e2-9c30-4882-9589-489651642011] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa30f5e2-9c30-4882-9589-489651642011]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa30f5e2-9c30-4882-9589-489651642011]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 13]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa30f5e2-9c30-4882-9589-489651642011]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [fa30f5e2-9c30-4882-9589-489651642011] Performed ActiveStorage::AnalyzeJob (Job ID: fa30f5e2-9c30-4882-9589-489651642011) from Async(default) in 14.22ms
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 14:35:18 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :title. Context: { controller: Api::V1::PostsController, action: create, request: #<ActionDispatch::Request:0x00007fa66371fed8>, params: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private", "controller"=>"api/v1/posts", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Create (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("descriptions", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["user_id", 2], ["created_at", "2022-10-24 07:35:18.706808"], ["updated_at", "2022-10-24 07:35:18.706808"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+Completed 200 OK in 124ms (Views: 0.2ms | ActiveRecord: 9.4ms | Allocations: 18884)
+
+
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 14:35:37 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private", "content"=>#<ActionDispatch::Http::UploadedFile:0x00007fa681e773c0 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-34669-wtxois.jpg>, @original_filename="a7ca20e5453f294eb4cf2f960e7ac98b.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"content\"; filename=\"a7ca20e5453f294eb4cf2f960e7ac98b.jpg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :title. Context: { controller: Api::V1::PostsController, action: create, request: #<ActionDispatch::Request:0x00007fa681e6e270>, params: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private", "content"=>#<ActionDispatch::Http::UploadedFile:0x00007fa681e773c0 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-34669-wtxois.jpg>, @original_filename="a7ca20e5453f294eb4cf2f960e7ac98b.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"content\"; filename=\"a7ca20e5453f294eb4cf2f960e7ac98b.jpg\"\r\nContent-Type: image/jpeg\r\n">, "controller"=>"api/v1/posts", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Create (0.3ms)[0m  [1m[32mINSERT INTO "posts" ("descriptions", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["user_id", 2], ["created_at", "2022-10-24 07:35:37.946126"], ["updated_at", "2022-10-24 07:35:37.946126"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "olo4ueudeo097avwue8i01a6knrg"], ["filename", "a7ca20e5453f294eb4cf2f960e7ac98b.jpg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 22460], ["checksum", "iDnpADqjk4WxwYHy8xydaA=="], ["created_at", "2022-10-24 07:35:37.956866"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.4ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "content"], ["record_type", "Post"], ["record_id", 2], ["blob_id", 14], ["created_at", "2022-10-24 07:35:37.959206"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Update (0.5ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2022-10-24 07:35:37.962047"], ["id", 2]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+[36m  Disk Storage (0.3ms) [0m[32mUploaded file to key: olo4ueudeo097avwue8i01a6knrg (checksum: iDnpADqjk4WxwYHy8xydaA==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: 4348191d-0ff7-43ba-8fce-f57b13a8097b) to Async(default) with arguments: #<GlobalID:0x00007fa681083138 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/14>>
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: olo4ueudeo097avwue8i01a6knrg (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiMnh2TkhWbGRXUmxiekE1TjJGMmQzVmxPR2t3TVdFMmEyNXlad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbElnOXBiV0ZuWlM5cWNHVm5PaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMi0xMC0yNFQwNzo0MDozNy45NjlaIiwicHVyIjoiYmxvYl9rZXkifX0=--076b11adb51a8c0fde290e16276218d723336bbc/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 43ms (Views: 0.2ms | ActiveRecord: 8.9ms | Allocations: 20181)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4348191d-0ff7-43ba-8fce-f57b13a8097b]   [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4348191d-0ff7-43ba-8fce-f57b13a8097b] Performing ActiveStorage::AnalyzeJob (Job ID: 4348191d-0ff7-43ba-8fce-f57b13a8097b) from Async(default) enqueued at 2022-10-24T07:35:37Z with arguments: #<GlobalID:0x00007fa68100cc68 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/14>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4348191d-0ff7-43ba-8fce-f57b13a8097b] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4348191d-0ff7-43ba-8fce-f57b13a8097b]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4348191d-0ff7-43ba-8fce-f57b13a8097b]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 14]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4348191d-0ff7-43ba-8fce-f57b13a8097b]   [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [4348191d-0ff7-43ba-8fce-f57b13a8097b] Performed ActiveStorage::AnalyzeJob (Job ID: 4348191d-0ff7-43ba-8fce-f57b13a8097b) from Async(default) in 11.49ms
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiMnh2TkhWbGRXUmxiekE1TjJGMmQzVmxPR2t3TVdFMmEyNXlad1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbElnOXBiV0ZuWlM5cWNHVm5PaEZ6WlhKMmFXTmxYMjVoYldVNkNteHZZMkZzIiwiZXhwIjoiMjAyMi0xMC0yNFQwNzo0MDozNy45NjlaIiwicHVyIjoiYmxvYl9rZXkifX0=--076b11adb51a8c0fde290e16276218d723336bbc/a7ca20e5453f294eb4cf2f960e7ac98b.jpg" for ::1 at 2022-10-24 14:35:41 +0700
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"a7ca20e5453f294eb4cf2f960e7ac98b"}
+Completed 200 OK in 17ms (ActiveRecord: 0.0ms | Allocations: 2233)
+
+
+Started POST "/api/v1/posts" for ::1 at 2022-10-24 14:37:02 +0700
+Processing by Api::V1::PostsController#create as */*
+  Parameters: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private", "content"=>#<ActionDispatch::Http::UploadedFile:0x00007fa68009d4a8 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-34669-3511ax.jpeg>, @original_filename="toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"content\"; filename=\"toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg\"\r\nContent-Type: image/jpeg\r\n">}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+[31mUnpermitted parameter: :title. Context: { controller: Api::V1::PostsController, action: create, request: #<ActionDispatch::Request:0x00007fa680096950>, params: {"title"=>"ini title punya baru", "descriptions"=>"isi nya contoh untuk database", "status"=>"private", "content"=>#<ActionDispatch::Http::UploadedFile:0x00007fa68009d4a8 @tempfile=#<Tempfile:/tmp/RackMultipart20221024-34669-3511ax.jpeg>, @original_filename="toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"content\"; filename=\"toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg\"\r\nContent-Type: image/jpeg\r\n">, "controller"=>"api/v1/posts", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("descriptions", "status", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["descriptions", "isi nya contoh untuk database"], ["status", "private"], ["user_id", 2], ["created_at", "2022-10-24 07:37:02.509151"], ["updated_at", "2022-10-24 07:37:02.509151"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" INNER JOIN "active_storage_attachments" ON "active_storage_blobs"."id" = "active_storage_attachments"."blob_id" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "Post"], ["name", "content"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "7kv41933k4sr3uya33uqi84ooxq1"], ["filename", "toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg"], ["content_type", "image/jpeg"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 52859], ["checksum", "VOR3KynOiaIJN+SIwANi/w=="], ["created_at", "2022-10-24 07:37:02.515628"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "content"], ["record_type", "Post"], ["record_id", 3], ["blob_id", 15], ["created_at", "2022-10-24 07:37:02.518181"]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mPost Update (0.3ms)[0m  [1m[33mUPDATE "posts" SET "updated_at" = $1 WHERE "posts"."id" = $2[0m  [["updated_at", "2022-10-24 07:37:02.519678"], ["id", 3]]
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/posts_controller.rb:19:in `create'
+[36m  Disk Storage (0.5ms) [0m[32mUploaded file to key: 7kv41933k4sr3uya33uqi84ooxq1 (checksum: VOR3KynOiaIJN+SIwANi/w==)[0m
+[ActiveJob] Enqueued ActiveStorage::AnalyzeJob (Job ID: f2114053-d140-4900-825d-0d744919143a) to Async(default) with arguments: #<GlobalID:0x00007fa6637d7ce0 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/15>>
+[36m  Disk Storage (1.1ms) [0m[34mGenerated URL for file at key: 7kv41933k4sr3uya33uqi84ooxq1 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOMnQyTkRFNU16TnJOSE55TTNWNVlUTXpkWEZwT0RSdmIzaHhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pTSVBhVzFoWjJVdmFuQmxaem9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjRUMDc6NDI6MDIuNTI2WiIsInB1ciI6ImJsb2Jfa2V5In19--ded934602491520cd411a00393d8c7524fce87b4/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg)[0m
+Completed 200 OK in 24ms (Views: 0.2ms | ActiveRecord: 4.0ms | Allocations: 10291)
+
+
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f2114053-d140-4900-825d-0d744919143a]   [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f2114053-d140-4900-825d-0d744919143a] Performing ActiveStorage::AnalyzeJob (Job ID: f2114053-d140-4900-825d-0d744919143a) from Async(default) enqueued at 2022-10-24T07:37:02Z with arguments: #<GlobalID:0x00007fa663793108 @uri=#<URI::GID gid://sama-kaki/ActiveStorage::Blob/15>>
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f2114053-d140-4900-825d-0d744919143a] Skipping image analysis because the ruby-vips gem isn't installed
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f2114053-d140-4900-825d-0d744919143a]   [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f2114053-d140-4900-825d-0d744919143a]   [1m[36mActiveStorage::Blob Update (0.3ms)[0m  [1m[33mUPDATE "active_storage_blobs" SET "metadata" = $1 WHERE "active_storage_blobs"."id" = $2[0m  [["metadata", "{\"identified\":true,\"analyzed\":true}"], ["id", 15]]
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f2114053-d140-4900-825d-0d744919143a]   [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+[ActiveJob] [ActiveStorage::AnalyzeJob] [f2114053-d140-4900-825d-0d744919143a] Performed ActiveStorage::AnalyzeJob (Job ID: f2114053-d140-4900-825d-0d744919143a) from Async(default) in 26.64ms
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhOMnQyTkRFNU16TnJOSE55TTNWNVlUTXpkWEZwT0RSdmIzaHhNUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQWJacGJteHBibVU3SUdacGJHVnVZVzFsUFNKMGIzbHZkR0V0WjNJdE9EWXRaR1Z1WjJGdUxXSnZaSGxyYVhRdFlXeGhMWEp2WTJ0bGRDMWlkVzV1ZVMxaWRXRjBZVzR0ZEhKaExXdDViM1J2TFRSZk1UWTVMbXB3WldjaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkozUnZlVzkwWVMxbmNpMDROaTFrWlc1bllXNHRZbTlrZVd0cGRDMWhiR0V0Y205amEyVjBMV0oxYm01NUxXSjFZWFJoYmkxMGNtRXRhM2x2ZEc4dE5GOHhOamt1YW5CbFp3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pTSVBhVzFoWjJVdmFuQmxaem9SYzJWeWRtbGpaVjl1WVcxbE9ncHNiMk5oYkE9PSIsImV4cCI6IjIwMjItMTAtMjRUMDc6NDI6MDIuNTI2WiIsInB1ciI6ImJsb2Jfa2V5In19--ded934602491520cd411a00393d8c7524fce87b4/toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169.jpeg" for ::1 at 2022-10-24 14:37:04 +0700
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"toyota-gr-86-dengan-bodykit-ala-rocket-bunny-buatan-tra-kyoto-4_169"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 169)
+
+

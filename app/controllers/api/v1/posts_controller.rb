@@ -1,6 +1,9 @@
 class Api::V1::PostsController < ApplicationController
     before_action :authorize, only: [:create, :show, :find,:destroy]
     before_action :set_post, only: [:show,:update,:destroy]
+    before_action do
+      ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
+    end
     def index
         @relations = UserRelation.where(family_tree_id: params[:family_tree_id]).where.not(connected_user_id: nil)
         @posts=[]
@@ -13,7 +16,7 @@ class Api::V1::PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params.merge(user_id: @user.id))
-        @post.save ? response_to_json(@post, :success) : response_error(@post.errors, :unprocessable_entity)
+        @post.save ? response_to_json(@post.content.url, :success) : response_error(@post.errors, :unprocessable_entity)
     end
 
     def find
@@ -36,7 +39,7 @@ class Api::V1::PostsController < ApplicationController
 
     private
     def post_params
-        params.permit(:descriptions, :status)
+        params.permit(:descriptions, :status, :content)
     end
 
     def set_post

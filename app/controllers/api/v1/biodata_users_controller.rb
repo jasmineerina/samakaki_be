@@ -6,7 +6,7 @@ class Api::V1::BiodataUsersController < ApplicationController
     end
     def create
         @biodata = BiodataUser.new(biodata_params.merge(user_id: @user.id))
-        @biodata.save ? response_to_json({biodata:@biodata, avatar:@biodata.avatar.url}, :success) : response_error(@biodata.errors, :unprocessable_entity)
+        @biodata.save ? response_to_json({biodata:@biodata.new_attribute}, :success) : response_error(@biodata.errors, :unprocessable_entity)
     end
 
     def show
