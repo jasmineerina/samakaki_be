@@ -27,6 +27,6 @@ class Api::V1::EventsController < ApplicationController
 
     private
     def event_params
-        params.permit(:name, :date, :venue, :family_tree_id)
+        params.require(:event).permit(:name, :date, :venue, :family_tree_id)
     end
 end
