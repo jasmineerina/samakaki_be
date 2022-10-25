@@ -45663,3 +45663,45 @@ Processing by Api::V1::EventsController#create as */*
 Completed 200 OK in 34ms (Views: 0.4ms | ActiveRecord: 9.4ms | Allocations: 20603)
 
 
+Started POST "/api/v1/users" for ::1 at 2022-10-25 16:56:49 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"minee", "email"=>"ayambakar@email.com", "phone"=>"081345990216", "password"=>"[FILTERED]", "user"=>{"name"=>"minee", "email"=>"ayambakar@email.com", "phone"=>"081345990216"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ayambakar@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "minee"], ["email", "ayambakar@email.com"], ["phone", "081345990216"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-25 09:56:49.458839"], ["updated_at", "2022-10-25 09:56:49.458839"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 223ms (Views: 0.3ms | ActiveRecord: 5.2ms | Allocations: 12249)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-25 17:00:20 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"minee", "email"=>"lelegoreng@email.com", "phone"=>"081345990216", "password"=>"[FILTERED]", "user"=>{"name"=>"minee", "email"=>"lelegoreng@email.com", "phone"=>"081345990216"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lelegoreng@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 422 Unprocessable Entity in 225ms (Views: 2.0ms | ActiveRecord: 4.0ms | Allocations: 11623)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-25 17:00:34 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"testing", "email"=>"lelegoreng@gmail.com", "phone"=>"081345990216", "password"=>"[FILTERED]", "user"=>{"name"=>"testing", "email"=>"lelegoreng@gmail.com", "phone"=>"081345990216"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "lelegoreng@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "testing"], ["email", "lelegoreng@gmail.com"], ["phone", "081345990216"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-25 10:00:35.212611"], ["updated_at", "2022-10-25 10:00:35.212611"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 230ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 4802)
+
+
