@@ -57,7 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_025309) do
     t.string "name"
     t.datetime "date"
     t.string "venue"
-    t.time "time"
     t.bigint "user_id"
     t.bigint "family_tree_id"
     t.datetime "created_at", null: false
