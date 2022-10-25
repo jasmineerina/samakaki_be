@@ -1,6 +1,7 @@
 class Api::V1::BiodataUsersController < ApplicationController
     before_action :authorize, only: [:create, :show, :update]
     before_action :set_biodata, only: [:show,  :update]
+
     before_action do
       ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
     end
