@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :email, :presence => true, :uniqueness => true
   has_many :user_relations
   include BCrypt
+  include EmailValidatable
+  validates :email, email: true
 
   def password
     @password ||= Password.new(password_digest)

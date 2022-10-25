@@ -47,9 +47,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_025309) do
     t.string "address"
     t.string "marriage_status"
     t.string "status"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_biodata_users_on_user_id"
   end
 
@@ -57,6 +57,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_025309) do
     t.string "name"
     t.datetime "date"
     t.string "venue"
+    t.time "time"
     t.bigint "user_id"
     t.bigint "family_tree_id"
     t.datetime "created_at", null: false
@@ -74,11 +75,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_025309) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.string "title"
     t.string "descriptions"
     t.string "status"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -117,8 +119,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_025309) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "biodata_users", "users"
-  add_foreign_key "posts", "users"
   add_foreign_key "user_relations", "relations"
   add_foreign_key "user_relations", "users"
 end
