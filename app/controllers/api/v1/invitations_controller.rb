@@ -16,5 +16,6 @@ class Api::V1::InvitationsController < ApplicationController
 
   def user_params
     params.permit(:name, :email, :phone, :password_digest)
+
   end
 end
