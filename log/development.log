@@ -45369,3 +45369,297 @@ Processing by Api::V1::EventsController#create as */*
 Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 2.1ms | Allocations: 4677)
 
 
+Started POST "/api/v1/login" for ::1 at 2022-10-25 11:48:03 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"minek2@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"minek2@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 200 OK in 233ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 8147)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-25 11:48:15 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"arisan", "date"=>"2022-10-11", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1, "event"=>{"name"=>"arisan", "date"=>"2022-10-11", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameters: :time, :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007f2660a6e590>, params: {"name"=>"arisan", "date"=>"2022-10-11", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"arisan", "date"=>"2022-10-11", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "time", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "arisan"], ["date", "2022-10-11 00:00:00"], ["venue", "rumah bu pur"], ["time", nil], ["user_id", 1], ["family_tree_id", 1], ["created_at", "2022-10-25 04:48:15.723502"], ["updated_at", "2022-10-25 04:48:15.723502"]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+Completed 200 OK in 32ms (Views: 0.5ms | ActiveRecord: 7.2ms | Allocations: 16881)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-25 11:49:08 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"arisan lagi", "date"=>"2022-10-11", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1, "event"=>{"name"=>"arisan lagi", "date"=>"2022-10-11", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameters: :time, :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007f2660992108>, params: {"name"=>"arisan lagi", "date"=>"2022-10-11", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"arisan lagi", "date"=>"2022-10-11", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mEvent Create (0.4ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "time", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "arisan lagi"], ["date", "2022-10-11 00:00:00"], ["venue", "rumah bu pur"], ["time", nil], ["user_id", 1], ["family_tree_id", 1], ["created_at", "2022-10-25 04:49:08.442797"], ["updated_at", "2022-10-25 04:49:08.442797"]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+Completed 200 OK in 39ms (Views: 0.7ms | ActiveRecord: 2.5ms | Allocations: 4756)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/login" for ::1 at 2022-10-25 11:56:51 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"minek2@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"minek2@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 200 OK in 225ms (Views: 0.2ms | ActiveRecord: 3.3ms | Allocations: 8148)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-25 11:57:04 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"arisan 8", "date"=>"2022-10-11T12:00", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1, "event"=>{"name"=>"arisan 8", "date"=>"2022-10-11T12:00", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameters: :time, :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007f8ea87ef3b8>, params: {"name"=>"arisan 8", "date"=>"2022-10-11T12:00", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"arisan 8", "date"=>"2022-10-11T12:00", "venue"=>"rumah bu pur", "time"=>"12:00:00", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mFamilyTree Load (1.0ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mEvent Create (1.3ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "time", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "arisan 8"], ["date", "2022-10-11 12:00:00"], ["venue", "rumah bu pur"], ["time", nil], ["user_id", 1], ["family_tree_id", 1], ["created_at", "2022-10-25 04:57:04.766730"], ["updated_at", "2022-10-25 04:57:04.766730"]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+Completed 200 OK in 30ms (Views: 0.3ms | ActiveRecord: 8.6ms | Allocations: 16886)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (5014.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_development"[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (23.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_development"[0m
+  [1m[35m (16.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "SamaKaki_test"[0m
+  [1m[35m (270.2ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_development" ENCODING = 'unicode'[0m
+  [1m[35m (88.7ms)[0m  [1m[35mCREATE DATABASE "SamaKaki_test" ENCODING = 'unicode'[0m
+  [1m[35m (118.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (113.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20221006042408)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (96.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "phone" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042408"]]
+  [1m[36mTRANSACTION (24.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBiodataUsers (20221006042746)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (97.6ms)[0m  [1m[35mCREATE TABLE "biodata_users" ("id" bigserial primary key, "dob" timestamp(6), "address" character varying, "marriage_status" character varying, "status" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006042746"]]
+  [1m[36mTRANSACTION (23.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20221006043047)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (95.9ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "title" character varying, "link" character varying, "descriptions" character varying, "status" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221006043047"]]
+  [1m[36mTRANSACTION (24.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordResetColumnsToUser (20221007033547)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_token" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "reset_password_sent_at" timestamp(6)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221007033547"]]
+  [1m[36mTRANSACTION (24.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIdIntoBiodata (20221007110312)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "biodata_users" ADD "user_id" integer[0m
+  [1m[35m (42.9ms)[0m  [1m[35mCREATE INDEX "index_biodata_users_on_user_id" ON "biodata_users" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221007110312"]]
+  [1m[36mTRANSACTION (20.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIntoPost (20221011033209)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "posts" ADD "user_id" integer[0m
+  [1m[35m (45.3ms)[0m  [1m[35mCREATE INDEX "index_posts_on_user_id" ON "posts" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221011033209"]]
+  [1m[36mTRANSACTION (23.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeleteLinkFromPosts (20221013031358)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "posts" DROP COLUMN "link"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221013031358"]]
+  [1m[36mTRANSACTION (23.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFamilyTrees (20221013073125)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (87.6ms)[0m  [1m[35mCREATE TABLE "family_trees" ("id" bigserial primary key, "name" character varying, "user_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (44.3ms)[0m  [1m[35mCREATE INDEX "index_family_trees_on_user_id" ON "family_trees" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221013073125"]]
+  [1m[36mTRANSACTION (22.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRelations (20221014070058)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (89.8ms)[0m  [1m[35mCREATE TABLE "relations" ("id" bigserial primary key, "name" character varying, "relation_name" integer, "position" integer, "number" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221014070058"]]
+  [1m[36mTRANSACTION (21.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEvents (20221017053400)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (87.0ms)[0m  [1m[35mCREATE TABLE "events" ("id" bigserial primary key, "name" character varying, "date" timestamp(6), "venue" character varying, "user_id" bigint, "family_tree_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (43.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_user_id" ON "events" ("user_id")[0m
+  [1m[35m (44.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_family_tree_id" ON "events" ("family_tree_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221017053400"]]
+  [1m[36mTRANSACTION (21.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-10-25 04:59:44.477010"], ["updated_at", "2022-10-25 04:59:44.477010"]]
+  [1m[36mTRANSACTION (24.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/login" for ::1 at 2022-10-25 12:00:01 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"minek2@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"minek2@gmail.com"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 422 Unprocessable Entity in 5ms (Views: 0.3ms | ActiveRecord: 2.1ms | Allocations: 2498)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-25 12:00:05 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"mineee", "email"=>"minek2@gmail.com", "phone"=>"081345990216", "password"=>"[FILTERED]", "user"=>{"name"=>"mineee", "email"=>"minek2@gmail.com", "phone"=>"081345990216"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "mineee"], ["email", "minek2@gmail.com"], ["phone", "081345990216"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-25 05:00:05.322119"], ["updated_at", "2022-10-25 05:00:05.322119"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (21.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 257ms (Views: 0.3ms | ActiveRecord: 23.6ms | Allocations: 10521)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-25 12:00:07 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"minek2@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"minek2@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `login'
+Completed 200 OK in 246ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 832)
+
+
+Started POST "/api/v1/family_trees" for ::1 at 2022-10-25 12:00:27 +0700
+Processing by Api::V1::FamilyTreesController#create as */*
+  Parameters: {"name"=>"uji family", "family_tree"=>{"name"=>"uji family"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+  [1m[36mFamilyTree Create (0.5ms)[0m  [1m[32mINSERT INTO "family_trees" ("name", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "uji family"], ["user_id", 1], ["created_at", "2022-10-25 05:00:27.443693"], ["updated_at", "2022-10-25 05:00:27.443693"]]
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/family_trees_controller.rb:6:in `create'
+Completed 200 OK in 18ms (Views: 0.3ms | ActiveRecord: 3.9ms | Allocations: 8725)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-25 12:00:47 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"kumpul keluarga", "date"=>"2022-10-11T15:00", "venue"=>"rumah bu pur", "family_tree_id"=>1, "event"=>{"name"=>"kumpul keluarga", "date"=>"2022-10-11T15:00", "venue"=>"rumah bu pur", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+[31mUnpermitted parameter: :event. Context: { controller: Api::V1::EventsController, action: create, request: #<ActionDispatch::Request:0x00007f690805fcf8>, params: {"name"=>"kumpul keluarga", "date"=>"2022-10-11T15:00", "venue"=>"rumah bu pur", "family_tree_id"=>1, "controller"=>"api/v1/events", "action"=>"create", "event"=>{"name"=>"kumpul keluarga", "date"=>"2022-10-11T15:00", "venue"=>"rumah bu pur", "family_tree_id"=>1}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "kumpul keluarga"], ["date", "2022-10-11 15:00:00"], ["venue", "rumah bu pur"], ["user_id", 1], ["family_tree_id", 1], ["created_at", "2022-10-25 05:00:47.526637"], ["updated_at", "2022-10-25 05:00:47.526637"]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 4.5ms | Allocations: 10835)
+
+
+Started POST "/api/v1/events" for ::1 at 2022-10-25 12:03:57 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"jalan santai", "date"=>"2022-10-11T09:00", "venue"=>"tambakboyo", "family_tree_id"=>1, "event"=>{"name"=>"jalan santai", "date"=>"2022-10-11T09:00", "venue"=>"tambakboyo", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 5.0ms | Allocations: 13851)
+
+
+  
+NameError (undefined local variable or method `event' for #<Api::V1::EventsController:0x000000000101f8>
+
+        params.require(event:).permit(:name, :date, :venue, :family_tree_id)
+                       ^^^^^^):
+  
+app/controllers/api/v1/events_controller.rb:30:in `event_params'
+app/controllers/api/v1/events_controller.rb:10:in `create'
+Started POST "/api/v1/events" for ::1 at 2022-10-25 12:04:16 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"jalan santai", "date"=>"2022-10-11T09:00", "venue"=>"tambakboyo", "family_tree_id"=>1, "event"=>{"name"=>"jalan santai", "date"=>"2022-10-11T09:00", "venue"=>"tambakboyo", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 2.8ms | Allocations: 8489)
+
+
+  
+NameError (undefined local variable or method `events' for #<Api::V1::EventsController:0x00000000018c40>
+
+        params.require(events:).permit(:name, :date, :venue, :family_tree_id)
+                       ^^^^^^^):
+  
+app/controllers/api/v1/events_controller.rb:30:in `event_params'
+app/controllers/api/v1/events_controller.rb:10:in `create'
+Started POST "/api/v1/events" for ::1 at 2022-10-25 12:04:36 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"jalan santai", "date"=>"2022-10-11T09:00", "venue"=>"tambakboyo", "family_tree_id"=>1, "event"=>{"name"=>"jalan santai", "date"=>"2022-10-11T09:00", "venue"=>"tambakboyo", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+Completed 400 Bad Request in 12ms (ActiveRecord: 3.6ms | Allocations: 5865)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: events
+Did you mean?  event):
+  
+app/controllers/api/v1/events_controller.rb:30:in `event_params'
+app/controllers/api/v1/events_controller.rb:10:in `create'
+Started POST "/api/v1/events" for ::1 at 2022-10-25 12:04:45 +0700
+Processing by Api::V1::EventsController#create as */*
+  Parameters: {"name"=>"jalan santai", "date"=>"2022-10-11T09:00", "venue"=>"tambakboyo", "family_tree_id"=>1, "event"=>{"name"=>"jalan santai", "date"=>"2022-10-11T09:00", "venue"=>"tambakboyo", "family_tree_id"=>1}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "minek2@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:26:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("name", "date", "venue", "user_id", "family_tree_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "jalan santai"], ["date", "2022-10-11 09:00:00"], ["venue", "tambakboyo"], ["user_id", 1], ["family_tree_id", 1], ["created_at", "2022-10-25 05:04:45.580451"], ["updated_at", "2022-10-25 05:04:45.580451"]]
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/events_controller.rb:11:in `create'
+Completed 200 OK in 34ms (Views: 0.4ms | ActiveRecord: 9.4ms | Allocations: 20603)
+
+
