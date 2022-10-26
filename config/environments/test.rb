@@ -36,6 +36,23 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory.
   # config.active_storage.service = :cloudinary
 
+  # SMTP for gmail
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host: 'sama-kaki.herokuapp.com', protocol: "https" }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'sama-kaki.herokuapp.com',
+    user_name:            'jasmineerina15@gmail.com',
+    password:             'fkxnennzcaixhgau',
+    authentication:       'plain',
+    enable_starttls_auto: true,
+    open_timeout:         5,
+    read_timeout:         5 }
+
+
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
