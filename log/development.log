@@ -47645,3 +47645,71 @@ Processing by Api::V1::UsersController#index as HTML
 Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 1775)
 
 
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-26 14:16:52 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"family@gmail.com", "password"=>{"email"=>"family@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "family@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "family@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-26 07:16:52.548947"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/reset_pass_email.html.erb within layouts/mailer
+  Rendered user_mailer/reset_pass_email.html.erb within layouts/mailer (Duration: 0.8ms | Allocations: 390)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.4ms | Allocations: 642)
+UserMailer#reset_pass_email: processed outbound mail in 13.5ms
+Delivered mail 6358dee4906b9_a66e39bc2828e@dhimas-pc.mail (3744.5ms)
+Date: Wed, 26 Oct 2022 14:16:52 +0700
+From: from@example.com
+To: family@gmail.com
+Message-ID: <6358dee4906b9_a66e39bc2828e@dhimas-pc.mail>
+Subject: Reset Password
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>TOKEN RESET  test</h1>
+  <p>
+    You have successfully get token,
+    your token is: bb0ad5dfd539365a52f3<br>
+  </p>
+<p>Thanks for joining and have a great day!</p>
+
+
+  </body>
+</html>
+
+Completed 200 OK in 3814ms (Views: 1.1ms | ActiveRecord: 6.7ms | Allocations: 34867)
+
+
+Started POST "/api/v1/users" for ::1 at 2022-10-26 14:25:11 +0700
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"name"=>"dhimas", "email"=>"dhimweray222@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "user"=>{"name"=>"dhimas", "email"=>"dhimweray222@gmail.com", "phone"=>"08981231"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimweray222@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "dhimas"], ["email", "dhimweray222@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-26 07:25:12.129134"], ["updated_at", "2022-10-26 07:25:12.129134"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:12:in `create'
+Completed 200 OK in 222ms (Views: 0.6ms | ActiveRecord: 7.5ms | Allocations: 7363)
+
+
