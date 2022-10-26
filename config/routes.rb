@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       resources :user_relations
       post 'invitation/register', to: 'invitations#create'
 
+      put 'accepted/invitation', to: 'invitations#accepted'
     end
   end
 
