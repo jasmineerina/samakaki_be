@@ -47465,3 +47465,150 @@ FOREIGN KEY ("blob_id")
   [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(321122102920953495)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/login" for ::1 at 2022-10-26 13:22:42 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"jasmineerina15@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"jasmineerina15@gmail.com"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmineerina15@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 226ms (Views: 0.2ms | ActiveRecord: 3.8ms | Allocations: 8162)
+
+
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-26 13:22:46 +0700
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"jasmineerina15@gmail.com", "password"=>{"email"=>"jasmineerina15@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmineerina15@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "jasmineerina15@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-26 06:22:46.996726"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/welcome_email.html.erb within layouts/mailer
+  Rendered user_mailer/welcome_email.html.erb within layouts/mailer (Duration: 1.1ms | Allocations: 388)
+  Rendered layout layouts/mailer.html.erb (Duration: 2.8ms | Allocations: 639)
+UserMailer#welcome_email: processed outbound mail in 12.7ms
+Delivered mail 6358d23782b9_343a3994769f4@jasmine-erina.mail (7110.9ms)
+Date: Wed, 26 Oct 2022 13:22:47 +0700
+From: from@example.com
+To: jasmineerina15@gmail.com
+Message-ID: <6358d23782b9_343a3994769f4@jasmine-erina.mail>
+Subject: Welcome to My Awesome Site
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>TOKEN RESET  jasmine erina</h1>
+  <p>
+    You have successfully get token,
+    your token is: 34724ebd843c466bd3bd.<br>
+  </p>
+<p>Thanks for joining and have a great day!</p>
+
+
+  </body>
+</html>
+
+Completed 200 OK in 7154ms (Views: 0.6ms | ActiveRecord: 2.2ms | Allocations: 24014)
+
+
+Started POST "/api/v1/password/forgot" for ::1 at 2022-10-26 13:24:52 +0700
+Processing by Api::V1::PasswordsController#forgot as */*
+  Parameters: {"email"=>"jasmineerina15@gmail.com", "password"=>{"email"=>"jasmineerina15@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmineerina15@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:7:in `forgot'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "jasmineerina15@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "reset_password_token" = $2, "reset_password_sent_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-10-26 06:24:52.570827"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:32:in `generate_password_token!'
+  Rendering layout layouts/mailer.html.erb
+  Rendering user_mailer/reset_pass_email.html.erb within layouts/mailer
+  Rendered user_mailer/reset_pass_email.html.erb within layouts/mailer (Duration: 0.3ms | Allocations: 172)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.1ms | Allocations: 393)
+UserMailer#reset_pass_email: processed outbound mail in 3.1ms
+Delivered mail 6358d2b48de7d_343a396c77070@jasmine-erina.mail (7533.4ms)
+Date: Wed, 26 Oct 2022 13:24:52 +0700
+From: from@example.com
+To: jasmineerina15@gmail.com
+Message-ID: <6358d2b48de7d_343a396c77070@jasmine-erina.mail>
+Subject: Reset Password
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>TOKEN RESET  jasmine erina</h1>
+  <p>
+    You have successfully get token,
+    your token is: 6fd634e16085395bda08.<br>
+  </p>
+<p>Thanks for joining and have a great day!</p>
+
+
+  </body>
+</html>
+
+Completed 200 OK in 7567ms (Views: 0.4ms | ActiveRecord: 4.5ms | Allocations: 15915)
+
+
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-26 13:26:11 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"jasmineerina15@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 825)
+
+
+Started POST "/api/v1/password/reset" for ::1 at 2022-10-26 13:26:36 +0700
+Processing by Api::V1::PasswordsController#reset as */*
+  Parameters: {"email"=>"jasmineerina15@gmail.com", "token"=>"[FILTERED]", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."reset_password_token" = $1 LIMIT $2[0m  [["reset_password_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/passwords_controller.rb:26:in `reset'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:42:in `reset_password!'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "jasmineerina15@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `reset_password!'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2, "reset_password_token" = $3 WHERE "users"."id" = $4[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2022-10-26 06:26:36.352458"], ["reset_password_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/models/user.rb:42:in `reset_password!'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:42:in `reset_password!'
+Completed 200 OK in 228ms (Views: 0.1ms | ActiveRecord: 2.7ms | Allocations: 3491)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-26 13:26:46 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"jasmineerina15@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"jasmineerina15@gmail.com"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmineerina15@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 226ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1042)
+
+

@@ -9,7 +9,7 @@ class Api::V1::PasswordsController < ApplicationController
     if user.present?
       user.generate_password_token! #generate pass token
       # SEND EMAIL HERE
-      UserMailer.welcome_email(user).deliver_now
+      UserMailer.reset_pass_email(user).deliver_now
       response_to_json("Token sudah dikirimkan ke email anda",:success)
     else
       response_error("Email tidak dapat ditemukan",:not_found)

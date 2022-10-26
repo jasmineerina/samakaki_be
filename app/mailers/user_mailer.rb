@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
-  def welcome_email(user)
+  def reset_pass_email(user)
     @user = user
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @user.email, subject: 'Reset Password')
   end
 end
