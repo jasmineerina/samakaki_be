@@ -1,7 +1,7 @@
 class Api::V1::InvitationsController < ApplicationController
   before_action :decode ,only: [:create, :accepted]
   before_action :authorize, only: [:accepted]
-  before_action :create_user_relation, only:[:accepted]
+  after_action :create_user_relation, only:[:accepted]
   def create
     @user = User.new(user_params)
     @user.password = params[:password]
@@ -16,10 +16,10 @@ class Api::V1::InvitationsController < ApplicationController
   end
 
   def accepted
-    @relation = UserRelation.find_by(relation_id: @token["relation_id"])
+    @relation = UserRelation.find_by(relation_id: @token["relation_id"],user_id: @token["user_id"])
     if @relation
-      @relation.update(connected_user_id:@user.id)
-
+      @relation.update(connected_user_id:@user.id,status:1)
+      response_to_json({relation:@relation},:success)
     else
       response_error("data not found", :not_found)
     end
@@ -40,7 +40,6 @@ class Api::V1::InvitationsController < ApplicationController
     @user_relation = @relation = UserRelation.find_by(relation_id: @token["relation_id"])
     @user_related = User.find_by_id(@user_relation.user_id)
     @relation = Relation.find_by(id: @user_relation.relation_id)
-    @new_relation = Relation.create(name:@user_related.name,relation_name:"siblings",position:"right",number:"1",connected_user_id:@user_relation.user_id,user_id:@user.id,family_tree_id:@user_relation.family_tree_id, status:1)
-    response_to_json({relation:@relation,new_relation:@new_relation.user_relations},:success)
+    @new_relation = Relation.create(name:@user_related.name,relation_name:params["relation_name"],position:params["position"],number:params["number"],connected_user_id:@user_relation.user_id,user_id:@user.id,family_tree_id:@user_relation.family_tree_id, status:1)
   end
 end
