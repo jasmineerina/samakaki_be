@@ -50412,3 +50412,697 @@ Processing by Api::V1::InvitationsController#accepted as */*
 Completed 200 OK in 72ms (Views: 0.4ms | ActiveRecord: 16.1ms | Allocations: 36555)
 
 
+Started GET "/api/v1/user_relations/6" for ::1 at 2022-10-27 15:55:55 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmine123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (1.0ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+  [1m[36mRelation Load (0.7ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+  [1m[36mBiodataUser Load (0.6ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 20.0ms | Allocations: 35728)
+
+
+  
+NoMethodError (undefined method `avatar' for nil:NilClass
+
+        response_to_json({relation: @relation.relation,user:@user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url},status: :success)
+                                                                                                                      ^^^^^^^):
+  
+app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+Started GET "/api/v1/user_relations/7" for ::1 at 2022-10-27 15:56:33 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmine123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.9ms | Allocations: 4434)
+
+
+  
+NoMethodError (undefined method `avatar' for nil:NilClass
+
+        response_to_json({relation: @relation.relation,user:@user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url},status: :success)
+                                                                                                                      ^^^^^^^):
+  
+app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+Started GET "/api/v1/user_relations/44" for ::1 at 2022-10-27 15:57:08 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmine123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.5ms | Allocations: 1482)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/controllers/application_controller.rb:37:in `response_error'
+app/controllers/api/v1/user_relations_controller.rb:27:in `show'
+Started GET "/api/v1/user_relations/44" for ::1 at 2022-10-27 15:57:22 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmine123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+Completed 404 Not Found in 20ms (Views: 0.3ms | ActiveRecord: 4.2ms | Allocations: 10084)
+
+
+Started GET "/api/v1/user_relations/44" for ::1 at 2022-10-27 15:58:17 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmine123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 3.7ms | Allocations: 10989)
+
+
+  
+NoMethodError (undefined method `where' for nil:NilClass
+
+      @relation = UserRelation.find_by_id(params[:id]).where.not(connected_user_id:null)
+                                                      ^^^^^^):
+  
+app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+Started GET "/api/v1/user_relations/44" for ::1 at 2022-10-27 15:58:41 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmine123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 4.8ms | Allocations: 12682)
+
+
+  
+NameError (undefined local variable or method `null' for #<Api::V1::UserRelationsController:0x00000000026638>
+
+      @relation = UserRelation.find_by_id(params[:id]).not(connected_user_id:null)
+                                                                             ^^^^):
+  
+app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+Started GET "/api/v1/user_relations/44" for ::1 at 2022-10-27 15:58:48 +0700
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"44"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmine123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+Completed 404 Not Found in 21ms (Views: 0.2ms | ActiveRecord: 3.9ms | Allocations: 9997)
+
+
+Started POST "/api/v1/login" for ::1 at 2022-10-27 15:59:22 +0700
+Processing by Api::V1::UsersController#login as */*
+  Parameters: {"email"=>"test@gmail.com", "password"=>"[FILTERED]", "user"=>{"email"=>"test@gmail.com"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:16:in `login'
+Completed 200 OK in 195ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1210)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 15:59:36 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mBiodataUser Load (0.9ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (1.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Blob Load (1.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+[36m  Disk Storage (2.9ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjA0OjM2Ljg5NloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--0861d00bdb34face0e9c24768dd0373ecb9eed04/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 172ms (Views: 1.2ms | ActiveRecord: 19.8ms | Allocations: 41922)
+
+
+  [1m[36mUserRelation Load (0.4ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 40], ["LIMIT", 1]]
+Started GET "/api/v1/user_relations/27" for ::1 at 2022-10-27 16:00:55 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UserRelationsController#show as */*
+  Parameters: {"id"=>"27"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmine123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.5ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:22:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:24:in `show'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+  [1m[36mBiodataUser Load (0.4ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:25:in `show'
+[36m  Disk Storage (1.5ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjA1OjU1LjQwN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bdf28a50463895d3b51b159524027181942f1539/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 141ms (Views: 0.7ms | ActiveRecord: 24.1ms | Allocations: 58366)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:05:45 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.1ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mBiodataUser Load (0.1ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjEwOjQ1LjkzMloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--284b0b833c056405f5a01199259f8b1b5722e3a1/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 153ms (Views: 0.9ms | ActiveRecord: 20.9ms | Allocations: 41841)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:07:52 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjEyOjUyLjE5NFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c8a3917ad82347589d514a7cb99ca7a7790d9b22/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 20ms (Views: 1.7ms | ActiveRecord: 2.2ms | Allocations: 9128)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:08:27 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 10.4ms | Allocations: 19547)
+
+
+  
+NoMethodError (undefined method `biodata_user' for nil:NilClass
+
+          @relation_detail.push(relation_detail:{relation:@relation,relation_user:relation.relation,user: @user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url})
+                                                                                                                             ^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+app/controllers/api/v1/user_relations_controller.rb:10:in `index'
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:09:05 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.1ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 6.3ms | Allocations: 19538)
+
+
+  
+NoMethodError (undefined method `biodata_user' for nil:NilClass
+
+          @relation_detail.push(relation_detail:{relation:@relation,relation_user:relation.relation,user: @user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url})
+                                                                                                                             ^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+app/controllers/api/v1/user_relations_controller.rb:10:in `index'
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:09:57 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 9.0ms | Allocations: 19433)
+
+
+  
+NoMethodError (undefined method `biodata_user' for nil:NilClass
+
+          @relation_detail.push(relation_detail:{relation:@relation,relation_user:relation.relation,user: @user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url})
+                                                                                                                             ^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+app/controllers/api/v1/user_relations_controller.rb:10:in `index'
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:11:02 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+Completed 500 Internal Server Error in 24503ms (ActiveRecord: 11.7ms | Allocations: 40199)
+
+
+  
+NoMethodError (undefined method `biodata_user' for nil:NilClass):
+  
+app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+app/controllers/api/v1/user_relations_controller.rb:10:in `index'
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:11:31 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.1ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mRelation Load (0.4ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mBiodataUser Load (1.8ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjE2OjQ5LjM1NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--2a803f8b33fe58b01629e6289b028bc07869b1ad/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 17297ms (Views: 1.0ms | ActiveRecord: 23.3ms | Allocations: 65050)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:12:24 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+[36m  Disk Storage (2.2ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjE3OjI3LjcyMVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bc843cd72daceaf2c5ea8eb66745ce6088065f6d/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 3644ms (Views: 1.5ms | ActiveRecord: 19.1ms | Allocations: 77637)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:12:53 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mRelation Load (0.4ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mBiodataUser Load (0.5ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjE3OjU3LjAwOFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--43dfabb272e4c813172a067de006e184c6fe8942/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 3790ms (Views: 1.0ms | ActiveRecord: 23.5ms | Allocations: 55011)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:13:23 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mRelation Load (0.4ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mBiodataUser Load (0.5ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+[36m  Disk Storage (0.8ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjE4OjI3LjgzNFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--81e1f9124583037ac5d7bbf59dff12c90a238584/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 3974ms (Views: 1.5ms | ActiveRecord: 20.8ms | Allocations: 53628)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:13:50 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mBiodataUser Load (0.4ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block in index'
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjE4OjUzLjc5MVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--ab87deea847588531f471fec2c386df05c94375a/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 3083ms (Views: 0.9ms | ActiveRecord: 20.7ms | Allocations: 53615)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:14:26 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+[36m  Disk Storage (0.6ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjE5OjI3LjA5NVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--c594898dd9f00611a352bafb8edd3335dfaaaa8b/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 82ms (Views: 1.6ms | ActiveRecord: 18.4ms | Allocations: 42079)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:14:52 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `each_with_index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mBiodataUser Load (0.3ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:15:in `block in index'
+[36m  Disk Storage (0.4ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjE5OjUyLjg2OFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e63e604095c645b582164e043b57457081d74197/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 109ms (Views: 1.9ms | ActiveRecord: 31.6ms | Allocations: 42222)
+
+
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:27:07 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 4.6ms | Allocations: 12346)
+
+
+  
+NoMethodError (undefined method `id' for []:Array
+
+      @relations = UserRelation.where(user_id: @user.id)
+                                                    ^^^):
+  
+app/controllers/api/v1/user_relations_controller.rb:9:in `index'
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:27:33 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 4.4ms | Allocations: 9652)
+
+
+  
+NoMethodError (undefined method `id' for []:Array
+
+      @relations = UserRelation.where(user_id: @user.id)
+                                                    ^^^):
+  
+app/controllers/api/v1/user_relations_controller.rb:9:in `index'
+Started GET "/api/v1/user_relations" for ::1 at 2022-10-27 16:28:31 +0700
+Processing by Api::V1::UserRelationsController#index as */*
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."user_id" = $1[0m  [["user_id", 2]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:10:in `index'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."connected_user_id" IS NULL[0m
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mRelation Load (0.1ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mRelation Load (0.3ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE UserRelation Load (0.0ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."connected_user_id" IS NULL[0m
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE UserRelation Load (0.0ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."connected_user_id" IS NULL[0m
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE UserRelation Load (0.0ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."connected_user_id" IS NULL[0m
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE UserRelation Load (0.0ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."connected_user_id" IS NULL[0m
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:14:in `block (2 levels) in index'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."connected_user_id" = $1[0m  [["connected_user_id", 17]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:12:in `block in index'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:16:in `block (2 levels) in index'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:17:in `block (2 levels) in index'
+  [1m[36mBiodataUser Load (0.2ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:17:in `block (2 levels) in index'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:17:in `block (2 levels) in index'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:17:in `block (2 levels) in index'
+[36m  Disk Storage (0.7ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjMzOjMxLjk3OVoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--5b2e1f6124d0e3c3514d72159d18f4ab0df5f351/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `block in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `block in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `block in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `block in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:23:in `block in index'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:25:in `block in index'
+  [1m[36mCACHE Relation Load (0.0ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:26:in `block in index'
+  [1m[36mCACHE BiodataUser Load (0.0ms)[0m  [1m[34mSELECT "biodata_users".* FROM "biodata_users" WHERE "biodata_users"."user_id" = $1 LIMIT $2[0m  [["user_id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:26:in `block in index'
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 19], ["record_type", "BiodataUser"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:26:in `block in index'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/user_relations_controller.rb:26:in `block in index'
+[36m  Disk Storage (0.5ms) [0m[34mGenerated URL for file at key: eq3d3i6y6b6tsmks4vnr5rp9zzdq (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhaWEV6WkROcE5uazJZalowYzIxcmN6UjJibkkxY25BNWVucGtjUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpYzJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1FM1kyRXlNR1UxTkRVelpqSTVOR1ZpTkdObU1tWTVOakJsTjJGak9UaGlMbXB3WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbllUZGpZVEl3WlRVME5UTm1NamswWldJMFkyWXlaamsyTUdVM1lXTTVPR0l1YW5CbkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSVBhVzFoWjJVdmFuQmxad1k3QmxRNkVYTmxjblpwWTJWZmJtRnRaVG9LYkc5allXdz0iLCJleHAiOiIyMDIyLTEwLTI3VDA5OjMzOjMxLjk5MloiLCJwdXIiOiJibG9iX2tleSJ9fQ==--692fbb6ada20256dfefd0eea06b3cb4f6d281e50/a7ca20e5453f294eb4cf2f960e7ac98b.jpg)[0m
+Completed 200 OK in 165ms (Views: 7.2ms | ActiveRecord: 22.1ms | Allocations: 79204)
+
+
