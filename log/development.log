@@ -47767,3 +47767,229 @@ Content-Transfer-Encoding: 7bit
 Completed 200 OK in 3533ms (Views: 0.7ms | ActiveRecord: 5.9ms | Allocations: 34536)
 
 
+Started PUT "/api/v1/accepted/invitation?token=[FILTERED]" for ::1 at 2022-10-26 14:58:17 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::InvitationsController#accepted as */*
+  Parameters: {"token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmin12111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:39:in `create_user_relation'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:40:in `create_user_relation'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:41:in `create_user_relation'
+  [1m[36mUserRelation Load (0.7ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 16]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:42:in `create_user_relation'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+  [1m[36mRelation Create (1.2ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "test"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-26 07:58:47.186276"], ["updated_at", "2022-10-26 07:58:47.186276"]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mUserRelation Create (0.7ms)[0m  [1m[32mINSERT INTO "user_relations" ("connected_user_id", "status", "family_tree_id", "token", "user_id", "relation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["connected_user_id", 6], ["status", 0], ["family_tree_id", 1], ["token", "[FILTERED]"], ["user_id", 13], ["relation_id", 29], ["created_at", "2022-10-26 07:58:47.223772"], ["updated_at", "2022-10-26 07:58:47.223772"]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 29]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Filter chain halted as :create_user_relation rendered or redirected
+Completed 200 OK in 29129ms (Views: 2.4ms | ActiveRecord: 19.1ms | Allocations: 68481)
+
+
+Started PUT "/api/v1/accepted/invitation?token=[FILTERED]" for ::1 at 2022-10-26 14:59:30 +0700
+Processing by Api::V1::InvitationsController#accepted as */*
+  Parameters: {"token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmin12111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:39:in `create_user_relation'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:40:in `create_user_relation'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:41:in `create_user_relation'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+  [1m[36mRelation Create (0.9ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "test"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-26 07:59:33.303435"], ["updated_at", "2022-10-26 07:59:33.303435"]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.3ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mUserRelation Create (0.5ms)[0m  [1m[32mINSERT INTO "user_relations" ("connected_user_id", "status", "family_tree_id", "token", "user_id", "relation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["connected_user_id", 6], ["status", 0], ["family_tree_id", 1], ["token", "[FILTERED]"], ["user_id", 13], ["relation_id", 30], ["created_at", "2022-10-26 07:59:33.340359"], ["updated_at", "2022-10-26 07:59:33.340359"]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 30]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Filter chain halted as :create_user_relation rendered or redirected
+Completed 200 OK in 2895ms (Views: 3.1ms | ActiveRecord: 18.7ms | Allocations: 40660)
+
+
+Started PUT "/api/v1/accepted/invitation?token=[FILTERED]" for ::1 at 2022-10-26 15:00:04 +0700
+Processing by Api::V1::InvitationsController#accepted as */*
+  Parameters: {"token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmin12111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.1ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:39:in `create_user_relation'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:40:in `create_user_relation'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:41:in `create_user_relation'
+Completed 500 Internal Server Error in 3091ms (ActiveRecord: 9.6ms | Allocations: 27840)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'status' for Relation.
+
+          raise UnknownAttributeError.new(self, k.to_s)
+          ^^^^^):
+  
+app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+Started PUT "/api/v1/accepted/invitation?token=[FILTERED]" for ::1 at 2022-10-26 15:00:34 +0700
+Processing by Api::V1::InvitationsController#accepted as */*
+  Parameters: {"token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmin12111@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:39:in `create_user_relation'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:40:in `create_user_relation'
+  [1m[36mRelation Load (0.2ms)[0m  [1m[34mSELECT "relations".* FROM "relations" WHERE "relations"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:41:in `create_user_relation'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+  [1m[36mRelation Create (0.6ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "test"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-26 08:00:37.901537"], ["updated_at", "2022-10-26 08:00:37.901537"]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.2ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mUserRelation Create (0.4ms)[0m  [1m[32mINSERT INTO "user_relations" ("connected_user_id", "status", "family_tree_id", "token", "user_id", "relation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["connected_user_id", 6], ["status", 1], ["family_tree_id", 1], ["token", "[FILTERED]"], ["user_id", 13], ["relation_id", 31], ["created_at", "2022-10-26 08:00:37.939054"], ["updated_at", "2022-10-26 08:00:37.939054"]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:43:in `create_user_relation'
+  [1m[36mUserRelation Load (0.6ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 31]]
+  ↳ app/controllers/application_controller.rb:34:in `response_to_json'
+Filter chain halted as :create_user_relation rendered or redirected
+Completed 200 OK in 3296ms (Views: 3.2ms | ActiveRecord: 14.0ms | Allocations: 50440)
+
+
+Started POST "/api/v1/relations" for ::1 at 2022-10-27 07:48:57 +0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::RelationsController#create as */*
+  Parameters: {"name"=>"jasmin", "relation_name"=>"siblings", "position"=>"right", "number"=>1, "family_tree_id"=>1, "relation"=>{"name"=>"jasmin", "relation_name"=>"siblings", "position"=>"right", "number"=>1}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dhimweray222@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:24:in `authorized_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mRelation Create (1.3ms)[0m  [1m[32mINSERT INTO "relations" ("name", "relation_name", "position", "number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "jasmin"], ["relation_name", 2], ["position", 0], ["number", 1], ["created_at", "2022-10-27 00:48:57.982221"], ["updated_at", "2022-10-27 00:48:57.982221"]]
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mFamilyTree Load (0.8ms)[0m  [1m[34mSELECT "family_trees".* FROM "family_trees" WHERE "family_trees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mUserRelation Create (2.1ms)[0m  [1m[32mINSERT INTO "user_relations" ("connected_user_id", "status", "family_tree_id", "token", "user_id", "relation_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["connected_user_id", nil], ["status", nil], ["family_tree_id", 1], ["token", "[FILTERED]"], ["user_id", 14], ["relation_id", 32], ["created_at", "2022-10-27 00:48:58.022970"], ["updated_at", "2022-10-27 00:48:58.022970"]]
+  ↳ app/models/relation.rb:17:in `build_user_relation'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/relations_controller.rb:6:in `create'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1[0m  [["relation_id", 32]]
+  ↳ app/models/relation.rb:10:in `get_relation_from_invitation'
+Completed 200 OK in 77ms (Views: 0.5ms | ActiveRecord: 21.5ms | Allocations: 37055)
+
+
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-27 07:49:08 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"jasmin", "email"=>"jasmin31@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "invitation"=>{"name"=>"jasmin", "email"=>"jasmin31@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :token, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007f073626ee88>, params: {"name"=>"jasmin", "email"=>"jasmin31@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"jasmin", "email"=>"jasmin31@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmin31@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "jasmin"], ["email", "jasmin31@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-27 00:49:08.755646"], ["updated_at", "2022-10-27 00:49:08.755646"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:10:in `create'
+Completed 500 Internal Server Error in 201ms (ActiveRecord: 2.3ms | Allocations: 6527)
+
+
+  
+NoMethodError (undefined method `relation' for nil:NilClass
+
+      response_to_json({user: @user.new_attribute,relation:@relation.relation.relation_name,inviting_user:@relation.user.new_attribute},:success)
+                                                                    ^^^^^^^^^):
+  
+app/controllers/api/v1/invitations_controller.rb:11:in `create'
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-27 07:49:20 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "invitation"=>{"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :token, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007f07363ef898>, params: {"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmin311@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "phone", "password_digest", "created_at", "updated_at", "reset_password_token", "reset_password_sent_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "jasmin"], ["email", "jasmin311@gmail.com"], ["phone", "08981231"], ["password_digest", "[FILTERED]"], ["created_at", "2022-10-27 00:49:20.469506"], ["updated_at", "2022-10-27 00:49:20.469506"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUserRelation Load (0.2ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:10:in `create'
+Completed 500 Internal Server Error in 199ms (ActiveRecord: 1.9ms | Allocations: 5029)
+
+
+  
+NoMethodError (undefined method `relation' for nil:NilClass
+
+      response_to_json({user: @user.new_attribute,relation:@relation.relation.relation_name,inviting_user:@relation.user.new_attribute},:success)
+                                                                    ^^^^^^^^^):
+  
+app/controllers/api/v1/invitations_controller.rb:11:in `create'
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-27 07:49:58 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "invitation"=>{"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :token, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007f0734072230>, params: {"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmin311@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:10:in `create'
+Completed 500 Internal Server Error in 219ms (ActiveRecord: 3.8ms | Allocations: 12868)
+
+
+  
+NoMethodError (undefined method `relation_name' for nil:NilClass
+
+      response_to_json({user: @user.new_attribute,relation:@relation.relation_name,inviting_user:@relation.user.new_attribute},:success)
+                                                                    ^^^^^^^^^^^^^^):
+  
+app/controllers/api/v1/invitations_controller.rb:11:in `create'
+Started POST "/api/v1/invitation/register" for ::1 at 2022-10-27 07:50:45 +0700
+Processing by Api::V1::InvitationsController#create as */*
+  Parameters: {"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "invitation"=>{"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}}
+[31mUnpermitted parameters: :password, :token, :invitation. Context: { controller: Api::V1::InvitationsController, action: create, request: #<ActionDispatch::Request:0x00007f07340e67c0>, params: {"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]", "controller"=>"api/v1/invitations", "action"=>"create", "invitation"=>{"name"=>"jasmin", "email"=>"jasmin311@gmail.com", "phone"=>"08981231", "password"=>"[FILTERED]", "token"=>"[FILTERED]"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasmin311@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/v1/invitations_controller.rb:9:in `create'
+  [1m[36mUserRelation Load (0.3ms)[0m  [1m[34mSELECT "user_relations".* FROM "user_relations" WHERE "user_relations"."relation_id" = $1 LIMIT $2[0m  [["relation_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/invitations_controller.rb:10:in `create'
+Completed 500 Internal Server Error in 220ms (ActiveRecord: 4.7ms | Allocations: 12737)
+
+
+  
+NoMethodError (undefined method `relations' for nil:NilClass
+
+      response_to_json({user: @user.new_attribute,relation:@relation.relations.relation_name,inviting_user:@relation.user.new_attribute},:success)
+                                                                    ^^^^^^^^^^):
+  
+app/controllers/api/v1/invitations_controller.rb:11:in `create'

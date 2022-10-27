@@ -8,7 +8,8 @@ class Api::V1::InvitationsController < ApplicationController
     if params[:token].present?
       @user.save
       @relation=UserRelation.find_by(relation_id:@token["relation_id"])
-      response_to_json({user: @user.new_attribute,relation:@relation.relation.relation_name,inviting_user:@relation.user.new_attribute},:success)
+      @token_login = encode_token({user_id: @user.id, email: @user.email})
+      response_to_json({user: @user.new_attribute,relation:@relation.relation.relation_name,inviting_user:@relation.user.new_attribute,token:@token_login},:success)
     else
       response_error("token invitations tidak valid",:unprocessable_entity)
     end
@@ -39,7 +40,7 @@ class Api::V1::InvitationsController < ApplicationController
     @user_relation = @relation = UserRelation.find_by(relation_id: @token["relation_id"])
     @user_related = User.find_by_id(@user_relation.user_id)
     @relation = Relation.find_by(id: @user_relation.relation_id)
-    @new_relation = Relation.create(name:@user_related.name,relation_name:"siblings",position:"right",number:"1",connected_user_id:@user_relation.user_id,user_id:@user.id,family_tree_id:"1")
+    @new_relation = Relation.create(name:@user_related.name,relation_name:"siblings",position:"right",number:"1",connected_user_id:@user_relation.user_id,user_id:@user.id,family_tree_id:@user_relation.family_tree_id, status:1)
     response_to_json({relation:@relation,new_relation:@new_relation.user_relations},:success)
   end
 end
