@@ -16,7 +16,7 @@ class Api::V1::InvitationsController < ApplicationController
   end
 
   def accepted
-    @relation = UserRelation.find_by(relation_id: @token["relation_id"],user_id: @token["user_id"])
+    @relation = UserRelation.find_by(relation_id: @token["relation_id"])
     if @relation
       @relation.update(connected_user_id:@user.id,status:1)
       response_to_json({relation:@relation},:success)
@@ -37,7 +37,7 @@ class Api::V1::InvitationsController < ApplicationController
   end
 
   def create_user_relation
-    @user_relation = @relation = UserRelation.find_by(relation_id: @token["relation_id"])
+    @user_relation = UserRelation.find_by(relation_id: @token["relation_id"])
     @user_related = User.find_by_id(@user_relation.user_id)
     @relation = Relation.find_by(id: @user_relation.relation_id)
     @new_relation = Relation.create(name:@user_related.name,relation_name:params["relation_name"],position:params["position"],number:params["number"],connected_user_id:@user_relation.user_id,user_id:@user.id,family_tree_id:@user_relation.family_tree_id, status:1)

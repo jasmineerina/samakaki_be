@@ -4,7 +4,7 @@ class Api::V1::FamilyTreesController < ApplicationController
 
   def create
     @family = FamilyTree.new(family_params.merge(user_id: @user.id))
-    @family.save ? response_to_json({family_name:@family.name}, :success) : response_error(@family.errors, :unprocessable_entity)
+    @family.save ? response_to_json(@family, :success) : response_error(@family.errors, :unprocessable_entity)
   end
 
   def show
