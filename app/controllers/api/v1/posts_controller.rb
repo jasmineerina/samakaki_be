@@ -1,17 +1,20 @@
 class Api::V1::PostsController < ApplicationController
-    before_action :authorize, only: [:create, :show, :find,:destroy]
+    before_action :authorize, only: [:create, :show, :find,:destroy,:index]
     before_action :set_post, only: [:show,:update,:destroy]
     before_action do
       ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
     end
     def index
-        @relations = UserRelation.where(family_tree_id: params[:family_tree_id]).where.not(connected_user_id: nil)
-        @posts=[]
-        @relations.each_with_index do |relation|
-            @post = Post.find_by(user_id: relation.user_id)
-            @posts.push(@post.new_attribute)
+        @relation = UserRelation.find_by(user_id:@user.id)
+        @relations = UserRelation.where(family_tree_id:@relation.family_tree_id)
+        @all_posts =[]
+        @relations.each do |relation,index|
+            @posts = Post.where(user_id: relation.user_id)
+            @posts.each do |post|
+            @all_posts.push(@posts[0].new_attribute) if post !=nil
+            end
         end
-        response_to_json({posts:@posts}, :ok)
+        response_to_json(@all_posts.uniq{ |f| f.values_at(:id)}, :ok)
     end
 
     def create

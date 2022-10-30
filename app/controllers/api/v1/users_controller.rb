@@ -6,10 +6,14 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
+    if params[:password] != ""
     @user = User.new(user_params)
     @user.password = params[:password]
     @token = encode_token({user_id: @user.id, email: @user.email})
     @user.save ? response_to_json({user:@user,token:@token}, :ok) : response_error(@user.errors, :unprocessable_entity)
+    else
+      response_error("password tidak boleh kosong", :unprocessable_entity)
+    end
   end
 
   def login

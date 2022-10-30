@@ -4,25 +4,38 @@ class Api::V1::UserRelationsController < ApplicationController
     ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
   end
     def index
-      @relations = UserRelation.where(user_id: @user.id)
       @relation_detail =[]
+      @relations = UserRelation.where(user_id: @user.id)
       @user=[]
-      @relations.each_with_index do |relation, index|
-        if relation.connected_user_id==nil
-          @relation_detail.push(relation:{relation_user:relation.relation})
+      @relations.map do |relation|
+        if relation.connected_user_id == nil
+          @relation_detail.push(relation_detail:{user_relation:relation,relation:relation.relation})
         else
-          @user = User.find_by_id(relation.connected_user_id)
-          @relation_detail.push(relation:{relation_user:relation.relation,user: @user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url})
+          @user_id = User.find_by_id(relation.connected_user_id)
+          @relation_detail.push(relation_detail:{user_relation:relation,relation:relation.relation, user:@user_id, avatar:@user_id.biodata_user.avatar.url})
+        end
+        @relations_connected_user = UserRelation.where(user_id: relation.connected_user_id)
+        @relations_connected_user.map do |relation_connected_user|
+          if relation_connected_user.connected_user_id == nil
+            @relation_detail.push(relation_detail:{user_relation:relation_connected_user,relation:relation_connected_user.relation})
+          else
+            @user = User.find_by_id(relation_connected_user.connected_user_id)
+            @relation_detail.push(relation_detail:{user_relation:relation_connected_user,relation:relation_connected_user.relation,user:@user,avatar:@user.biodata_user.avatar.url})
+          end
         end
       end
-      response_to_json({relations: @relation_detail},:success)
+      response_to_json({relation_detail:@relation_detail},:success)
     end
 
     def show
       @relation = UserRelation.find_by_id(params[:id])
-      @user = User.find_by_id(@relation.connected_user_id)
-      response_to_json({relation: @relation.relation,user:@user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url},status: :success)
+      if @relation
+        @user = User.find_by_id(@relation.connected_user_id)
+        response_to_json({relation: @relation.relation,user:@user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url},status: :success)
+      else
+        response_error("relation tidak ditemukan",:not_found)
+      end
     end
 end
-# .where.not(connected_user_id: nil)
+
 

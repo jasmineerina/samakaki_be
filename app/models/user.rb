@@ -1,11 +1,11 @@
 require 'bcrypt'
 class User < ApplicationRecord
-  has_one :biodata_user
-  has_many :family_trees
-  has_many :posts
-  has_many :events
+  has_one :biodata_user, dependent: :destroy
+  has_many :family_trees, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :events, dependent: :destroy
   validates :email, :presence => true, :uniqueness => true
-  has_many :user_relations
+  has_many :user_relations, dependent: :destroy
   include BCrypt
   validates :email, email: {domain: 'gmail.com'}
 
