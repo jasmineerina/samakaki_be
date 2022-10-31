@@ -19,6 +19,7 @@ class Api::V1::BiodataUsersController < ApplicationController
     end
 
     private
+
     def biodata_params
         params.permit(:email, :dob, :address, :marriage_status, :status, :avatar)
     end

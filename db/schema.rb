@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_24_025309) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_31_014925) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_025309) do
     t.index ["user_id"], name: "index_family_trees_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "user_relation_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "status"
+    t.string "descriptions"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.index ["user_relation_id"], name: "index_notifications_on_user_relation_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "descriptions"
     t.string "status"
@@ -118,6 +129,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_025309) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "biodata_users", "users"
+  add_foreign_key "notifications", "user_relations"
+  add_foreign_key "notifications", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "user_relations", "relations"
   add_foreign_key "user_relations", "users"

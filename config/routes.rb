@@ -22,6 +22,8 @@ Rails.application.routes.draw do
       post 'invitation/register', to: 'invitations#create'
 
       put 'accepted/invitation', to: 'invitations#accepted'
+
+      resources  :notifications
     end
   end
 

@@ -2,6 +2,7 @@ class Api::V1::InvitationsController < ApplicationController
   before_action :decode ,only: [:create, :accepted]
   before_action :authorize, only: [:accepted]
   after_action :create_user_relation, only:[:accepted]
+  after_action :create_notif, only:[:create]
   def create
     @user = User.new(user_params)
     @user.password = params[:password]
@@ -9,7 +10,7 @@ class Api::V1::InvitationsController < ApplicationController
       @user.save
       @relation=UserRelation.find_by(relation_id:@token["relation_id"])
       @token_login = encode_token({user_id: @user.id, email: @user.email})
-      response_to_json({user: @user.new_attribute,relation:@relation.relation.relation_name,inviting_user:@relation.user.new_attribute,token:@token_login},:success)
+      response_to_json({user: @user.new_attribute,relation:@relation.relation.relation_name,inviting_user:@relation.user.new_attribute,token_login:@token_login, token_invitation:params[:token]},:success)
     else
       response_error("token invitations tidak valid",:unprocessable_entity)
     end
@@ -41,5 +42,10 @@ class Api::V1::InvitationsController < ApplicationController
     @user_related = User.find_by_id(@user_relation.user_id)
     @relation = Relation.find_by(id: @user_relation.relation_id)
     @new_relation = Relation.create(name:@user_related.name,relation_name:params["relation_name"],position:params["position"],number:params["number"],connected_user_id:@user_relation.user_id,user_id:@user.id,family_tree_id:@user_relation.family_tree_id, status:1)
+    @notif = Notification.create!(user_relation_id:@new_relation.user_relation_ids[0],user_id:@user_relation.user_id,status:0,descriptions:"Invitation anda sudah diterima oleh #{@user.name}")
+  end
+
+  def create_notif
+    @notif = Notification.create!(user_relation_id:@relation.id,user_id:@user.id,status:0,descriptions:"Anda di invit ke dalam family tree oleh #{@relation.user.name}, apakah anda mengenal #{@relation.user.name}?")
   end
 end
