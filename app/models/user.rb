@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   validates :email, :presence => true, :uniqueness => true
   has_many :user_relations, dependent: :destroy
+  has_many :notifications
   include BCrypt
   validates :email, email: {domain: 'gmail.com'}
 

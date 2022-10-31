@@ -4,6 +4,7 @@ class UserRelation < ApplicationRecord
   belongs_to :family_tree
   validates :connected_user_id, presence: false
   validates :token, presence: false
+  has_many :notifications
   enum status: { non_active:0, active:1 }, _default: 0
 
   def new_attribute

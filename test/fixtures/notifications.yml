@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2022-10-31 08:49:25
+  user_relation: one
+  user: one
+  status: 1
+
+two:
+  date: 2022-10-31 08:49:25
+  user_relation: two
+  user: two
+  status: 1
