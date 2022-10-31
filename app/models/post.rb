@@ -15,12 +15,9 @@ class Post < ApplicationRecord
   private
 
   def acceptable_image
-    unless content.byte_size <= 1.megabyte
-      errors.add(:content, "is too big")
-    end
-    acceptable_types = ["image/jpeg", "image/png", "image/gif"]
-    unless acceptable_types.include?(content.content_type)
-      errors.add(:content, "must be a JPEG, PNG or GIF")
+    unless content.byte_size <= 10.megabyte
+      errors.add(:content, "ukuran melebihi 10 MB")
     end
   end
+
 end
