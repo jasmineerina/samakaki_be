@@ -5,15 +5,8 @@ class Api::V1::PostsController < ApplicationController
       ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
     end
     def index
-        @relation = UserRelation.find_by(user_id:@user.id)
-        @relations = UserRelation.where(family_tree_id:@relation.family_tree_id)
-        @all_posts =[]
-        @relations.each do |relation,index|
-            @posts = Post.where(user_id: relation.user_id)
-            @posts.each do |post|
-            @all_posts.push(@posts[0].new_attribute) if post !=nil
-            end
-        end
+
+        @all_posts = Post.get(@user)
         response_to_json(@all_posts.uniq{ |f| f.values_at(:id)}, :ok)
     end
 
@@ -54,4 +47,12 @@ class Api::V1::PostsController < ApplicationController
         response_error("post tidak ditemukan",:not_found) unless @post.presence
     end
 end
-
+       # @relation = UserRelation.find_by(user_id:@user.id)
+        # @relations = UserRelation.where(family_tree_id:@relation.family_tree_id)
+        # @all_posts =[]
+        # @relations.each do |relation,index|
+        #     @posts = Post.where(user_id: relation.user_id)
+        #     @posts.each do |post|
+        #     @all_posts.push(@posts[0].new_attribute) if post !=nil
+        #     end
+        # end
