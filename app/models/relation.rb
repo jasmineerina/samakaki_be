@@ -9,6 +9,7 @@ class Relation < ApplicationRecord
   def get_relation_from_invitation
     {data:{relation: self,invitaion_token: self.user_relations[0].token},status: :success}
   end
+
   private
 
   def  build_user_relation
@@ -17,7 +18,7 @@ class Relation < ApplicationRecord
     @user_relation.save
   end
 
-  def self.relation(relation_name)
+  def self.relation_detail(relation_name)
     @relation=[]
     case relation_name
     when "siblings"
