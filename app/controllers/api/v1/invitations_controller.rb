@@ -10,7 +10,6 @@ class Api::V1::InvitationsController < ApplicationController
       @user.save
       @relation=UserRelation.find_by(relation_id:@token["relation_id"])
       @token_login = encode_token({user_id: @user.id, email: @user.email})
-      binding.pry
       response_to_json({user: @user.new_attribute,relation:@relation.relation.relation_name,inviting_user:@relation.user.new_attribute,token_login:@token_login, token_invitation:params[:token]},:success)
     else
       response_error("token invitations tidak valid",:unprocessable_entity)
