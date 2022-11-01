@@ -44,7 +44,6 @@ class Api::V1::InvitationsController < ApplicationController
     @relation = Relation.find_by(id: @user_relation.relation_id)
     @relation_detail = Relation.relation_detail(params[:relation_name])
     @new_relation = Relation.create(name:@user_related.name,relation_name:params["relation_name"],position:@relation_detail[0][:position],number:@relation_detail[0][:number],connected_user_id:@user_relation.user_id,user_id:@user.id,family_tree_id:@user_relation.family_tree_id, status:1)
-    binding.pry
     @notif = Notification.create!(user_relation_id:@new_relation.user_relation_ids[0],user_id:@user_relation.user_id,status:0,descriptions:"Invitation anda sudah diterima oleh #{@user.name}")
   end
 
