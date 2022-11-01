@@ -53,6 +53,7 @@ gem 'email_validator', '~> 2.2', '>= 2.2.3'
 # gem "image_processing", "~> 1.2"
 gem "cloudinary"
 gem "serializer"
+gem 'exception_notification'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

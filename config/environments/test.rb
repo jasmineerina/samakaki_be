@@ -75,4 +75,11 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    email_prefix: '[PREFIX] ',
+    sender_address: %{"notifier" <dhimweray222@gmail.com>},
+    exception_recipients: %w{dhimweray222@gmail.com}
+  }
 end
