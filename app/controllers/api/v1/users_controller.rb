@@ -24,6 +24,7 @@ class Api::V1::UsersController < ApplicationController
     else
       response_error("email atau password salah",:unprocessable_entity)
     end
+
   end
 
   def show

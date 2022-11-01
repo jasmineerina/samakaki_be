@@ -16,4 +16,27 @@ class Relation < ApplicationRecord
     @user_relation = self.user_relations.new(user_id: self.user_id, relation_id: self.id, family_tree_id: self.family_tree_id,connected_user_id: self.connected_user_id,token: token,status:self.status)
     @user_relation.save
   end
+
+  def self.relation(relation_name)
+    @relation=[]
+    case relation_name
+    when "siblings"
+      @relation.push({position:"right",number:1})
+    when "father"
+      @relation.push({position:"above",number:1})
+    when "mother"
+      @relation.push({position:"above",number:1})
+    when "child"
+      @relation.push({position:"below",number:1})
+    when "grandfather"
+      @relation.push({position:"above",number:2})
+    when "grandmother"
+      @relation.push({position:"above",number:2})
+    when "husban"
+      @relation.push({position:"left",number:1})
+    when "wife"
+      @relation.push({position:"left",number:1})
+    end
+    return @relation
+  end
 end
