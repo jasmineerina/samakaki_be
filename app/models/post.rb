@@ -9,6 +9,11 @@ class Post < ApplicationRecord
       descriptions: self.descriptions,
       status: self.status,
       content: self.content.url,
+      :user =>
+      {
+        name: self.user.name,
+        avatar: self.user.biodata_user.avatar.url
+      }
     }
   end
 
