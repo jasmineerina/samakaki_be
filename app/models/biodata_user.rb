@@ -2,6 +2,8 @@ class BiodataUser < ApplicationRecord
   belongs_to :user
   has_one_attached :avatar
   validate :acceptable_image
+  validates :dob, presence: true
+  validates :address, presence: true
 
   def new_attribute
     {
