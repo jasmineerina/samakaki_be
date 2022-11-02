@@ -5,6 +5,9 @@ class BiodataUser < ApplicationRecord
 
   def new_attribute
     {
+      name: self.user.name,
+      email: self.user.email,
+      phone: self.user.phone,
       dob: self.dob,
       address: self.address,
       marriage_status: self.marriage_status,
