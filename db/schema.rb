@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_31_014925) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_02_062139) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,6 +73,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_014925) do
     t.index ["user_id"], name: "index_family_trees_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "message"
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.bigint "user_relation_id", null: false
     t.bigint "user_id", null: false
@@ -82,6 +92,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_014925) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notifications_on_user_id"
     t.index ["user_relation_id"], name: "index_notifications_on_user_relation_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_participants_on_room_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -98,6 +117,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_014925) do
     t.integer "relation_name"
     t.integer "position"
     t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.boolean "is_private"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -129,8 +154,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_31_014925) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "biodata_users", "users"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "notifications", "user_relations"
   add_foreign_key "notifications", "users"
+  add_foreign_key "participants", "rooms"
+  add_foreign_key "participants", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "user_relations", "relations"
   add_foreign_key "user_relations", "users"
