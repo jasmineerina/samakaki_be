@@ -25,11 +25,9 @@ class Post < ApplicationRecord
     @myposts.map do |mypost|
     @all_posts.push(mypost.new_attribute) if mypost !=nil
     end
-
     @relations.each do |relation,index|
         @posts = Post.where(user_id: relation.connected_user_id)
         @posts.each do |post|
-          binding.pry
         @all_posts.push(post.new_attribute) if post !=nil
         end
     end
