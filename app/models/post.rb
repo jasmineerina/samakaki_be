@@ -18,13 +18,19 @@ class Post < ApplicationRecord
   end
 
   def self.get(user)
-    @relation = UserRelation.find_by(user_id:user.id)
-    @relations = UserRelation.where(family_tree_id:@relation.family_tree_id)
+    @relations = UserRelation.where(user_id:user.id)
+
     @all_posts =[]
+    @myposts = Post.where(user_id: user.id)
+    @myposts.map do |mypost|
+    @all_posts.push(mypost.new_attribute) if mypost !=nil
+    end
+
     @relations.each do |relation,index|
-        @posts = Post.where(user_id: relation.user_id)
+        @posts = Post.where(user_id: relation.connected_user_id)
         @posts.each do |post|
-        @all_posts.push(@posts[0].new_attribute) if post !=nil
+          binding.pry
+        @all_posts.push(post.new_attribute) if post !=nil
         end
     end
     return @all_posts
