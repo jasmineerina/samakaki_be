@@ -7,7 +7,22 @@ class Relation < ApplicationRecord
   after_save :build_user_relation
 
   def get_relation_from_invitation
-    {data:{relation: self,invitaion_token: self.user_relations[0].token},status: :success}
+    {
+      id: self.id,
+      name: self.name,
+      invitaion_token: self.user_relations[0].token,
+      relation_name: self.relation_name,
+      position: self.position,
+      number: self.number,
+      user_relation:{
+        id: self.user_relations[0].id,
+        connected_user_id: self.user_relations[0].connected_user_id,
+        status:self.user_relations[0].status,
+        family_tree_id: self.user_relations[0].family_tree_id,
+        user_id: self.user_relations[0].user_id,
+        relation_id:self.user_relations[0].relation_id
+      }
+    }
   end
 
   private
@@ -15,7 +30,7 @@ class Relation < ApplicationRecord
   def  build_user_relation
     token = JWT.encode({user_id: self.user_id, relation_id: self.id},'secret')
     @user_relation = self.user_relations.new(user_id: self.user_id, relation_id: self.id, family_tree_id: self.family_tree_id,connected_user_id: self.connected_user_id,token: token,status:self.status)
-    @user_relation.save
+    @user_relation.save!
   end
 
   def self.relation_detail(relation_name)
