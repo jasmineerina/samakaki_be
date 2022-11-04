@@ -13,11 +13,11 @@ class Api::V1::UserRelationsController < ApplicationController
 
     def show
       @relation = UserRelation.find_by_id(params[:id])
-      if @relation
+      if @relation.connected_user_id
         @user = User.find_by_id(@relation.connected_user_id)
-        response_to_json({relation: @relation.relation,user:@user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url},status: :success)
+        response_to_json({relation: @relation.relation,user:@user,biodata:@user.biodata_user,avatar:@user.biodata_user.avatar.url}, :success)
       else
-        response_error("relation tidak ditemukan",:not_found)
+        response_to_json({relation: @relation.relation},:success)
       end
     end
 end

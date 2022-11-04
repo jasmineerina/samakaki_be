@@ -1,9 +1,9 @@
 class Api::V1::EventsController < ApplicationController
-    before_action :authorize, only: [:create, :show, :destroy, :update]
+    before_action :authorize, only: [:create, :show, :destroy, :update, :index]
     before_action :set_event, only: [:show,:destroy, :update]
 
     def index
-        @events = Event.where(family_tree_id: params[:family_tree_id])
+        @events = Event.where(user_id: @user.id)
         response_to_json({events:@events},:success)
     end
 

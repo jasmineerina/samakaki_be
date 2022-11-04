@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_02_062139) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_03_070231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,14 +65,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_062139) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
-  create_table "family_trees", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_family_trees_on_user_id"
-  end
-
   create_table "messages", force: :cascade do |t|
     t.string "message"
     t.bigint "user_id", null: false
@@ -115,10 +107,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_062139) do
   create_table "relations", force: :cascade do |t|
     t.string "name"
     t.integer "relation_name"
-    t.integer "position"
-    t.integer "number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -130,7 +121,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_062139) do
   create_table "user_relations", force: :cascade do |t|
     t.integer "connected_user_id"
     t.integer "status"
-    t.integer "family_tree_id"
     t.string "token"
     t.bigint "user_id", null: false
     t.bigint "relation_id", null: false
