@@ -7,9 +7,9 @@ class Api::V1::PostsController < ApplicationController
     def index
 
         @all_posts = Post.get(@user)
-        response_to_json(@all_posts, :ok)
+        response_to_json(@all_posts.uniq{ |f| f.values_at(:id)}, :ok)
     end
-# .uniq{ |f| f.values_at(:id)}
+
     def create
         @post = Post.new(post_params.merge(user_id: @user.id))
         @post.save ? response_to_json(@post.new_attribute, :success) : response_error(@post.errors, :unprocessable_entity)
