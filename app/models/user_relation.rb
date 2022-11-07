@@ -17,6 +17,7 @@ class UserRelation < ApplicationRecord
 
   def self.get_relation(user)
     @detail =[]
+    @con_relations_user=[]
     @relations = UserRelation.where(user_id: user.id)
     @relations.map do |relation|
       if relation.connected_user_id == nil
@@ -25,9 +26,9 @@ class UserRelation < ApplicationRecord
         @user_id = User.find_by_id(relation.connected_user_id)
         @detail.push(relation.with_connected_user_id(@user_id))
       end
-      @relations_connected_user = UserRelation.where(user_id: relation.connected_user_id)
+      @relations_connected_user = UserRelation.where(user_id: relation.connected_user_id).where.not(connected_user_id:user.id)
       @connected_user_relationship = []
-      @connected_user = User.find_by_id(relation.connected_user_id)
+      @connected_user = User.where(id:relation.connected_user_id)
       @relations_connected_user.map do |relation_connected_user|
         if relation_connected_user.connected_user_id == nil
           @connected_user_relationship.push(relation_connected_user.no_connected_user_id)
@@ -35,19 +36,22 @@ class UserRelation < ApplicationRecord
           @user = User.find_by_id(relation_connected_user.connected_user_id)
           @connected_user_relationship.push(relation_connected_user.with_connected_user_id(@user))
         end
-        @relations_by_connected_user = UserRelation.where(user_id:relation_connected_user.connected_user_id)
-        if @relations_by_connected_user!==nil
-          @relations_by_connected_user.map do |relation_by_connected_user|
-            if relation_by_connected_user.connected_user_id == nil
-              @connected_user_relationship.push(relation_by_connected_user.no_connected_user_id)
-            else
-              @user = User.find_by_id(relation_by_connected_user.connected_user_id)
-              @connected_user_relationship.push(relation_by_connected_user.with_connected_user_id(@user))
-            end
+        @con_relations_user.push({connected_user:@connected_user[0],connected_user_relationship:@connected_user_relationship})
+        @relations_by_connected_user = UserRelation.where(user_id:relation_connected_user.connected_user_id).where.not(connected_user_id: relation_connected_user.user_id)
+        @relations_connected_user_connected = []
+        @relations_by_connected_user.map do |relations_by_connected_user|
+          if relations_by_connected_user.connected_user_id == nil
+            @connected_user_relationship.push({connected_user_relationship:relations_by_connected_user.no_connected_user_id})
+          else
+            @connected_user = User.where(id:relation_connected_user.connected_user_id)
+            @user = User.find_by_id(relations_by_connected_user.connected_user_id)
+            @relations_connected_user_connected.push(relations_by_connected_user.with_connected_user_id(@user))
           end
+        end
+        @connected_user_relationship.push({connected_user:@connected_user[0],connected_user_relationship:@relations_connected_user_connected})
       end
     end
-    return {current_user:user,relation:@detail,connected_user:@connected_user,connected_user_relationship:@connected_user_relationship}
+    return {current_user:user,relation:@detail,connected_user_relationship:@con_relations_user}
   end
 
   def no_connected_user_id
@@ -78,15 +82,15 @@ class UserRelation < ApplicationRecord
     }
   end
 
-  def
-    @connected_user = User.find_by_id(relation.connected_user_id)
-    @relations_connected_user.map do |relation_connected_user|
-      if relation_connected_user.connected_user_id == nil
-        @connected_user_relationship.push(relation_connected_user.no_connected_user_id)
-      else
-        @user = User.find_by_id(relation_connected_user.connected_user_id)
-        @connected_user_relationship.push(relation_connected_user.with_connected_user_id(@user))
-      end
-    end
-  end
+  # def
+  #   @connected_user = User.find_by_id(relation.connected_user_id)
+  #   @relations_connected_user.map do |relation_connected_user|
+  #     if relation_connected_user.connected_user_id == nil
+  #       @connected_user_relationship.push(relation_connected_user.no_connected_user_id)
+  #     else
+  #       @user = User.find_by_id(relation_connected_user.connected_user_id)
+  #       @connected_user_relationship.push(relation_connected_user.with_connected_user_id(@user))
+  #     end
+  #   end
+  # end
 end
