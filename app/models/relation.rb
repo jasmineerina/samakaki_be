@@ -63,7 +63,7 @@ class Relation < ApplicationRecord
       @relation.push({code:"A1Kr1A1Kn1"})
     when "nenek_dari_ibu"
       @relation.push({code:"A1Kr1A1Kr1"})
-    when "husban"
+    when "husband"
       @relation.push({code:"0,1"})
     when "wife"
       @relation.push({code:"0,1"})
