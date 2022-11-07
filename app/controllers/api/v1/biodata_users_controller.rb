@@ -26,18 +26,18 @@ class Api::V1::BiodataUsersController < ApplicationController
     private
 
     def biodata_params
-        params.permit(:email, :dob, :address, :marriage_status, :status, :avatar)
+        params.permit(:dob, :address, :marriage_status, :status, :avatar)
     end
 
     def user_params
-        params.permit(:name,:phone)
+        params.permit(:name,:phone,:email)
     end
 
     def set_biodata
         @user_detail = User.find_by_id(@user.id)
         response_error("user not found", :not_found) unless @user_detail.presence
         @biodata = BiodataUser.find_by(user_id: @user.id)
-        response_error("user not found", :not_found) unless @biodata.presence
+        response_error("biodata not found", :not_found) unless @biodata.presence
     end
 
 end
