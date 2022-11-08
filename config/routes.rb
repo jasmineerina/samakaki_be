@@ -29,6 +29,10 @@ Rails.application.routes.draw do
       get 'chats/:room_id' ,to: 'group_chats#messages'
       post 'chats/:room_id' ,to: 'group_chats#sending'
       post 'chats/:room_id/add' ,to: 'group_chats#add_participant'
+
+      resources :personal_chats
+      get 'chats/:room_id' ,to: 'personal_chats#messages'
+      post 'chats/:room_id' ,to: 'personal_chats#sending'
     end
   end
 
