@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :user_relations, dependent: :destroy
   has_many :notifications
   has_many :messages
-  has_many :pasticipants
+  has_many :participants
   include BCrypt
   validates :email, email: {domain: 'gmail.com'}
 

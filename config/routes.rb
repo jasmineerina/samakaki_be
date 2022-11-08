@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       resources :events
       resources :user_relations
       post 'invitation/register', to: 'invitations#create'
-
+      post 'invite/users', to: 'relations#create_notif_invited_user'
       put 'accepted/invitation', to: 'invitations#accepted'
 
       resources  :notifications
