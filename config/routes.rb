@@ -24,6 +24,11 @@ Rails.application.routes.draw do
       put 'accepted/invitation', to: 'invitations#accepted'
 
       resources  :notifications
+
+      resources :group_chats
+      get 'chats/:room_id' ,to: 'group_chats#messages'
+      post 'chats/:room_id' ,to: 'group_chats#sending'
+      post 'chats/:room_id/add' ,to: 'group_chats#add_participant'
     end
   end
 
