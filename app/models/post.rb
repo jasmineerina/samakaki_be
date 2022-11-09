@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_one_attached :content
   validate :acceptable_image
   validates :content, :presence => false
+  validates :descriptions, :presence =>true
+  validates :status, :presence =>true
 
   def new_attribute
     {
