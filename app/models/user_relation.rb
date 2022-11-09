@@ -48,10 +48,10 @@ class UserRelation < ApplicationRecord
             @relations_connected_user_connected.push(relations_by_connected_user.with_connected_user_id(@user))
           end
         end
-        @connected_user_relationship.push({connected_user:@connected_user[0],connected_user_relationship:@relations_connected_user_connected})
+        @connected_user_relationship.push({connected_user:@connected_user[0].biodata_user.new_attribute,connected_user_relationship:@relations_connected_user_connected})
       end
     end
-    return {current_user:user,relation:@detail,connected_user_relationship:@con_relations_user}
+    return {current_user:user.biodata_user.new_attribute,relation:@detail,connected_user_relationship:@con_relations_user}
   end
 
   def no_connected_user_id
