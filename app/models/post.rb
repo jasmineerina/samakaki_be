@@ -39,7 +39,6 @@ class Post < ApplicationRecord
 
   def acceptable_image
     if content.present?
-      binding.pry
       unless content.byte_size <= 10.megabyte
         errors.add(:content, "ukuran melebihi 10 MB")
       end
