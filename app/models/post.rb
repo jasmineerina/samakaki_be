@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :content
   validate :acceptable_image
+  validates :content, :presence => false
 
   def new_attribute
     {
@@ -37,8 +38,11 @@ class Post < ApplicationRecord
   private
 
   def acceptable_image
-    unless content.byte_size <= 10.megabyte
-      errors.add(:content, "ukuran melebihi 10 MB")
+    if content.present?
+      binding.pry
+      unless content.byte_size <= 10.megabyte
+        errors.add(:content, "ukuran melebihi 10 MB")
+      end
     end
   end
 
