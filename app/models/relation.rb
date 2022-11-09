@@ -1,5 +1,5 @@
 class Relation < ApplicationRecord
-  enum :relation_name, {bapak:0, ibu:1, adek_pertama:2, child:3, grandfather:4,grandmother:5,grandchild:6,husband:7,wife:8,adek_kedua:9,adek_ketiga:10,anak_pertama:11,anak_kedua:12,anak_ketiga:13,kakak_pertama:14,kakak_kedua:15,kakak_ketiga:16}
+  enum :relation_name, {bapak:0, ibu:1, adek_pertama:2, kakek_dari_bapak:3, nenek_dari_bapak:4,kakek_dari_ibu:5,nenek_dari_ibu:6,husband:7,wife:8,adek_kedua:9,adek_ketiga:10,anak_pertama:11,anak_kedua:12,anak_ketiga:13,kakak_pertama:14,kakak_kedua:15,kakak_ketiga:16}
   has_many :user_relations
   attr_accessor :user_id, :relation_id, :connected_user_id, :status
 
