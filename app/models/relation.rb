@@ -25,7 +25,7 @@ class Relation < ApplicationRecord
   private
 
   def  build_user_relation
-    token = JWT.encode({user_id: self.user_id, relation_id: self.id},'secret')
+    token = JWT.encode({user_id: self.user_id, relation_id: self.id},Rails.application.credentials.jwt.secret)
     @user_relation = self.user_relations.new(user_id: self.user_id, relation_id: self.id,connected_user_id: self.connected_user_id,token: token,status:self.status)
     @user_relation.save
   end
