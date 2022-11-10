@@ -1,10 +1,18 @@
 class Api::V1::PersonalChatsController < ApplicationController
-    before_action :authorize, only: [:create, :sending]
+    before_action :authorize, only: [:create, :sending, :show,:index]
 
-    # def index
-    #     @rooms = Room.where(is_private: true)
-    #     response_to_json
-    # end
+    def index
+        # @rooms = Room.where(is_private: true)
+        @participants = Participant.get(@user)
+        # @rooms = []
+        # @user_participants.map do |user_participant|
+        #     @all_rooms = Room.where(id:user_participant.room_id)
+        #     @rooms.push(@all_rooms)
+        # end     
+
+        # @participants = Participant.where(room_id:)
+        response_to_json(@participants, :success)
+    end
 
     def create
         @room = Room.create!(is_private: true)
@@ -29,6 +37,11 @@ class Api::V1::PersonalChatsController < ApplicationController
         @message = Message.create!(user_id:@user.id, room_id:params[:room_id], message:params[:message])
         response_to_json(@message,:success)
     end
+
+    # def show
+    #     # @single_room = Room.find(params[:id])
+    #     response_to_json(@single_room.new_attribute, :success)
+    # end
 
     # private
     # def get_name(user1, user2)
