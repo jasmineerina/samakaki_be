@@ -2,15 +2,7 @@ class Api::V1::PersonalChatsController < ApplicationController
     before_action :authorize, only: [:create, :sending, :show,:index]
 
     def index
-        # @rooms = Room.where(is_private: true)
         @participants = Participant.get(@user)
-        # @rooms = []
-        # @user_participants.map do |user_participant|
-        #     @all_rooms = Room.where(id:user_participant.room_id)
-        #     @rooms.push(@all_rooms)
-        # end     
-
-        # @participants = Participant.where(room_id:)
         response_to_json(@participants, :success)
     end
 
