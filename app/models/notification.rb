@@ -32,7 +32,8 @@ class Notification < ApplicationRecord
       inviting_email: self.user_relation.user.email,
       relation: self.user_relation.relation.relation_name,
       descriptions: self.descriptions,
-      invitation_token: self.user_relation.token
+      invitation_token: self.user_relation.token,
+      avatar: self.user_relation.user.biodata_user.avatar.url,
     }
   end
 end

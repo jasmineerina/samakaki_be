@@ -1,6 +1,9 @@
 class Api::V1::NotificationsController < ApplicationController
   before_action :authorize, only: [:index]
   before_action :set_notif,only: [:show, :update]
+  before_action do
+    ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
+  end
   def index
     @notif = Notification.get(@user)
     return response_error("Tidak ada notifications", :not_found) unless @notif.presence
