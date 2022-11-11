@@ -58,7 +58,7 @@ class Relation < ApplicationRecord
     when "kakek_dari_bapak"
       @relation.push({code:"A1Kn1A1Kn1"})
     when "nenek_dari_bapak"
-      @relation.push({code:"A1Kr1A1Kr1"})
+      @relation.push({code:"A1Kn1A1Kr1"})
     when "kakek_dari_ibu"
       @relation.push({code:"A1Kr1A1Kn1"})
     when "nenek_dari_ibu"
