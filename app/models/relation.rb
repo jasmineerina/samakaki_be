@@ -9,7 +9,7 @@ class Relation < ApplicationRecord
     {
       id: self.id,
       name: self.name,
-      invitaion_token: self.user_relations[0].token,
+      invitation_token: self.user_relations[0].token,
       relation_name: self.relation_name,
       code: self.code,
       user_relation:{
