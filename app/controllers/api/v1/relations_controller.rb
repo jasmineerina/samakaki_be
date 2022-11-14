@@ -13,7 +13,7 @@ class Api::V1::RelationsController < ApplicationController
   end
 
   def create_notif_invited_user
-    @token= JWT.decode(params[:token_invitation], 'secret')[0]
+    @token= JWT.decode(params[:token_invitation], SECRET_KEY)[0]
     @relation = Relation.find_by_id(@token["relation_id"])
     @notif = Notification.new(user_relation_id:@relation.user_relations[0].user_id,user_id:@user.id,status:0,descriptions:"Anda di invit ke dalam family tree oleh #{@relation.user_relations[0].user.name}, apakah anda mengenal #{@relation.user_relations[0].user.name}?")
     @notif.save ? response_to_json(@notif, :success) : response_error(@notif.errors, :unprocessable_entity)
