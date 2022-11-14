@@ -37,7 +37,7 @@ class Api::V1::BiodataUsersController < ApplicationController
         @user_detail = User.find_by_id(@user.id)
         response_error("user not found", :not_found) unless @user_detail.presence
         @biodata = BiodataUser.find_by(user_id: @user.id)
-        response_error("biodata not found", :not_found) unless @biodata.presence
+        response_to_json({message:"biodata tidak ditemukan", biodata: @biodata}, :ok) unless @biodata.presence
     end
 
 end
