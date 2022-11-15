@@ -19,7 +19,7 @@ class Api::V1::InvitationsController < ApplicationController
 
   def accepted
     @relation = UserRelation.find_by(relation_id: @token["relation_id"])
-    @notif = Notification.find_by(user_id:@user.id,user_relation_id:@relation.id)
+    @notif = Notification.find_by(user_id:@user.id, user_relation_id:@relation.id)
     @notif.update(status:"read")
     if @relation
       @relation.update(connected_user_id:@user.id,status:1)
