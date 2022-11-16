@@ -5,8 +5,6 @@ class Api::V1::UserRelationsController < ApplicationController
   end
     def index
     @relation_detail = UserRelation.get_relation(@user)
-    @relation_detail.map do |relation_detail|
-    end
     return response_error("Tidak ada relation", :not_found) unless @relation_detail.presence
       response_to_json(@relation_detail,:success)
     end
