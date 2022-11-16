@@ -7,7 +7,7 @@ class Api::V1::NotificationsController < ApplicationController
   def index
     @notif = Notification.get(@user)
     return response_error("Tidak ada notifications", :not_found) unless @notif.presence
-    response_to_json(@notif,:success)
+    response_to_json(@notif,:ok)
   end
 
   def show

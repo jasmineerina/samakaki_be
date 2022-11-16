@@ -33,7 +33,7 @@ class Notification < ApplicationRecord
       relation: self.user_relation.relation.relation_name,
       descriptions: self.descriptions,
       invitation_token: self.user_relation.token,
-      avatar: self.user_relation.user.biodata_user.avatar.url,
+      avatar: self.user_relation.user.biodata_user.try(:avatar).try(:url),
     }
   end
 end

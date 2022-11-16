@@ -15,7 +15,7 @@ class Post < ApplicationRecord
       :user =>
       {
         name: self.user.name,
-        avatar: self.user.biodata_user.avatar.url
+        avatar: self.user.biodata_user.try(:avatar).try(:url)
       }
     }
   end
