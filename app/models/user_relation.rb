@@ -31,12 +31,12 @@ class UserRelation < ApplicationRecord
       @connected_user = User.where(id:relation.connected_user_id)
       @relations_connected_user.map do |relation_connected_user|
         if relation_connected_user.connected_user_id == nil
-          @connected_user_relationship.push(relation_connected_user.no_connected_user_id)
+          @detail.push(relation_connected_user.no_connected_user_id)
         else
           @user = User.find_by_id(relation_connected_user.connected_user_id)
-          @connected_user_relationship.push(relation_connected_user.relation_current_user(@user,relation.relation.code))
+          @detail.push(relation_connected_user.relation_current_user(@user,relation.relation.code))
         end
-        @detail.push(@connected_user_relationship[0])
+        # @detail.push(@connected_user_relationship)
         @relations_by_connected_user = UserRelation.where(user_id:relation_connected_user.connected_user_id).where.not(connected_user_id: relation_connected_user.user_id)
         # @relations_connected_user_connected = []
         # @relations_by_connected_user.map do |relations_by_connected_user|
