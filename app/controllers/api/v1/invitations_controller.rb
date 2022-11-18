@@ -48,12 +48,12 @@ class Api::V1::InvitationsController < ApplicationController
     @handling = UserRelation.find_by(connected_user_id:@user_relation.user_id,user_id:@user.id)
     if @handling==nil
       @new_relation = Relation.create(name:@user_related.name,relation_name:params["relation_name"],code:@relation_detail[0][:code],connected_user_id:@user_relation.user_id,user_id:@user.id, status:1)
-      @notif = Notification.create!(user_relation_id:@new_relation.user_relation_ids[0],user_id:@user_relation.user_id,status:0,descriptions:"Invitation anda sudah diterima oleh #{@user.name}")
+      @notif = Notification.find_or_create_by(user_relation_id:@new_relation.user_relation_ids[0],user_id:@user_relation.user_id,status:0,descriptions:"Invitation anda sudah diterima oleh #{@user.name}")
     end
   end
 
   def create_notif
-    @notif = Notification.create!(user_relation_id:@relation.id,user_id:@user.id,status:0,descriptions:"Anda di invit ke dalam family tree oleh #{@relation.user.name}, apakah anda mengenal #{@relation.user.name}?")
+    @notif = Notification.find_or_create_by(user_relation_id:@relation.id,user_id:@user.id,status:0,descriptions:"Anda di invit ke dalam family tree oleh #{@relation.user.name}, apakah anda mengenal #{@relation.user.name}?")
   end
 
 end
