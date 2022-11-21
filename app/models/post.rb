@@ -22,7 +22,6 @@ class Post < ApplicationRecord
 
   def self.get(user)
     @relations = UserRelation.where(user_id:user.id)
-
     @all_posts =[]
     @myposts = Post.where(user_id: user.id,status: "public")
     @myposts.map do |mypost|
