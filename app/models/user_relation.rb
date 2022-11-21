@@ -38,17 +38,18 @@ class UserRelation < ApplicationRecord
         end
         # @detail.push(@connected_user_relationship)
         @relations_by_connected_user = UserRelation.where(user_id:relation_connected_user.connected_user_id).where.not(connected_user_id: relation_connected_user.user_id)
-        # @relations_connected_user_connected = []
-        # @relations_by_connected_user.map do |relations_by_connected_user|
-        #   if relations_by_connected_user.connected_user_id == nil
-        #     @connected_user_relationship.push({connected_user_relationship:relations_by_connected_user.no_connected_user_id})
-        #   else
-        #     @connected_user = User.where(id:relation_connected_user.connected_user_id)
-        #     @user = User.find_by_id(relations_by_connected_user.connected_user_id)
-        #     @relations_connected_user_connected.push(relations_by_connected_user.with_connected_user_id(@user))
-        #   end
-        # end
-        # @connected_user_relationship.push({connected_user:@connected_user[0].biodata_user.new_attribute,connected_user_relationship:@relations_connected_user_connected})
+        @relations_connected_user_connected = []
+        @relations_by_connected_user.map do |relations_by_connected_user|
+          if relations_by_connected_user.connected_user_id == nil
+            @connected_user_relationship.push({connected_user_relationship:relations_by_connected_user.no_connected_user_id})
+          else
+            @connected_user = User.where(id:relation_connected_user.connected_user_id)
+            @user = User.find_by_id(relations_by_connected_user.connected_user_id)
+            @relations_connected_user_connected.push(relations_by_connected_user.with_connected_user_id(@user))
+            @current = relation_connected_user.relation_current_user(@user,relation.relation.code)
+            @detail.push(relations_by_connected_user.relation_connected_user(@user,@current[:code]))
+          end
+        end
       end
     end
     return {current_user:user.name,relation:@detail}
@@ -63,6 +64,19 @@ class UserRelation < ApplicationRecord
       relation_name: self.relation.relation_name,
       code: connected_user+self.relation.code,
       user_related: user_id.name,
+      email: user_id.email
+    }
+  end
+
+  def relation_connected_user(user_id,connected_user)
+    {
+      id: self.id,
+      # user_id: self.user_id,
+      # connected_user_id: self.connected_user_id,
+      relation_name: self.relation.relation_name,
+      code: connected_user+self.relation.code,
+      user_related: user_id.name,
+      email: user_id.email
     }
   end
 
@@ -85,6 +99,7 @@ class UserRelation < ApplicationRecord
       relation_name: self.relation.relation_name,
       code: self.relation.code,
       user_related: user_id.name,
+      email: user_id.email
     }
   end
 
