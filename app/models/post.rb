@@ -24,7 +24,7 @@ class Post < ApplicationRecord
     @relations = UserRelation.where(user_id:user.id)
 
     @all_posts =[]
-    @myposts = Post.where(user_id: user.id)
+    @myposts = Post.where(user_id: user.id,status: "public")
     @myposts.map do |mypost|
     @all_posts.push(mypost.new_attribute) if mypost !=nil
     end
