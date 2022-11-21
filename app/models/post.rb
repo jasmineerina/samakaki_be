@@ -29,7 +29,7 @@ class Post < ApplicationRecord
     @all_posts.push(mypost.new_attribute) if mypost !=nil
     end
     @relations.each do |relation,index|
-        @posts = Post.where(user_id: relation.connected_user_id)
+        @posts = Post.where(user_id: relation.connected_user_id,status: "public")
         @posts.each do |post|
         @all_posts.push(post.new_attribute) if post !=nil
         end
