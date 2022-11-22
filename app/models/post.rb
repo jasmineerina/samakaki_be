@@ -21,20 +21,25 @@ class Post < ApplicationRecord
   end
 
   def self.get(user)
-    @relations = UserRelation.where(user_id:user.id)
+
+    @user_relations = UserRelation.get_relation(user)
+    @user_relations = @user_relations[:relation].pluck(:id)
+    @relations = UserRelation.where(id:@user_relations).pluck(:user_id)
+    @connected_relations = UserRelation.where(id:@user_relations).pluck(:connected_user_id)
+    @family_posts = Post.where(user_id: @relations+@connected_relations,status:"public")
     @all_posts =[]
     @myposts = Post.where(user_id: user.id,status: "public")
     @myposts.map do |mypost|
     @all_posts.push(mypost.new_attribute) if mypost !=nil
     end
-    @relations.each do |relation,index|
-        @posts = Post.where(user_id: relation.connected_user_id,status: "public")
-        @posts.each do |post|
-        @all_posts.push(post.new_attribute) if post !=nil
-        end
+    @family_posts.each do |post|
+      @all_posts.push(post.new_attribute) if post !=nil
     end
+
     return @all_posts
   end
+
+
 
   private
 
