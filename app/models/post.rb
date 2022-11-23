@@ -20,6 +20,15 @@ class Post < ApplicationRecord
     }
   end
 
+  def self.get_private(user)
+    @my_posts = Post.where(user_id: user.id)
+    @private_posts = []
+    @my_posts.map do |post|
+      @private_posts.push(post.new_attribute)
+    end
+    return @private_posts
+  end
+
   def self.get(user)
 
     @user_relations = UserRelation.get_relation(user)

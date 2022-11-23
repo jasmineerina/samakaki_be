@@ -1,13 +1,17 @@
 class Api::V1::PostsController < ApplicationController
-    before_action :authorize, only: [:create, :show, :find,:destroy,:index]
+    before_action :authorize, only: [:create, :show, :find,:destroy,:index, :my_posts]
     before_action :set_post, only: [:show,:update,:destroy]
     before_action do
       ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
     end
     def index
-
         @all_posts = Post.get(@user)
         response_to_json(@all_posts.uniq{ |f| f.values_at(:id)}, :ok)
+    end
+
+    def my_posts
+        @my_posts = Post.get_private(@user)
+        response_to_json({my_posts: @my_posts},:ok)
     end
 
     def create
