@@ -3,7 +3,7 @@ class Api::V1::EventsController < ApplicationController
     before_action :set_event, only: [:show,:destroy, :update]
 
     def index
-        @events = Event.where(user_id: @user.id)
+        @events = Event.get_all(@user)
         response_to_json({events:@events},:success)
     end
 
@@ -33,6 +33,6 @@ class Api::V1::EventsController < ApplicationController
     end
 
     def event_params
-        params.require(:event).permit(:name, :date, :venue, :family_tree_id)
+        params.require(:event).permit(:name, :date, :venue)
     end
 end
