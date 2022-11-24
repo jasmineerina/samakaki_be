@@ -37,7 +37,7 @@ class Post < ApplicationRecord
     @connected_relations = UserRelation.where(id:@user_relations).pluck(:connected_user_id)
     @family_posts = Post.where(user_id: @relations+@connected_relations,status:"public")
     @all_posts =[]
-    @myposts = Post.where(user_id: user.id,status: "public")
+    @myposts = Post.where(user_id: user.id)
     @myposts.map do |mypost|
     @all_posts.push(mypost.new_attribute) if mypost !=nil
     end
