@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :events, dependent: :destroy
   validates :email, :presence => true, :uniqueness => true
   has_many :user_relations, dependent: :destroy
+  has_many :relations, through: :user_relations
   has_many :notifications
   has_many :messages
   has_many :participants
@@ -43,6 +44,22 @@ class User < ApplicationRecord
    self.password = password
    save!
   end
+
+
+
+  # def get_all_relations level=0
+  #   user_levels = []
+  #   case level
+  #   when 0
+  #     user_levels = user_relations.map(&:connected_user_id).compact
+  #   when 1
+  #     user_levels = get_all_connected_users(user_relations.map(&:connected_user_id).compact)
+  #   when 2
+  #     user_levels =
+  #   when 3
+  #   Relation.joins("left join user_relations ON user_relations.relation_id = relations.id")
+  #           .where("user_relations.connected_user_id IN (:user_ids)", user_ids: user_levels)
+  # end
 
   private
 

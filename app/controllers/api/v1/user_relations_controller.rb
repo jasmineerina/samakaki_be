@@ -18,6 +18,12 @@ class Api::V1::UserRelationsController < ApplicationController
         response_to_json({relation: @relation.relation},:success)
       end
     end
+
+    def get_connected_relation
+      @relation_detail = UserRelation.get_connected_relation(params[:user_id])
+      return response_error("Tidak ada relation", :not_found) unless @relation_detail.presence
+      response_to_json(@relation_detail,:success)
+    end
 end
 
 

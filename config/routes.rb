@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :relations
       resources :events
       resources :user_relations
+      get 'get_relations/connected_user', to: 'user_relations#get_connected_relation'
       post 'invitation/register', to: 'invitations#create'
       post 'invite/users', to: 'relations#create_notif_invited_user'
       put 'accepted/invitation', to: 'invitations#accepted'
