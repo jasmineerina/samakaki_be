@@ -2,9 +2,14 @@ class Api::V1::RelationsController < ApplicationController
   before_action :authorize, only: [:create, :update, :invite_user,:create_notif_invited_user]
   after_action :create_notif, only:[:invite_user]
   def create
-    @relation_detail=Relation.relation_detail(params[:relation_name])
-    @relation = Relation.new(relation_params.merge(code:@relation_detail[0][:code],user_id:@user.id,connected_user_id:params["connected_user_id"],status:"non_active"))
-    @relation.save ? response_to_json(@relation.get_relation_from_invitation, :success) : response_error(@relation.errors, :unprocessable_entity)
+    @find = Relation.find_by(relation_params)
+    if @find.present?
+      response_to_json(@find,:ok)
+    else
+      @relation_detail=Relation.relation_detail(params[:relation_name])
+      @relation = Relation.new(relation_params.merge(code:@relation_detail[0][:code],user_id:@user.id,connected_user_id:params["connected_user_id"],status:"non_active"))
+      @relation.save ? response_to_json(@relation.get_relation_from_invitation, :success) : response_error(@relation.errors, :unprocessable_entity)
+    end
   end
 
   def update

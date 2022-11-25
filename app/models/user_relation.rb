@@ -41,7 +41,7 @@ class UserRelation < ApplicationRecord
         @relations_connected_user_connected = []
         @relations_by_connected_user.map do |relations_by_connected_user|
           if relations_by_connected_user.connected_user_id == nil
-            @connected_user_relationship.push({connected_user_relationship:relations_by_connected_user.no_connected_user_id})
+             @connected_user_relationship.push({connected_user_relationship:relations_by_connected_user.no_connected_user_id})
           else
             @connected_user = User.where(id:relation_connected_user.connected_user_id)
             @user = User.find_by_id(relations_by_connected_user.connected_user_id)
