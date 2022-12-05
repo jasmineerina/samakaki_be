@@ -148,15 +148,4 @@ class UserRelation < ApplicationRecord
     }
   end
 
-  # def
-  #   @connected_user = User.find_by_id(relation.connected_user_id)
-  #   @relations_connected_user.map do |relation_connected_user|
-  #     if relation_connected_user.connected_user_id == nil
-  #       @connected_user_relationship.push(relation_connected_user.no_connected_user_id)
-  #     else
-  #       @user = User.find_by_id(relation_connected_user.connected_user_id)
-  #       @connected_user_relationship.push(relation_connected_user.with_connected_user_id(@user))
-  #     end
-  #   end
-  # end
 end
