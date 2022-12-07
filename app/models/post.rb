@@ -43,7 +43,6 @@ class Post < ApplicationRecord
     @family_posts.each do |post|
       @all_posts.push(post.new_attribute) if post !=nil
     end
-
     return @all_posts
   end
 
