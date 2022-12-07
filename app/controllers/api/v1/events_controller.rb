@@ -8,12 +8,12 @@ class Api::V1::EventsController < ApplicationController
     end
 
     def create
-        @event = Event.new(event_params.merge(user_id: @user.id))
-        @event.save ? response_to_json({event:@event}, :success) : response_error(@event.errors, :unprocessable_entity)
+        @event = Event.new(event_params.merge(user_id: @user.id,date: "#{params[:date]} #{params[:time]}.000+00:00"))
+        @event.save ? response_to_json({event:@event.event_attribute}, :success) : response_error(@event.errors, :unprocessable_entity)
     end
 
     def show
-        response_to_json({event:@event},:success)
+        response_to_json({event:@event.event_attribute},:success)
     end
 
     def destroy
@@ -33,6 +33,6 @@ class Api::V1::EventsController < ApplicationController
     end
 
     def event_params
-        params.require(:event).permit(:name, :date, :venue)
+        params.require(:event).permit(:name, :venue)
     end
 end
