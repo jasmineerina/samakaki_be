@@ -3,17 +3,17 @@ class Api::V1::EventsController < ApplicationController
     before_action :set_event, only: [:show,:destroy, :update]
 
     def index
-        @events = Event.where(user_id: @user.id)
+        @events = Event.get_all(@user)
         response_to_json({events:@events},:success)
     end
 
     def create
-        @event = Event.new(event_params.merge(user_id: @user.id))
-        @event.save ? response_to_json({event:@event}, :success) : response_error(@event.errors, :unprocessable_entity)
+        @event = Event.new(event_params.merge(user_id: @user.id,date: "#{params[:date]} #{params[:time]}.000+00:00"))
+        @event.save ? response_to_json({event:@event.event_attribute}, :success) : response_error(@event.errors, :unprocessable_entity)
     end
 
     def show
-        response_to_json({event:@event},:success)
+        response_to_json({event:@event.event_attribute},:success)
     end
 
     def destroy
@@ -33,6 +33,6 @@ class Api::V1::EventsController < ApplicationController
     end
 
     def event_params
-        params.require(:event).permit(:name, :date, :venue, :family_tree_id)
+        params.require(:event).permit(:name, :venue)
     end
 end
