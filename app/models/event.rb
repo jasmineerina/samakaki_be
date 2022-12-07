@@ -23,7 +23,6 @@ class Event < ApplicationRecord
             venue: self.venue,
             user_id: self.user_id,
         }
-
     end
 
 
