@@ -22,7 +22,7 @@ class Api::V1::EventsController < ApplicationController
     end
 
     def update
-        @event.update(event_params )? response_to_json({event:@event},:success):response_error(@event.errors,:unprocessable_entity)
+        @event.update(event_params.merge(date: "#{params[:date]} #{params[:time]}.000+00:00") )? response_to_json({event:@event.event_attribute},:success):response_error(@event.errors,:unprocessable_entity)
     end
 
     private
