@@ -6,7 +6,7 @@ class Event < ApplicationRecord
         @user_relations = @user_relations[:relation].pluck(:id)
         @relations = UserRelation.where(id:@user_relations).pluck(:user_id)
         @connected_relations = UserRelation.where(id:@user_relations).pluck(:connected_user_id)
-        @events = Event.where(user_id: @relations+@connected_relations)
+        @events = Event.where(user_id: @relations+@connected_relations+[user.id])
         @all_events = []
         @events.map do |event|
           @all_events.push(event.event_attribute)
