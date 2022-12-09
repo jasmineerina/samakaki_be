@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      mount ActionCable.server => '/cable'
       resources :users
       post "login", to: "users#login"
       post 'password/forgot', to: 'passwords#forgot'
@@ -26,7 +27,14 @@ Rails.application.routes.draw do
       put 'accepted/invitation', to: 'invitations#accepted'
 
       resources  :notifications
-    end
+
+      resources :group_chats
+      get 'chats/:room_id' ,to: 'group_chats#messages'
+      post 'chats/:room_id' ,to: 'group_chats#sending'
+      post 'chats/:room_id/add' ,to: 'group_chats#add_participant'
+
+      resources :personal_chats
+      end
   end
 
 end
