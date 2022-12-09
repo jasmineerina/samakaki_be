@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      mount ActionCable.server => '/cable'
       resources :users
       post "login", to: "users#login"
       post 'password/forgot', to: 'passwords#forgot'
