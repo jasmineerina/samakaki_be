@@ -29,7 +29,6 @@ class Post < ApplicationRecord
   end
 
   def self.get(user)
-
     @user_relations = UserRelation.get_relation(user)
     @user_relations = @user_relations[:relation].pluck(:id)
     @relations = UserRelation.where(id:@user_relations).pluck(:user_id)

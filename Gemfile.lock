@@ -96,6 +96,10 @@ GEM
     digest (3.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     email_validator (2.2.3)
       activemodel
     erubi (1.11.0)
@@ -255,6 +259,7 @@ DEPENDENCIES
   capybara
   cloudinary
   debug
+  dotenv-rails
   email_validator (~> 2.2, >= 2.2.3)
   exception_notification
   importmap-rails
