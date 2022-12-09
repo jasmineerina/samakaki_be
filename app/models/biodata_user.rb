@@ -24,7 +24,7 @@ class BiodataUser < ApplicationRecord
     unless avatar.byte_size <= 1.megabyte
       errors.add(:avatar, "ukuran file melebihi 1 MB")
     end
-    acceptable_types = ["image/jpeg", "image/png", "image/gif"]
+    acceptable_types = ["image/jpeg", "image/png", "image/gif","image/jpg"]
     unless acceptable_types.include?(avatar.content_type)
       errors.add(:content, "tipe file harus JPEG, PNG atau GIF")
     end
