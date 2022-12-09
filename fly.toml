@@ -1,4 +1,4 @@
-# fly.toml file generated for samakaki-be-prod on 2022-12-08T18:56:00+07:00
+# fly.toml file generated for samakaki on 2022-12-09T16:48:05+07:00
 
 app = "samakaki"
 kill_signal = "SIGINT"
