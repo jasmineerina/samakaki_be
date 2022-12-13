@@ -26,7 +26,8 @@ class BiodataUser < ApplicationRecord
     end
     acceptable_types = ["image/jpeg", "image/png", "image/gif","image/jpg"]
     unless acceptable_types.include?(avatar.content_type)
-      errors.add(:content, "tipe file harus JPEG, PNG, JPG atau GIF")
+      errors.add(:content, "tipe file harus JPEG, PNG atau GIF")
     end
   end
+
 end
