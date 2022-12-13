@@ -46,6 +46,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 
 gem 'email_validator', '~> 2.2', '>= 2.2.3'
+gem 'rails_admin', '~> 3.0'
+
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -79,3 +81,9 @@ group :test do
   gem "webdrivers"
 end
 
+gem "cssbundling-rails"
+gem "sass-rails"
+gem "cssbundling-rails"
+gem "cssbundling-rails"
+gem "cssbundling-rails"
+gem "sassc-rails"
