@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :participants
   include BCrypt
-  validates :email, email: {domain: 'gmail.com'}
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
 
   def password
     @password ||= Password.new(password_digest)
