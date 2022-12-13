@@ -8,10 +8,6 @@ Bundler.require(*Rails.groups)
 
 module SamaKaki
   class Application < Rails::Application
-    config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Flash
-    config.middleware.use Rack::MethodOverride
-    config.middleware.use ActionDispatch::Session::CookieStore, {:key=>"_sama_kaki_session"}
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 

@@ -1,7 +1,0 @@
-{
-  "name": "app",
-  "private": "true",
-  "scripts": {
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss --no-source-map --load-path=node_modules"
-  }
-}
