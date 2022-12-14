@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       post "login", to: "users#login"
       post 'password/forgot', to: 'passwords#forgot'
       post 'password/reset', to: 'passwords#reset'
+      get "confirm/email" ,to: "users#confirm_email"
 
       resources :biodata_users
       resources :posts
