@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :participants
   include BCrypt
   validates :email, email: {domain: 'gmail.com'}
-
+  before_create :confirmation_token
   def password
     @password ||= Password.new(password_digest)
   end
@@ -45,7 +45,11 @@ class User < ApplicationRecord
    save!
   end
 
-
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
 
   # def get_all_relations level=0
   #   user_levels = []
@@ -67,4 +71,9 @@ class User < ApplicationRecord
    SecureRandom.hex(10)
   end
 
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
 end
