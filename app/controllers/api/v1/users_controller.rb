@@ -43,8 +43,8 @@ class Api::V1::UsersController < ApplicationController
     @user = User.find_by_confirm_token(params[:token])
     if @user && @user.email_confirmed == false
       @user.email_activate
-      response_to_json("Welcome to the Sample App! Your email has been confirmed.
-      Please login to continue.",:ok)
+      response_to_json("Selamat datang di Samakaki! Email kamu sudah di konfirmasi.
+      Silahkan lanjut ke menu login.",:ok)
     else
       response_error("User tidak ada atau anda sudah konfirmasi email",:unauthorized)
     end
