@@ -1,5 +1,5 @@
-Hi <%= @user.name %>,
+<h2>Selamat datang <%= @user.name %> </h2>
 
-Thanks for registering! To confirm your registration click the URL below.
+<p> Terima kasih sudah mendaftar di aplikasi SAMAKAKI. Silahkan klik link dibawah ini untuk konfirmasi akun anda</p>
 
-<a> <%= @user.confirm_token %> </a>
+<a href = "https://samakaki-fe.fly.dev/user/confirm?token=<%= @user.confirm_token %>"> Konfirmasi </a>
