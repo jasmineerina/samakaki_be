@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorize, only: [:show, :update, :destroy]
+  before_action :authorize, only: [:show, :update, :destroy,:resend_email_confirmation]
   def index
     @users = User.all.select('id', 'name','email','phone')
     render json: @users
@@ -52,6 +52,11 @@ class Api::V1::UsersController < ApplicationController
     else
       response_error("User tidak ada atau anda sudah konfirmasi email",:unauthorized)
     end
+  end
+
+  def resend_email_confirmation
+    UserMailer.registration_confirmation(@user).deliver
+    response_to_json("Konfirmasi akun sudah dikirim ke email anda",:ok)
   end
 
   private
