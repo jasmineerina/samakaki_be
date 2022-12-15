@@ -1,6 +1,7 @@
 class Api::V1::RelationsController < ApplicationController
   before_action :authorize, only: [:create, :update, :invite_user,:create_notif_invited_user]
   after_action :create_notif, only:[:invite_user]
+  before_action :verif_email, except: [:create_notif_invited_user]
   def create
     @find = Relation.find_by(relation_params)
     if @find.present?

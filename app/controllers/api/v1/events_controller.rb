@@ -1,6 +1,7 @@
 class Api::V1::EventsController < ApplicationController
     before_action :authorize, only: [:create, :show, :destroy, :update, :index]
     before_action :set_event, only: [:show,:destroy, :update]
+    before_action :verif_email, except: [:index]
 
     def index
         @events = Event.get_all(@user)

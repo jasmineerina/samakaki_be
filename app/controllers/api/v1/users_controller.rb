@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :authorize, only: [:show, :update, :destroy]
+  before_action :authorize, only: [:show, :update, :destroy,:resend_email_confirmation]
   def index
     @users = User.all.select('id', 'name','email','phone')
     render json: @users
@@ -23,11 +23,11 @@ class Api::V1::UsersController < ApplicationController
 
   def login
     @user = User.find_by(email: params[:email])
-    if @user && @user.password == params[:password] && @user.email_confirmed
+    if @user && @user.password == params[:password]
       @token = encode_token({id: @user.id, email: @user.email})
       response_to_json({user:@user.new_attribute,token:@token},:success)
     else
-      response_error("email atau password salah atau anda belum konfirmasi email",:unprocessable_entity)
+      response_error("email atau password salah",:unprocessable_entity)
     end
   end
 
@@ -52,6 +52,11 @@ class Api::V1::UsersController < ApplicationController
     else
       response_error("User tidak ada atau anda sudah konfirmasi email",:unauthorized)
     end
+  end
+
+  def resend_email_confirmation
+    UserMailer.registration_confirmation(@user).deliver
+    response_to_json("Konfirmasi akun sudah dikirim ke email anda",:ok)
   end
 
   private

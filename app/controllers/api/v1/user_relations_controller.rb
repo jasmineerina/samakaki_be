@@ -1,5 +1,6 @@
 class Api::V1::UserRelationsController < ApplicationController
   before_action :authorize, only: [:index,:show]
+  before_action :verif_email
   before_action do
     ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
   end

@@ -1,6 +1,7 @@
 class Api::V1::PostsController < ApplicationController
     before_action :authorize, only: [:create, :show, :find,:destroy,:index, :my_posts]
     before_action :set_post, only: [:show,:update,:destroy]
+    before_action :verif_email, except: [:index]
     before_action do
       ActiveStorage::Current.url_options = { protocol: request.protocol, host: request.host, port: request.port }
     end
