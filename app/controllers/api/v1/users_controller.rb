@@ -23,11 +23,11 @@ class Api::V1::UsersController < ApplicationController
 
   def login
     @user = User.find_by(email: params[:email])
-    if @user && @user.password == params[:password] && @user.email_confirmed
+    if @user && @user.password == params[:password]
       @token = encode_token({id: @user.id, email: @user.email})
       response_to_json({user:@user.new_attribute,token:@token},:success)
     else
-      response_error("email atau password salah atau anda belum konfirmasi email",:unprocessable_entity)
+      response_error("email atau password salah",:unprocessable_entity)
     end
   end
 

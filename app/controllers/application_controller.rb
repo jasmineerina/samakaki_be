@@ -30,6 +30,10 @@ class ApplicationController < ActionController::API
     authorized_user
   end
 
+  def verif_email
+    response_error("Anda belum melakukan konfirmasi email, silahkan cek email untuk konfirmasi", :unprocessable_entity) unless @user.email_confirmed==true
+  end
+
   def response_to_json(message, status)
     render json: {data:message, status: status}
   end

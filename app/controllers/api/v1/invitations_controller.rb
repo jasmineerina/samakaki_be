@@ -3,6 +3,7 @@ class Api::V1::InvitationsController < ApplicationController
   before_action :authorize, only: [:accepted]
   after_action :create_user_relation, only:[:accepted]
   after_action :create_notif, only:[:create]
+  before_action :verif_email
 
   def create
     @user = User.new(user_params)
