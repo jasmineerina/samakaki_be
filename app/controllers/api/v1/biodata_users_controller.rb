@@ -1,5 +1,5 @@
 class Api::V1::BiodataUsersController < ApplicationController
-    before_action :authorize, only: [:create, :show, :update]
+    before_action :authorize, only: [:create, :show, :update,:find_one]
     before_action :set_biodata, only: [:show,  :update]
     before_action :verif_email, only: [:update]
 
@@ -22,6 +22,11 @@ class Api::V1::BiodataUsersController < ApplicationController
         else
             @biodata.update(biodata_params) ? response_to_json(@biodata.new_attribute, :success) : response_error(@biodata.errors, :unprocessable_entity)
         end
+    end
+
+    def find_one
+        @biodata = BiodataUser.find_one_family(@user,params[:id])
+        @biodata ? response_to_json(@biodata,:ok) : response_error("biodata tidak ditemukan atau biodata di private",:not_found)
     end
 
     private

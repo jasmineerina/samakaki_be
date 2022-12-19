@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get "resend_email_confirmation", to: "users#resend_email_confirmation"
 
       resources :biodata_users
+      get "find_one/:id", to: "biodata_users#find_one"
       resources :posts
       get 'user/posts', to: 'posts#find'
       get 'user/my_post', to:'posts#my_posts'

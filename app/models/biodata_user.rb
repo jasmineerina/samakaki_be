@@ -18,6 +18,15 @@ class BiodataUser < ApplicationRecord
     }
   end
 
+  def self.find_one_family(user,id)
+    @user_relations = UserRelation.get_relation(user)
+    @user = @user_relations[:relation].find{ |item| item[:user_id]==id.to_i}
+    if @user != nil
+      @biodata = BiodataUser.find_by(user_id: @user[:user_id],status: "public")
+      return @biodata.new_attribute unless @biodata==nil
+    end
+  end
+
   private
 
   def acceptable_image
