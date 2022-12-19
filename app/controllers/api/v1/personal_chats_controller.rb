@@ -29,15 +29,4 @@ class Api::V1::PersonalChatsController < ApplicationController
         @message = Message.create!(user_id:@user.id, room_id:params[:room_id], message:params[:message])
         response_to_json(@message,:success)
     end
-
-    # def show
-    #     # @single_room = Room.find(params[:id])
-    #     response_to_json(@single_room.new_attribute, :success)
-    # end
-
-    # private
-    # def get_name(user1, user2)
-    #     users = [user1, user2].sort
-    #     "private_#{users.[0].id}_#{users.[1].id}"
-    # end
 end
