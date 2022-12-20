@@ -14,7 +14,8 @@ class BiodataUser < ApplicationRecord
       address: self.address,
       marriage_status: self.marriage_status,
       status: self.status,
-      avatar: self.avatar.url
+      avatar: self.avatar.url,
+      is_verifed: self.user.email_confirmed
     }
   end
 
