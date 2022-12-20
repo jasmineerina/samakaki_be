@@ -11,8 +11,7 @@ class Post < ApplicationRecord
       descriptions: self.descriptions,
       status: self.status,
       content: self.content.url,
-      created_at_date: self.created_at.to_s.split(' ')[0],
-      created_at_time: self.created_at.to_s.split(' ')[1],
+      created_at: self.created_at,
       :user =>
       {
         name: self.user.name,
