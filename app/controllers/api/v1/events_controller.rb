@@ -1,11 +1,17 @@
 class Api::V1::EventsController < ApplicationController
-    before_action :authorize, only: [:create, :show, :destroy, :update, :index]
+    before_action :authorize, only: [:create, :show, :destroy, :update, :index,:search_by_date]
     before_action :set_event, only: [:show,:destroy, :update]
     before_action :verif_email, except: [:index]
 
     def index
         @events = Event.get_all(@user)
         response_to_json({events:@events},:success)
+    end
+
+    def search_by_date
+        @events = Event.get_all(@user)
+        @event_by_date = @events.select{ |item| item[:date]==params[:date]}
+        @event_by_date.presence ?  response_to_json({events:@event_by_date},:ok) : response_error("Tidak ada event untuk tanggal #{params[:date]}",:not_found)
     end
 
     def create

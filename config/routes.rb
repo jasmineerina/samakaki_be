@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       resources :family_trees
       resources :relations
       resources :events
+      get 'event/:date', to: 'events#search_by_date'
       resources :user_relations
       get 'get_relations/connected_user', to: 'user_relations#get_connected_relation'
       post 'invitation/register', to: 'invitations#create'
