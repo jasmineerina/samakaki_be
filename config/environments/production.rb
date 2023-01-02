@@ -73,8 +73,8 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'sama-kaki.herokuapp.com',
-    user_name:            'jasmineerina15@gmail.com',
-    password:             'fkxnennzcaixhgau',
+    user_name:            'samakaki.qatros@gmail.com',
+    password:             'mgkrzkgfzdcsmpit',
     authentication:       'plain',
     enable_starttls_auto: true,
     open_timeout:         5,
@@ -112,7 +112,7 @@ Rails.application.configure do
   Rails.application.config.middleware.use ExceptionNotification::Rack,
   email: {
     email_prefix: '[PREFIX] ',
-    sender_address: %{"notifier" <dhimweray222@gmail.com>},
-    exception_recipients: %w{dhimweray222@gmail.com}
+    sender_address: %{"notifier" <samakaki.qatros@gmail.com>},
+    exception_recipients: %w{samakaki.qatros@gmail.com}
   }
 end
