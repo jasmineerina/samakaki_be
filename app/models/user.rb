@@ -12,6 +12,7 @@ class User < ApplicationRecord
   include BCrypt
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i}
   before_create :confirmation_token
+  
   def password
     @password ||= Password.new(password_digest)
   end

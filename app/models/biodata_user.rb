@@ -5,6 +5,8 @@ class BiodataUser < ApplicationRecord
   validates :dob, presence: true
   validates :address, presence: true
 
+  # nilai yang akan diolah
+  
   def new_attribute
     {
       name: self.user.name,
